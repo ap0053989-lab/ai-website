@@ -1581,17 +1581,186 @@
 
 // export default ContactCTASection;
 
-import React from 'react';
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Button,
+//   Grid,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+// import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+// import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+// import InsightsIcon from '@mui/icons-material/Insights';
+// import { useNavigate } from 'react-router-dom';
+
+// const ContactCTASection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+//   const primaryColor = '#fa8072'; // Telemagenta
+//   const secondaryColor = '#fa8072'; // Salmon
+
+//   const handleGetInTouch = () => {
+//     navigate('/contact');
+//   };
+
+//   return (
+//     <Box ref={ref} sx={{ 
+//       py: { xs: 8, md: 12 }, 
+//       backgroundColor: 'transparent',
+//     }}>
+//       <Container maxWidth="lg">
+//         <motion.div
+//           initial={{ opacity: 0, y: 50 }}
+//           animate={inView ? { opacity: 1, y: 0 } : {}}
+//           transition={{ duration: 0.6 }}
+//         >
+//           <Box
+//             sx={{
+//               backgroundColor: '#111111',
+//               border: `1px solid ${primaryColor}33`,
+//               borderRadius: 2,
+//               p: { xs: 3, md: 6 },
+//               textAlign: 'center',
+//               background: 'linear-gradient(145deg, #0a0a0a, #111111)',
+//             }}
+//           >
+//             <Typography
+//               variant="h2"
+//               sx={{
+//                 mb: 3,
+//                 color: primaryColor,
+//                 fontWeight: 700,
+//                 fontSize: { xs: '2rem', md: '2.5rem' },
+//               }}
+//             >
+//               Ready to Transform Your Business with AI?
+//             </Typography>
+            
+//             <Typography
+//               variant="h6"
+//               sx={{
+//                 mb: 4,
+//                 color: '#ffffff',
+//                 opacity: 0.9,
+//                 maxWidth: 700,
+//                 mx: 'auto',
+//                 fontSize: { xs: '0.9rem', md: '1.1rem' },
+//                 lineHeight: 1.8,
+//               }}
+//             >
+//               Let's discuss how advanced AI solutions can drive unprecedented growth, efficiency, and innovation in your organization.
+//             </Typography>
+
+//             <Grid container spacing={3} sx={{ mb: 6, justifyContent: 'center' }}>
+//               {[
+//                 { icon: <AutoAwesomeIcon />, text: 'Custom AI Solutions', color: primaryColor },
+//                 { icon: <RocketLaunchIcon />, text: 'Rapid Implementation', color: secondaryColor },
+//                 { icon: <TrendingUpIcon />, text: 'Measurable ROI', color: primaryColor },
+//                 { icon: <InsightsIcon />, text: 'AI-Powered Insights', color: secondaryColor },
+//               ].map((feature, index) => (
+//                 <Grid item xs={12} sm={6} md={3} key={feature.text}>
+//                   <Box
+//                     sx={{
+//                       display: 'flex',
+//                       flexDirection: 'column',
+//                       alignItems: 'center',
+//                       p: 2,
+//                     }}
+//                   >
+//                     <Box
+//                       sx={{
+//                         color: feature.color,
+//                         mb: 1,
+//                         '& .MuiSvgIcon-root': {
+//                           fontSize: 32,
+//                         },
+//                         transition: 'all 0.3s ease',
+//                         '&:hover': {
+//                           transform: 'scale(1.1)',
+//                         },
+//                       }}
+//                     >
+//                       {feature.icon}
+//                     </Box>
+//                     <Typography
+//                       variant="h6"
+//                       sx={{
+//                         color: '#ffffff',
+//                         fontWeight: 600,
+//                         fontSize: '0.9rem',
+//                       }}
+//                     >
+//                       {feature.text}
+//                     </Typography>
+//                   </Box>
+//                 </Grid>
+//               ))}
+//             </Grid>
+
+//             <Button
+//               variant="contained"
+//               size="large"
+//               endIcon={<ArrowForwardIcon />}
+//               onClick={handleGetInTouch}
+//               sx={{
+//                 px: 6,
+//                 py: 1.5,
+//                 fontSize: '1rem',
+//                 fontWeight: 600,
+//                 backgroundColor: primaryColor,
+//                 color: '#ffffff',
+//                 '&:hover': {
+//                   backgroundColor: '#d94b8a',
+//                   transform: 'translateY(-2px)',
+//                   boxShadow: `0 8px 25px ${primaryColor}33`,
+//                 },
+//                 transition: 'all 0.3s ease',
+//               }}
+//             >
+//               Start Your AI Journey
+//             </Button>
+//           </Box>
+//         </motion.div>
+//       </Container>
+//     </Box>
+//   );
+// };
+
+// export default ContactCTASection;
+
+import React, { useState } from 'react';
 import {
   Box,
   Container,
   Typography,
   Button,
   Grid,
+  Paper,
+  IconButton,
+  TextField,
+  MenuItem,
+  Chip,
+  Divider,
+  Stack,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import LanguageIcon from '@mui/icons-material/Language';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -1605,11 +1774,94 @@ const ContactCTASection = () => {
   });
 
   const navigate = useNavigate();
-  const primaryColor = '#fa8072'; // Telemagenta
-  const secondaryColor = '#fa8072'; // Salmon
+  const primaryColor = '#fa8072'; // Salmon color
+  const secondaryColor = '#cf3476'; // Pink for highlights
+
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
 
   const handleGetInTouch = () => {
     navigate('/contact');
+  };
+
+  // Generate calendar dates for current month
+  const generateCalendarDates = () => {
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    
+    const dates = [];
+    // Add empty cells for days before first day of month
+    for (let i = 0; i < firstDay.getDay(); i++) {
+      dates.push(null);
+    }
+    
+    // Add actual days of month
+    for (let i = 1; i <= lastDay.getDate(); i++) {
+      dates.push(new Date(year, month, i));
+    }
+    
+    return dates;
+  };
+
+  const handlePrevMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+  };
+
+  const handleNextMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+  };
+
+  const handleDateSelect = (date) => {
+    if (date) {
+      setSelectedDate(date);
+      setSelectedTime(null);
+    }
+  };
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  const availableTimes = [
+    "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", 
+    "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM"
+  ];
+
+  const timeZones = [
+    "Pacific Time (PT)",
+    "Mountain Time (MT)",
+    "Central Time (CT)",
+    "Eastern Time (ET)",
+    "GMT (London)",
+    "CET (Central Europe)",
+    "IST (India)",
+    "CST (China)",
+    "JST (Japan)",
+    "AEST (Australia)"
+  ];
+
+  const handleSubmit = () => {
+    if (selectedDate && selectedTime && name && email) {
+      // Handle form submission
+      console.log({
+        name,
+        email,
+        company,
+        date: selectedDate,
+        time: selectedTime
+      });
+      alert('Meeting scheduled successfully! We will contact you soon.');
+    } else {
+      alert('Please fill all required fields and select date/time.');
+    }
   };
 
   return (
@@ -1623,112 +1875,431 @@ const ContactCTASection = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Box
+          <Typography
+            variant="h2"
+            sx={{
+              mb: 6,
+              color: primaryColor,
+              fontWeight: 700,
+              fontSize: { xs: '2rem', md: '2.5rem' },
+              textAlign: 'center',
+            }}
+          >
+            Ready to Transform Your Business with AI?
+          </Typography>
+          
+          <Paper
+            elevation={0}
             sx={{
               backgroundColor: '#111111',
               border: `1px solid ${primaryColor}33`,
               borderRadius: 2,
-              p: { xs: 3, md: 6 },
-              textAlign: 'center',
+              overflow: 'hidden',
               background: 'linear-gradient(145deg, #0a0a0a, #111111)',
             }}
           >
-            <Typography
-              variant="h2"
-              sx={{
-                mb: 3,
-                color: primaryColor,
-                fontWeight: 700,
-                fontSize: { xs: '2rem', md: '2.5rem' },
-              }}
-            >
-              Ready to Transform Your Business with AI?
-            </Typography>
-            
-            <Typography
-              variant="h6"
-              sx={{
-                mb: 4,
-                color: '#ffffff',
-                opacity: 0.9,
-                maxWidth: 700,
-                mx: 'auto',
-                fontSize: { xs: '0.9rem', md: '1.1rem' },
-                lineHeight: 1.8,
-              }}
-            >
-              Let's discuss how advanced AI solutions can drive unprecedented growth, efficiency, and innovation in your organization.
-            </Typography>
-
-            <Grid container spacing={3} sx={{ mb: 6, justifyContent: 'center' }}>
-              {[
-                { icon: <AutoAwesomeIcon />, text: 'Custom AI Solutions', color: primaryColor },
-                { icon: <RocketLaunchIcon />, text: 'Rapid Implementation', color: secondaryColor },
-                { icon: <TrendingUpIcon />, text: 'Measurable ROI', color: primaryColor },
-                { icon: <InsightsIcon />, text: 'AI-Powered Insights', color: secondaryColor },
-              ].map((feature, index) => (
-                <Grid item xs={12} sm={6} md={3} key={feature.text}>
-                  <Box
+            <Grid container>
+              {/* Left side - Zenturatech AI Solutions Info */}
+              <Grid item xs={12} md={5}>
+                <Box sx={{ p: { xs: 3, md: 5 }, height: '100%' }}>
+                  <Typography
+                    variant="h4"
                     sx={{
+                      mb: 3,
+                      color: primaryColor,
+                      fontWeight: 700,
+                      fontSize: { xs: '1.8rem', md: '2.2rem' },
                       display: 'flex',
-                      flexDirection: 'column',
                       alignItems: 'center',
-                      p: 2,
+                      gap: 1,
                     }}
                   >
-                    <Box
-                      sx={{
-                        color: feature.color,
-                        mb: 1,
-                        '& .MuiSvgIcon-root': {
-                          fontSize: 32,
-                        },
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          transform: 'scale(1.1)',
-                        },
-                      }}
-                    >
-                      {feature.icon}
+                    <AutoAwesomeIcon /> Zenturatech AI Solutions
+                  </Typography>
+                  
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mb: 2,
+                      color: '#ffffff',
+                      fontWeight: 600,
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    Schedule Your AI Consultation
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      mb: 4,
+                      color: '#ffffff',
+                      opacity: 0.9,
+                      fontSize: '0.95rem',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    Book a personalized consultation to discover how our AI solutions can revolutionize your business operations and drive unprecedented growth.
+                  </Typography>
+
+                  <Stack spacing={2} sx={{ mb: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <AccessTimeIcon sx={{ color: primaryColor, fontSize: 20 }} />
+                      <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', fontWeight: 500 }}>
+                        45 min. Personalized Consultation
+                      </Typography>
                     </Box>
+                    
+                    <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+                      <CheckCircleIcon sx={{ color: primaryColor, fontSize: 20, mt: 0.5 }} />
+                      <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', opacity: 0.9 }}>
+                        Detailed AI implementation roadmap provided
+                      </Typography>
+                    </Box>
+
+                    <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+                      <CheckCircleIcon sx={{ color: primaryColor, fontSize: 20, mt: 0.5 }} />
+                      <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', opacity: 0.9 }}>
+                        Custom solution proposal based on your needs
+                      </Typography>
+                    </Box>
+                  </Stack>
+
+                  <Divider sx={{ my: 4, borderColor: '#333' }} />
+
+                  {/* AI Features */}
+                  <Box sx={{ mb: 4 }}>
                     <Typography
                       variant="h6"
                       sx={{
+                        mb: 2,
+                        color: primaryColor,
+                        fontWeight: 600,
+                        fontSize: '1rem',
+                      }}
+                    >
+                      Our AI Solutions Include:
+                    </Typography>
+                    
+                    <Grid container spacing={2}>
+                      {[
+                        { icon: <AutoAwesomeIcon />, text: 'Custom AI Models', color: primaryColor },
+                        { icon: <RocketLaunchIcon />, text: 'Rapid Deployment', color: primaryColor },
+                        { icon: <TrendingUpIcon />, text: 'ROI Guarantee', color: primaryColor },
+                        { icon: <InsightsIcon />, text: 'Data Analytics', color: primaryColor },
+                      ].map((feature) => (
+                        <Grid item xs={6} key={feature.text}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <Box sx={{ color: feature.color }}>
+                              {feature.icon}
+                            </Box>
+                            <Typography sx={{ 
+                              color: '#ffffff', 
+                              fontSize: '0.85rem',
+                              fontWeight: 500 
+                            }}>
+                              {feature.text}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </Box>
+                </Box>
+              </Grid>
+
+              {/* Right side - Calendar and Booking Form */}
+              <Grid item xs={12} md={7}>
+                <Box sx={{ p: { xs: 3, md: 5 }, backgroundColor: '#0a0a0a' }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mb: 4,
+                      color: '#ffffff',
+                      fontWeight: 600,
+                      fontSize: '1.4rem',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Schedule Your Consultation
+                  </Typography>
+
+                  {/* Calendar Section */}
+                  <Box sx={{ mb: 4 }}>
+                    <Typography
+                      sx={{
+                        mb: 2,
+                        color: '#ffffff',
+                        fontWeight: 600,
+                        fontSize: '0.95rem',
+                      }}
+                    >
+                      Select a Date & Time
+                    </Typography>
+
+                    {/* Calendar Header */}
+                    <Box sx={{ 
+                      display: 'flex', 
+                      justifyContent: 'space-between', 
+                      alignItems: 'center',
+                      mb: 2 
+                    }}>
+                      <IconButton 
+                        onClick={handlePrevMonth}
+                        sx={{ color: primaryColor }}
+                      >
+                        <ChevronLeftIcon />
+                      </IconButton>
+                      
+                      <Typography sx={{ color: '#ffffff', fontWeight: 600 }}>
+                        {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
+                      </Typography>
+                      
+                      <IconButton 
+                        onClick={handleNextMonth}
+                        sx={{ color: primaryColor }}
+                      >
+                        <ChevronRightIcon />
+                      </IconButton>
+                    </Box>
+
+                    {/* Calendar Grid */}
+                    <Grid container spacing={0.5}>
+                      {/* Day headers */}
+                      {dayNames.map((day) => (
+                        <Grid item xs key={day} sx={{ textAlign: 'center', mb: 1 }}>
+                          <Typography sx={{ 
+                            color: '#666', 
+                            fontSize: '0.75rem',
+                            fontWeight: 600 
+                          }}>
+                            {day}
+                          </Typography>
+                        </Grid>
+                      ))}
+
+                      {/* Calendar dates */}
+                      {generateCalendarDates().map((date, index) => (
+                        <Grid item xs key={index} sx={{ textAlign: 'center' }}>
+                          {date ? (
+                            <Button
+                              onClick={() => handleDateSelect(date)}
+                              sx={{
+                                minWidth: 'auto',
+                                width: 36,
+                                height: 36,
+                                borderRadius: '50%',
+                                color: selectedDate && date.getDate() === selectedDate.getDate() ? '#ffffff' : '#ffffff',
+                                backgroundColor: selectedDate && date.getDate() === selectedDate.getDate() ? primaryColor : 'transparent',
+                                '&:hover': {
+                                  backgroundColor: selectedDate && date.getDate() === selectedDate.getDate() ? primaryColor : '#333',
+                                },
+                                fontSize: '0.85rem',
+                                fontWeight: selectedDate && date.getDate() === selectedDate.getDate() ? 600 : 400,
+                              }}
+                            >
+                              {date.getDate()}
+                            </Button>
+                          ) : (
+                            <Box sx={{ width: 36, height: 36 }} />
+                          )}
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </Box>
+
+                  {/* Time Selection */}
+                  <Box sx={{ mb: 4 }}>
+                    <Typography
+                      sx={{
+                        mb: 2,
                         color: '#ffffff',
                         fontWeight: 600,
                         fontSize: '0.9rem',
                       }}
                     >
-                      {feature.text}
+                      Available Time Slots
                     </Typography>
+                    
+                    <Grid container spacing={1}>
+                      {availableTimes.map((time) => (
+                        <Grid item key={time}>
+                          <Chip
+                            label={time}
+                            onClick={() => setSelectedTime(time)}
+                            sx={{
+                              backgroundColor: selectedTime === time ? primaryColor : '#222',
+                              color: selectedTime === time ? '#ffffff' : '#ffffff',
+                              '&:hover': {
+                                backgroundColor: selectedTime === time ? primaryColor : '#333',
+                              },
+                              fontWeight: selectedTime === time ? 600 : 400,
+                            }}
+                          />
+                        </Grid>
+                      ))}
+                    </Grid>
                   </Box>
-                </Grid>
-              ))}
-            </Grid>
 
-            <Button
-              variant="contained"
-              size="large"
-              endIcon={<ArrowForwardIcon />}
-              onClick={handleGetInTouch}
-              sx={{
-                px: 6,
-                py: 1.5,
-                fontSize: '1rem',
-                fontWeight: 600,
-                backgroundColor: primaryColor,
-                color: '#ffffff',
-                '&:hover': {
-                  backgroundColor: '#d94b8a',
-                  transform: 'translateY(-2px)',
-                  boxShadow: `0 8px 25px ${primaryColor}33`,
-                },
-                transition: 'all 0.3s ease',
-              }}
-            >
-              Start Your AI Journey
-            </Button>
-          </Box>
+                  {/* Time Zone Selection */}
+                  <Box sx={{ mb: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+                      <LanguageIcon sx={{ color: primaryColor, fontSize: 20 }} />
+                      <Typography sx={{ color: '#ffffff', fontWeight: 600, fontSize: '0.9rem' }}>
+                        Select Your Time Zone
+                      </Typography>
+                    </Box>
+                    
+                    <TextField
+                      select
+                      fullWidth
+                      defaultValue="Eastern Time (ET)"
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          color: '#ffffff',
+                          '& fieldset': {
+                            borderColor: '#333',
+                          },
+                          '&:hover fieldset': {
+                            borderColor: primaryColor,
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: primaryColor,
+                          },
+                        },
+                        '& .MuiSelect-icon': {
+                          color: primaryColor,
+                        },
+                      }}
+                    >
+                      {timeZones.map((zone) => (
+                        <MenuItem 
+                          key={zone} 
+                          value={zone}
+                          sx={{ color: '#ffffff', backgroundColor: '#111' }}
+                        >
+                          {zone}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </Box>
+
+                  {/* Contact Form */}
+                  <Box sx={{ mb: 4 }}>
+                    <Typography
+                      sx={{
+                        mb: 3,
+                        color: '#ffffff',
+                        fontWeight: 600,
+                        fontSize: '0.95rem',
+                      }}
+                    >
+                      Your Contact Information
+                    </Typography>
+                    
+                    <Stack spacing={2}>
+                      <TextField
+                        placeholder="Full Name *"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        fullWidth
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            color: '#ffffff',
+                            '& fieldset': {
+                              borderColor: '#333',
+                            },
+                            '&:hover fieldset': {
+                              borderColor: primaryColor,
+                            },
+                            '&.Mui-focused fieldset': {
+                              borderColor: primaryColor,
+                            },
+                          },
+                        }}
+                      />
+                      
+                      <TextField
+                        placeholder="Email Address *"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        fullWidth
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            color: '#ffffff',
+                            '& fieldset': {
+                              borderColor: '#333',
+                            },
+                            '&:hover fieldset': {
+                              borderColor: primaryColor,
+                            },
+                            '&.Mui-focused fieldset': {
+                              borderColor: primaryColor,
+                            },
+                          },
+                        }}
+                      />
+                      
+                      <TextField
+                        placeholder="Company Name"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                        fullWidth
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            color: '#ffffff',
+                            '& fieldset': {
+                              borderColor: '#333',
+                            },
+                            '&:hover fieldset': {
+                              borderColor: primaryColor,
+                            },
+                            '&.Mui-focused fieldset': {
+                              borderColor: primaryColor,
+                            },
+                          },
+                        }}
+                      />
+                    </Stack>
+                  </Box>
+
+                  {/* Submit Button */}
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    size="large"
+                    onClick={handleSubmit}
+                    sx={{
+                      py: 1.5,
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      backgroundColor: primaryColor,
+                      color: '#ffffff',
+                      '&:hover': {
+                        backgroundColor: secondaryColor,
+                        transform: 'translateY(-2px)',
+                        boxShadow: `0 8px 25px ${primaryColor}33`,
+                      },
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    Book AI Consultation
+                  </Button>
+
+                  <Typography
+                    sx={{
+                      mt: 2,
+                      color: '#999',
+                      fontSize: '0.75rem',
+                      textAlign: 'center',
+                      opacity: 0.7,
+                    }}
+                  >
+                    By scheduling, you agree to our privacy policy and terms of service.
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+          </Paper>
         </motion.div>
       </Container>
     </Box>
