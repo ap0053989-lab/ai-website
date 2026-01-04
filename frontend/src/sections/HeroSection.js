@@ -8058,6 +8058,1465 @@
 
 // export default HeroSection;
 
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Button,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import { useNavigate } from 'react-router-dom';
+
+// const HeroSection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+
+//   const handleGetStarted = () => {
+//     navigate('/contact');
+//   };
+
+//   return (
+//     <Box
+//       ref={ref}
+//       sx={{
+//         position: 'relative',
+//         minHeight: '100vh',
+//         display: 'flex',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: 'transparent',
+//         padding: { xs: '20px', sm: '30px', md: '40px' },
+//         overflow: 'hidden',
+//       }}
+//     >
+//       {/* Custom Color Wheel Animation */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           top: '50%',
+//           left: '50%',
+//           transform: 'translate(-50%, -50%)',
+//           width: {
+//             xs: '300px',
+//             sm: '400px',
+//             md: '500px',
+//             lg: '600px'
+//           },
+//           height: {
+//             xs: '300px',
+//             sm: '400px',
+//             md: '500px',
+//             lg: '600px'
+//           },
+//           zIndex: 0,
+//           opacity: 0.6,
+//         }}
+//       >
+//         {/* Main Rotating Wheel */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '100%',
+//             height: '100%',
+//             borderRadius: '50%',
+//             background: 'conic-gradient(from 0deg, #cf3476 0%, #fa8072 25%, #cf3476 50%, #fa8072 75%, #cf3476 100%)',
+//             animation: 'rotateWheel 15s linear infinite',
+//             '@keyframes rotateWheel': {
+//               '0%': {
+//                 transform: 'translate(-50%, -50%) rotate(0deg)',
+//               },
+//               '100%': {
+//                 transform: 'translate(-50%, -50%) rotate(360deg)',
+//               },
+//             },
+//             filter: 'blur(10px)',
+//           }}
+//         />
+
+//         {/* Inner Ring */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '70%',
+//             height: '70%',
+//             borderRadius: '50%',
+//             background: 'conic-gradient(from 180deg, #fa8072 0%, #cf3476 50%, #fa8072 100%)',
+//             animation: 'rotateInner 12s linear infinite reverse',
+//             '@keyframes rotateInner': {
+//               '0%': {
+//                 transform: 'translate(-50%, -50%) rotate(360deg)',
+//               },
+//               '100%': {
+//                 transform: 'translate(-50%, -50%) rotate(0deg)',
+//               },
+//             },
+//             filter: 'blur(5px)',
+//             opacity: 0.8,
+//           }}
+//         />
+
+//         {/* Center Circle */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '40%',
+//             height: '40%',
+//             borderRadius: '50%',
+//             background: 'radial-gradient(circle, #cf3476 0%, #fa8072 50%, transparent 70%)',
+//             animation: 'pulseCenter 3s ease-in-out infinite',
+//             '@keyframes pulseCenter': {
+//               '0%, 100%': {
+//                 opacity: 0.5,
+//                 transform: 'translate(-50%, -50%) scale(1)',
+//               },
+//               '50%': {
+//                 opacity: 0.8,
+//                 transform: 'translate(-50%, -50%) scale(1.1)',
+//               },
+//             },
+//             boxShadow: '0 0 40px rgba(207, 52, 118, 0.5)',
+//           }}
+//         />
+
+//         {/* Floating Orbs */}
+//         {[...Array(8)].map((_, i) => (
+//           <Box
+//             key={i}
+//             sx={{
+//               position: 'absolute',
+//               top: '50%',
+//               left: '50%',
+//               width: '20px',
+//               height: '20px',
+//               borderRadius: '50%',
+//               background: i % 2 === 0 ? '#cf3476' : '#fa8072',
+//               transform: `
+//                 translate(-50%, -50%) 
+//                 rotate(${i * 45}deg) 
+//                 translateX(200px)
+//               `,
+//               animation: `orbit ${Math.random() * 10 + 8}s linear infinite ${i * 0.2}s`,
+//               '@keyframes orbit': {
+//                 '0%': {
+//                   transform: `
+//                     translate(-50%, -50%) 
+//                     rotate(${i * 45}deg) 
+//                     translateX(200px) 
+//                     rotate(0deg)
+//                   `,
+//                 },
+//                 '100%': {
+//                   transform: `
+//                     translate(-50%, -50%) 
+//                     rotate(${i * 45 + 360}deg) 
+//                     translateX(200px) 
+//                     rotate(-360deg)
+//                   `,
+//                 },
+//               },
+//               filter: 'blur(2px)',
+//               boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+//             }}
+//           />
+//         ))}
+//       </Box>
+
+//       {/* Main Content Container */}
+//       <Container
+//         maxWidth="lg"
+//         sx={{
+//           position: 'relative',
+//           zIndex: 2,
+//           textAlign: 'center',
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//         }}
+//       >
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={inView ? { opacity: 1, y: 0 } : {}}
+//           transition={{ duration: 0.8 }}
+//           style={{
+//             width: '100%',
+//             display: 'flex',
+//             flexDirection: 'column',
+//             alignItems: 'center',
+//           }}
+//         >
+//           {/* Main Heading - EXACTLY like image with period */}
+//           <Typography
+//             component="h1"
+//             sx={{
+//               mb: { xs: 1.5, sm: 2, md: 2.5 },
+//               color: '#FFFFFF',
+//               fontWeight: 900,
+//               fontSize: {
+//                 xs: '2rem',
+//                 sm: '2.5rem',
+//                 md: '3rem',
+//                 lg: '3.5rem'
+//               },
+//               lineHeight: 1.1,
+//               letterSpacing: { xs: '0px', sm: '0px', md: '0px' },
+//               textTransform: 'uppercase',
+//               textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)',
+//               whiteSpace: 'nowrap',
+//               overflow: 'visible',
+//             }}
+//           >
+//             GUARANTEED AI OUTCOMES.
+//           </Typography>
+
+//           {/* Sub Heading - NOT capitalized */}
+//           <Typography
+//             component="h2"
+//             sx={{
+//               mb: { xs: 2.5, sm: 3, md: 3.5 },
+//               color: '#FFFFFF',
+//               fontWeight: 800,
+//               fontSize: {
+//                 xs: '1.1rem',
+//                 sm: '1.4rem',
+//                 md: '1.7rem',
+//                 lg: '2rem'
+//               },
+//               lineHeight: 1.2,
+//               letterSpacing: { xs: '0.3px', sm: '0.5px', md: '0.7px' },
+//               maxWidth: '100%',
+//               textShadow: '0 1px 5px rgba(0, 0, 0, 0.7)',
+//             }}
+//           >
+//             Delivered by Our Team, or Yours
+//           </Typography>
+
+//           {/* Description */}
+//           <Typography
+//             variant="h6"
+//             sx={{
+//               mb: { xs: 3, sm: 4, md: 5 },
+//               color: '#E0E0E0',
+//               fontSize: {
+//                 xs: '0.85rem',
+//                 sm: '1rem',
+//                 md: '1.1rem'
+//               },
+//               lineHeight: { xs: 1.5, sm: 1.6, md: 1.7 },
+//               fontWeight: 400,
+//               maxWidth: { xs: '100%', sm: '90%', md: '800px' },
+//               mx: 'auto',
+//               opacity: 0.9,
+//               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+//             }}
+//           >
+//             Your most ambitious AI goals, executed with certainty. We offer flexible partnership models from turnkey projects to dedicated innovation hubs, designed to deliver the results you need.
+//           </Typography>
+
+//           {/* Divider Line - EXACT like image */}
+//           <Box
+//             sx={{
+//               width: { xs: '80px', sm: '100px', md: '120px' },
+//               height: '1px',
+//               background: '#FFFFFF',
+//               mb: { xs: 3, sm: 4, md: 5 },
+//               opacity: 0.5,
+//             }}
+//           />
+
+//           {/* CTA Button - WITHOUT arrow */}
+//           <Button
+//             variant="contained"
+//             size="large"
+//             onClick={handleGetStarted}
+//             sx={{
+//               px: { xs: 4, sm: 5, md: 6 },
+//               py: { xs: 1.25, sm: 1.5, md: 1.75 },
+//               fontSize: {
+//                 xs: '0.9rem',
+//                 sm: '1rem',
+//                 md: '1.1rem'
+//               },
+//               fontWeight: 700,
+//               background: 'linear-gradient(135deg, #cf3476 0%, #fa8072 100%)',
+//               color: '#FFFFFF',
+//               mb: { xs: 4, sm: 5, md: 6 },
+//               minWidth: { xs: '200px', sm: '250px', md: '300px' },
+//               textTransform: 'uppercase',
+//               letterSpacing: '0.5px',
+//               border: 'none',
+//               position: 'relative',
+//               overflow: 'hidden',
+//               '&:hover': {
+//                 background: 'linear-gradient(135deg, #d94b8a 0%, #fb9488 100%)',
+//                 transform: 'translateY(-2px)',
+//                 boxShadow: '0 10px 25px rgba(207, 52, 118, 0.5), 0 0 15px rgba(250, 128, 114, 0.3)',
+//                 '&::before': {
+//                   transform: 'translateX(100%)',
+//                 },
+//               },
+//               transition: 'all 0.3s ease',
+//               display: 'flex',
+//               alignItems: 'center',
+//               justifyContent: 'center',
+//               gap: 1,
+//               '&::before': {
+//                 content: '""',
+//                 position: 'absolute',
+//                 top: 0,
+//                 left: 0,
+//                 width: '100%',
+//                 height: '100%',
+//                 background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+//                 transform: 'translateX(-100%)',
+//                 transition: 'transform 0.6s ease',
+//               },
+//             }}
+//           >
+//             Explore Solutions
+//           </Button>
+
+//           {/* Bottom Tagline */}
+//           <Typography
+//             component="h3"
+//             sx={{
+//               color: '#FFFFFF',
+//               fontWeight: 700,
+//               fontSize: {
+//                 xs: '0.7rem',
+//                 sm: '0.8rem',
+//                 md: '0.9rem'
+//               },
+//               letterSpacing: { xs: '1.5px', sm: '2px', md: '2.5px' },
+//               textTransform: 'uppercase',
+//               opacity: 0.9,
+//               position: 'relative',
+//               padding: { xs: '0 30px', sm: '0 40px', md: '0 50px' },
+//               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+//               '&::before, &::after': {
+//                 content: '""',
+//                 position: 'absolute',
+//                 top: '50%',
+//                 width: { xs: '20px', sm: '30px', md: '40px' },
+//                 height: '1px',
+//                 background: '#FFFFFF',
+//                 opacity: 0.5,
+//               },
+//               '&::before': {
+//                 left: 0,
+//               },
+//               '&::after': {
+//                 right: 0,
+//               },
+//             }}
+//           >
+//             THE OUTCOME PARTNER FOR INDUSTRY LEADERS
+//           </Typography>
+//         </motion.div>
+//       </Container>
+
+//       {/* Scroll Indicator */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           bottom: { xs: '20px', sm: '30px', md: '40px' },
+//           right: { xs: '20px', sm: '30px', md: '40px' },
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           zIndex: 2,
+//           opacity: 0.8,
+//         }}
+//       >
+//         <Typography
+//           variant="caption"
+//           sx={{
+//             color: '#FFFFFF',
+//             fontSize: { xs: '0.6rem', sm: '0.7rem' },
+//             letterSpacing: '1.5px',
+//             textTransform: 'uppercase',
+//             mb: 1,
+//             writingMode: 'vertical-rl',
+//             transform: 'rotate(180deg)',
+//             fontWeight: 600,
+//             textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+//           }}
+//         >
+//           SCROLL
+//         </Typography>
+//         <Box
+//           sx={{
+//             width: '1px',
+//             height: { xs: '25px', sm: '35px' },
+//             background: 'linear-gradient(to bottom, #cf3476, #fa8072)',
+//             animation: 'scrollBounce 2s infinite',
+//             '@keyframes scrollBounce': {
+//               '0%, 100%': {
+//                 transform: 'translateY(0)',
+//                 opacity: 0.5,
+//               },
+//               '50%': {
+//                 transform: 'translateY(8px)',
+//                 opacity: 1,
+//               },
+//             },
+//           }}
+//         />
+//       </Box>
+
+//       {/* TIM Indicator */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           bottom: { xs: '20px', sm: '30px', md: '40px' },
+//           left: { xs: '20px', sm: '30px', md: '40px' },
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           zIndex: 2,
+//           opacity: 0.8,
+//         }}
+//       >
+//         <Typography
+//           variant="caption"
+//           sx={{
+//             color: '#FFFFFF',
+//             fontSize: { xs: '0.6rem', sm: '0.7rem' },
+//             letterSpacing: '1.5px',
+//             textTransform: 'uppercase',
+//             mb: 1,
+//             writingMode: 'vertical-rl',
+//             fontWeight: 600,
+//             textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+//           }}
+//         >
+//           TIM
+//         </Typography>
+//         <Box
+//           sx={{
+//             width: '1px',
+//             height: { xs: '25px', sm: '35px' },
+//             background: 'linear-gradient(to bottom, #fa8072, #cf3476)',
+//             animation: 'timBounce 2s infinite 0.5s',
+//             '@keyframes timBounce': {
+//               '0%, 100%': {
+//                 transform: 'translateY(0)',
+//                 opacity: 0.5,
+//               },
+//               '50%': {
+//                 transform: 'translateY(8px)',
+//                 opacity: 1,
+//               },
+//             },
+//           }}
+//         />
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default HeroSection;
+
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Button,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import { useNavigate } from 'react-router-dom';
+
+// const HeroSection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+
+//   const handleGetStarted = () => {
+//     navigate('/contact');
+//   };
+
+//   return (
+//     <Box
+//       ref={ref}
+//       sx={{
+//         position: 'relative',
+//         minHeight: '100vh',
+//         display: 'flex',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: 'transparent',
+//         padding: { xs: '20px', sm: '30px', md: '40px' },
+//         overflow: 'hidden',
+//       }}
+//     >
+//       {/* Custom Color Wheel Animation */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           top: '50%',
+//           left: '50%',
+//           transform: 'translate(-50%, -50%)',
+//           width: {
+//             xs: '300px',
+//             sm: '400px',
+//             md: '500px',
+//             lg: '600px'
+//           },
+//           height: {
+//             xs: '300px',
+//             sm: '400px',
+//             md: '500px',
+//             lg: '600px'
+//           },
+//           zIndex: 0,
+//           opacity: 0.6,
+//         }}
+//       >
+//         {/* Main Rotating Wheel */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '100%',
+//             height: '100%',
+//             borderRadius: '50%',
+//             background: 'conic-gradient(from 0deg, #cf3476 0%, #fa8072 25%, #cf3476 50%, #fa8072 75%, #cf3476 100%)',
+//             animation: 'rotateWheel 15s linear infinite',
+//             '@keyframes rotateWheel': {
+//               '0%': {
+//                 transform: 'translate(-50%, -50%) rotate(0deg)',
+//               },
+//               '100%': {
+//                 transform: 'translate(-50%, -50%) rotate(360deg)',
+//               },
+//             },
+//             filter: 'blur(10px)',
+//           }}
+//         />
+
+//         {/* Inner Ring */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '70%',
+//             height: '70%',
+//             borderRadius: '50%',
+//             background: 'conic-gradient(from 180deg, #fa8072 0%, #cf3476 50%, #fa8072 100%)',
+//             animation: 'rotateInner 12s linear infinite reverse',
+//             '@keyframes rotateInner': {
+//               '0%': {
+//                 transform: 'translate(-50%, -50%) rotate(360deg)',
+//               },
+//               '100%': {
+//                 transform: 'translate(-50%, -50%) rotate(0deg)',
+//               },
+//             },
+//             filter: 'blur(5px)',
+//             opacity: 0.8,
+//           }}
+//         />
+
+//         {/* Center Circle */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '40%',
+//             height: '40%',
+//             borderRadius: '50%',
+//             background: 'radial-gradient(circle, #cf3476 0%, #fa8072 50%, transparent 70%)',
+//             animation: 'pulseCenter 3s ease-in-out infinite',
+//             '@keyframes pulseCenter': {
+//               '0%, 100%': {
+//                 opacity: 0.5,
+//                 transform: 'translate(-50%, -50%) scale(1)',
+//               },
+//               '50%': {
+//                 opacity: 0.8,
+//                 transform: 'translate(-50%, -50%) scale(1.1)',
+//               },
+//             },
+//             boxShadow: '0 0 40px rgba(207, 52, 118, 0.5)',
+//           }}
+//         />
+
+//         {/* Floating Orbs */}
+//         {[...Array(8)].map((_, i) => (
+//           <Box
+//             key={i}
+//             sx={{
+//               position: 'absolute',
+//               top: '50%',
+//               left: '50%',
+//               width: '20px',
+//               height: '20px',
+//               borderRadius: '50%',
+//               background: i % 2 === 0 ? '#cf3476' : '#fa8072',
+//               transform: `
+//                 translate(-50%, -50%) 
+//                 rotate(${i * 45}deg) 
+//                 translateX(200px)
+//               `,
+//               animation: `orbit ${Math.random() * 10 + 8}s linear infinite ${i * 0.2}s`,
+//               '@keyframes orbit': {
+//                 '0%': {
+//                   transform: `
+//                     translate(-50%, -50%) 
+//                     rotate(${i * 45}deg) 
+//                     translateX(200px) 
+//                     rotate(0deg)
+//                   `,
+//                 },
+//                 '100%': {
+//                   transform: `
+//                     translate(-50%, -50%) 
+//                     rotate(${i * 45 + 360}deg) 
+//                     translateX(200px) 
+//                     rotate(-360deg)
+//                   `,
+//                 },
+//               },
+//               filter: 'blur(2px)',
+//               boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+//             }}
+//           />
+//         ))}
+//       </Box>
+
+//       {/* Main Content Container - Centered */}
+//       <Container
+//         maxWidth="lg"
+//         sx={{
+//           position: 'relative',
+//           zIndex: 2,
+//           textAlign: 'center',
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//           height: '100%',
+//           minHeight: '100vh',
+//         }}
+//       >
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={inView ? { opacity: 1, y: 0 } : {}}
+//           transition={{ duration: 0.8 }}
+//           style={{
+//             width: '100%',
+//             display: 'flex',
+//             flexDirection: 'column',
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//             flex: 1,
+//           }}
+//         >
+//           {/* Main Heading - EXACTLY like image with period */}
+//           <Typography
+//             component="h1"
+//             sx={{
+//               mb: { xs: 1.5, sm: 2, md: 2.5 },
+//               color: '#FFFFFF',
+//               fontWeight: 900,
+//               fontSize: {
+//                 xs: '2rem',
+//                 sm: '2.5rem',
+//                 md: '3rem',
+//                 lg: '3.5rem'
+//               },
+//               lineHeight: 1.1,
+//               letterSpacing: { xs: '0px', sm: '0px', md: '0px' },
+//               textTransform: 'uppercase',
+//               textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)',
+//               whiteSpace: 'nowrap',
+//               overflow: 'visible',
+//             }}
+//           >
+//             GUARANTEED AI OUTCOMES.
+//           </Typography>
+
+//           {/* Sub Heading - NOT capitalized */}
+//           <Typography
+//             component="h2"
+//             sx={{
+//               mb: { xs: 2.5, sm: 3, md: 3.5 },
+//               color: '#FFFFFF',
+//               fontWeight: 800,
+//               fontSize: {
+//                 xs: '1.1rem',
+//                 sm: '1.4rem',
+//                 md: '1.7rem',
+//                 lg: '2rem'
+//               },
+//               lineHeight: 1.2,
+//               letterSpacing: { xs: '0.3px', sm: '0.5px', md: '0.7px' },
+//               maxWidth: '100%',
+//               textShadow: '0 1px 5px rgba(0, 0, 0, 0.7)',
+//             }}
+//           >
+//             Delivered by Our Team, or Yours
+//           </Typography>
+
+//           {/* Description */}
+//           <Typography
+//             variant="h6"
+//             sx={{
+//               mb: { xs: 3, sm: 4, md: 5 },
+//               color: '#E0E0E0',
+//               fontSize: {
+//                 xs: '0.85rem',
+//                 sm: '1rem',
+//                 md: '1.1rem'
+//               },
+//               lineHeight: { xs: 1.5, sm: 1.6, md: 1.7 },
+//               fontWeight: 400,
+//               maxWidth: { xs: '100%', sm: '90%', md: '800px' },
+//               mx: 'auto',
+//               opacity: 0.9,
+//               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+//             }}
+//           >
+//             Your most ambitious AI goals, executed with certainty. We offer flexible partnership models from turnkey projects to dedicated innovation hubs, designed to deliver the results you need.
+//           </Typography>
+
+//           {/* Divider Line - EXACT like image */}
+//           <Box
+//             sx={{
+//               width: { xs: '80px', sm: '100px', md: '120px' },
+//               height: '1px',
+//               background: '#FFFFFF',
+//               mb: { xs: 3, sm: 4, md: 5 },
+//               opacity: 0.5,
+//             }}
+//           />
+
+//           {/* CTA Button - WITHOUT arrow */}
+//           <Button
+//             variant="contained"
+//             size="large"
+//             onClick={handleGetStarted}
+//             sx={{
+//               px: { xs: 4, sm: 5, md: 6 },
+//               py: { xs: 1.25, sm: 1.5, md: 1.75 },
+//               fontSize: {
+//                 xs: '0.9rem',
+//                 sm: '1rem',
+//                 md: '1.1rem'
+//               },
+//               fontWeight: 700,
+//               background: 'linear-gradient(135deg, #cf3476 0%, #fa8072 100%)',
+//               color: '#FFFFFF',
+//               mb: { xs: 4, sm: 5, md: 6 },
+//               minWidth: { xs: '200px', sm: '250px', md: '300px' },
+//               textTransform: 'uppercase',
+//               letterSpacing: '0.5px',
+//               border: 'none',
+//               position: 'relative',
+//               overflow: 'hidden',
+//               '&:hover': {
+//                 background: 'linear-gradient(135deg, #d94b8a 0%, #fb9488 100%)',
+//                 transform: 'translateY(-2px)',
+//                 boxShadow: '0 10px 25px rgba(207, 52, 118, 0.5), 0 0 15px rgba(250, 128, 114, 0.3)',
+//                 '&::before': {
+//                   transform: 'translateX(100%)',
+//                 },
+//               },
+//               transition: 'all 0.3s ease',
+//               display: 'flex',
+//               alignItems: 'center',
+//               justifyContent: 'center',
+//               gap: 1,
+//               '&::before': {
+//                 content: '""',
+//                 position: 'absolute',
+//                 top: 0,
+//                 left: 0,
+//                 width: '100%',
+//                 height: '100%',
+//                 background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+//                 transform: 'translateX(-100%)',
+//                 transition: 'transform 0.6s ease',
+//               },
+//             }}
+//           >
+//             Explore Solutions
+//           </Button>
+
+//           {/* Bottom Tagline */}
+//           <Typography
+//             component="h3"
+//             sx={{
+//               color: '#FFFFFF',
+//               fontWeight: 700,
+//               fontSize: {
+//                 xs: '0.7rem',
+//                 sm: '0.8rem',
+//                 md: '0.9rem'
+//               },
+//               letterSpacing: { xs: '1.5px', sm: '2px', md: '2.5px' },
+//               textTransform: 'uppercase',
+//               opacity: 0.9,
+//               position: 'relative',
+//               padding: { xs: '0 30px', sm: '0 40px', md: '0 50px' },
+//               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+//               '&::before, &::after': {
+//                 content: '""',
+//                 position: 'absolute',
+//                 top: '50%',
+//                 width: { xs: '20px', sm: '30px', md: '40px' },
+//                 height: '1px',
+//                 background: '#FFFFFF',
+//                 opacity: 0.5,
+//               },
+//               '&::before': {
+//                 left: 0,
+//               },
+//               '&::after': {
+//                 right: 0,
+//               },
+//             }}
+//           >
+//             THE OUTCOME PARTNER FOR INDUSTRY LEADERS
+//           </Typography>
+//         </motion.div>
+//       </Container>
+
+//       {/* Scroll Indicator */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           bottom: { xs: '20px', sm: '30px', md: '40px' },
+//           right: { xs: '20px', sm: '30px', md: '40px' },
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           zIndex: 2,
+//           opacity: 0.8,
+//         }}
+//       >
+//         <Typography
+//           variant="caption"
+//           sx={{
+//             color: '#FFFFFF',
+//             fontSize: { xs: '0.6rem', sm: '0.7rem' },
+//             letterSpacing: '1.5px',
+//             textTransform: 'uppercase',
+//             mb: 1,
+//             writingMode: 'vertical-rl',
+//             transform: 'rotate(180deg)',
+//             fontWeight: 600,
+//             textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+//           }}
+//         >
+//           SCROLL
+//         </Typography>
+//         <Box
+//           sx={{
+//             width: '1px',
+//             height: { xs: '25px', sm: '35px' },
+//             background: 'linear-gradient(to bottom, #cf3476, #fa8072)',
+//             animation: 'scrollBounce 2s infinite',
+//             '@keyframes scrollBounce': {
+//               '0%, 100%': {
+//                 transform: 'translateY(0)',
+//                 opacity: 0.5,
+//               },
+//               '50%': {
+//                 transform: 'translateY(8px)',
+//                 opacity: 1,
+//               },
+//             },
+//           }}
+//         />
+//       </Box>
+
+//       {/* TIM Indicator */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           bottom: { xs: '20px', sm: '30px', md: '40px' },
+//           left: { xs: '20px', sm: '30px', md: '40px' },
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           zIndex: 2,
+//           opacity: 0.8,
+//         }}
+//       >
+//         <Typography
+//           variant="caption"
+//           sx={{
+//             color: '#FFFFFF',
+//             fontSize: { xs: '0.6rem', sm: '0.7rem' },
+//             letterSpacing: '1.5px',
+//             textTransform: 'uppercase',
+//             mb: 1,
+//             writingMode: 'vertical-rl',
+//             fontWeight: 600,
+//             textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+//           }}
+//         >
+//           TIM
+//         </Typography>
+//         <Box
+//           sx={{
+//             width: '1px',
+//             height: { xs: '25px', sm: '35px' },
+//             background: 'linear-gradient(to bottom, #fa8072, #cf3476)',
+//             animation: 'timBounce 2s infinite 0.5s',
+//             '@keyframes timBounce': {
+//               '0%, 100%': {
+//                 transform: 'translateY(0)',
+//                 opacity: 0.5,
+//               },
+//               '50%': {
+//                 transform: 'translateY(8px)',
+//                 opacity: 1,
+//               },
+//             },
+//           }}
+//         />
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default HeroSection;
+
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Button,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import { useNavigate } from 'react-router-dom';
+
+// const HeroSection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+
+//   const handleGetStarted = () => {
+//     navigate('/contact');
+//   };
+
+//   return (
+//     <Box
+//       ref={ref}
+//       sx={{
+//         position: 'relative',
+//         minHeight: '100vh',
+//         display: 'flex',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: 'transparent',
+//         padding: { xs: '20px', sm: '30px', md: '40px' },
+//         overflow: 'hidden',
+//       }}
+//     >
+//       {/* Custom Color Wheel Animation - SMALLER */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           top: '50%',
+//           left: '50%',
+//           transform: 'translate(-50%, -50%)',
+//           width: {
+//             xs: '200px',
+//             sm: '250px',
+//             md: '300px',
+//             lg: '350px'
+//           },
+//           height: {
+//             xs: '200px',
+//             sm: '250px',
+//             md: '300px',
+//             lg: '350px'
+//           },
+//           zIndex: 0,
+//           opacity: 0.6,
+//         }}
+//       >
+//         {/* Main Rotating Wheel */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '100%',
+//             height: '100%',
+//             borderRadius: '50%',
+//             background: 'conic-gradient(from 0deg, #cf3476 0%, #fa8072 25%, #cf3476 50%, #fa8072 75%, #cf3476 100%)',
+//             animation: 'rotateWheel 15s linear infinite',
+//             '@keyframes rotateWheel': {
+//               '0%': {
+//                 transform: 'translate(-50%, -50%) rotate(0deg)',
+//               },
+//               '100%': {
+//                 transform: 'translate(-50%, -50%) rotate(360deg)',
+//               },
+//             },
+//             filter: 'blur(8px)',
+//           }}
+//         />
+
+//         {/* Inner Ring */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '70%',
+//             height: '70%',
+//             borderRadius: '50%',
+//             background: 'conic-gradient(from 180deg, #fa8072 0%, #cf3476 50%, #fa8072 100%)',
+//             animation: 'rotateInner 12s linear infinite reverse',
+//             '@keyframes rotateInner': {
+//               '0%': {
+//                 transform: 'translate(-50%, -50%) rotate(360deg)',
+//               },
+//               '100%': {
+//                 transform: 'translate(-50%, -50%) rotate(0deg)',
+//               },
+//             },
+//             filter: 'blur(4px)',
+//             opacity: 0.8,
+//           }}
+//         />
+
+//         {/* Center Circle */}
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '50%',
+//             left: '50%',
+//             transform: 'translate(-50%, -50%)',
+//             width: '40%',
+//             height: '40%',
+//             borderRadius: '50%',
+//             background: 'radial-gradient(circle, #cf3476 0%, #fa8072 50%, transparent 70%)',
+//             animation: 'pulseCenter 3s ease-in-out infinite',
+//             '@keyframes pulseCenter': {
+//               '0%, 100%': {
+//                 opacity: 0.5,
+//                 transform: 'translate(-50%, -50%) scale(1)',
+//               },
+//               '50%': {
+//                 opacity: 0.8,
+//                 transform: 'translate(-50%, -50%) scale(1.1)',
+//               },
+//             },
+//             boxShadow: '0 0 30px rgba(207, 52, 118, 0.5)',
+//           }}
+//         />
+
+//         {/* Floating Orbs */}
+//         {[...Array(8)].map((_, i) => (
+//           <Box
+//             key={i}
+//             sx={{
+//               position: 'absolute',
+//               top: '50%',
+//               left: '50%',
+//               width: '15px',
+//               height: '15px',
+//               borderRadius: '50%',
+//               background: i % 2 === 0 ? '#cf3476' : '#fa8072',
+//               transform: `
+//                 translate(-50%, -50%) 
+//                 rotate(${i * 45}deg) 
+//                 translateX(120px)
+//               `,
+//               animation: `orbit ${Math.random() * 10 + 8}s linear infinite ${i * 0.2}s`,
+//               '@keyframes orbit': {
+//                 '0%': {
+//                   transform: `
+//                     translate(-50%, -50%) 
+//                     rotate(${i * 45}deg) 
+//                     translateX(120px) 
+//                     rotate(0deg)
+//                   `,
+//                 },
+//                 '100%': {
+//                   transform: `
+//                     translate(-50%, -50%) 
+//                     rotate(${i * 45 + 360}deg) 
+//                     translateX(120px) 
+//                     rotate(-360deg)
+//                   `,
+//                 },
+//               },
+//               filter: 'blur(1.5px)',
+//               boxShadow: '0 0 15px rgba(255, 255, 255, 0.3)',
+//             }}
+//           />
+//         ))}
+//       </Box>
+
+//       {/* Main Content Container - Centered */}
+//       <Container
+//         maxWidth="md" // Changed from lg to md for more compact center
+//         sx={{
+//           position: 'relative',
+//           zIndex: 2,
+//           textAlign: 'center',
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//           height: '100%',
+//           minHeight: '100vh',
+//         }}
+//       >
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={inView ? { opacity: 1, y: 0 } : {}}
+//           transition={{ duration: 0.8 }}
+//           style={{
+//             width: '100%',
+//             display: 'flex',
+//             flexDirection: 'column',
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//             flex: 1,
+//             gap: '16px',
+//           }}
+//         >
+//           {/* Main Heading - Like image */}
+//           <Typography
+//             component="h1"
+//             sx={{
+//               mb: { xs: 0.5, sm: 1, md: 1.5 },
+//               color: '#FFFFFF',
+//               fontWeight: 900,
+//               fontSize: {
+//                 xs: '2rem',
+//                 sm: '2.5rem',
+//                 md: '3rem',
+//                 lg: '3.2rem'
+//               },
+//               lineHeight: 1.1,
+//               letterSpacing: { xs: '0px', sm: '0px', md: '0px' },
+//               textTransform: 'uppercase',
+//               textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)',
+//               whiteSpace: 'nowrap',
+//               overflow: 'visible',
+//             }}
+//           >
+//             GUARANTEED AI OUTCOMES.
+//           </Typography>
+
+//           {/* Sub Heading */}
+//           <Typography
+//             component="h2"
+//             sx={{
+//               mb: { xs: 1.5, sm: 2, md: 2.5 },
+//               color: '#FFFFFF',
+//               fontWeight: 600,
+//               fontSize: {
+//                 xs: '1rem',
+//                 sm: '1.2rem',
+//                 md: '1.4rem',
+//                 lg: '1.6rem'
+//               },
+//               lineHeight: 1.2,
+//               letterSpacing: { xs: '0.2px', sm: '0.3px', md: '0.4px' },
+//               maxWidth: '100%',
+//               textShadow: '0 1px 5px rgba(0, 0, 0, 0.7)',
+//               fontStyle: 'italic',
+//             }}
+//           >
+//             Delivered by Our Team, or Yours
+//           </Typography>
+
+//           {/* Description */}
+//           <Typography
+//             variant="body1"
+//             sx={{
+//               mb: { xs: 2, sm: 3, md: 3.5 },
+//               color: '#E0E0E0',
+//               fontSize: {
+//                 xs: '0.8rem',
+//                 sm: '0.9rem',
+//                 md: '1rem'
+//               },
+//               lineHeight: { xs: 1.5, sm: 1.6, md: 1.7 },
+//               fontWeight: 400,
+//               maxWidth: { xs: '100%', sm: '85%', md: '600px' },
+//               mx: 'auto',
+//               opacity: 0.9,
+//               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+//             }}
+//           >
+//             Your most ambitious AI goals, executed with certainty. We offer flexible partnership models from turnkey projects to dedicated innovation hubs, designed to deliver the results you need.
+//           </Typography>
+
+//           {/* Divider Line */}
+//           <Box
+//             sx={{
+//               width: { xs: '60px', sm: '80px', md: '100px' },
+//               height: '1px',
+//               background: '#FFFFFF',
+//               mb: { xs: 2, sm: 3, md: 3.5 },
+//               opacity: 0.5,
+//             }}
+//           />
+
+//           {/* CTA Button */}
+//           <Button
+//             variant="contained"
+//             size="medium"
+//             onClick={handleGetStarted}
+//             sx={{
+//               px: { xs: 3, sm: 4, md: 5 },
+//               py: { xs: 1, sm: 1.25, md: 1.5 },
+//               fontSize: {
+//                 xs: '0.85rem',
+//                 sm: '0.9rem',
+//                 md: '1rem'
+//               },
+//               fontWeight: 600,
+//               background: 'linear-gradient(135deg, #cf3476 0%, #fa8072 100%)',
+//               color: '#FFFFFF',
+//               mb: { xs: 3, sm: 3.5, md: 4 },
+//               minWidth: { xs: '180px', sm: '200px', md: '220px' },
+//               textTransform: 'uppercase',
+//               letterSpacing: '0.3px',
+//               border: 'none',
+//               position: 'relative',
+//               overflow: 'hidden',
+//               '&:hover': {
+//                 background: 'linear-gradient(135deg, #d94b8a 0%, #fb9488 100%)',
+//                 transform: 'translateY(-2px)',
+//                 boxShadow: '0 8px 20px rgba(207, 52, 118, 0.5), 0 0 10px rgba(250, 128, 114, 0.3)',
+//                 '&::before': {
+//                   transform: 'translateX(100%)',
+//                 },
+//               },
+//               transition: 'all 0.3s ease',
+//               display: 'flex',
+//               alignItems: 'center',
+//               justifyContent: 'center',
+//               gap: 1,
+//               '&::before': {
+//                 content: '""',
+//                 position: 'absolute',
+//                 top: 0,
+//                 left: 0,
+//                 width: '100%',
+//                 height: '100%',
+//                 background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+//                 transform: 'translateX(-100%)',
+//                 transition: 'transform 0.6s ease',
+//               },
+//             }}
+//           >
+//             Explore Solutions
+//           </Button>
+
+//           {/* Bottom Tagline */}
+//           <Typography
+//             component="h3"
+//             sx={{
+//               color: '#FFFFFF',
+//               fontWeight: 600,
+//               fontSize: {
+//                 xs: '0.65rem',
+//                 sm: '0.75rem',
+//                 md: '0.85rem'
+//               },
+//               letterSpacing: { xs: '1px', sm: '1.5px', md: '2px' },
+//               textTransform: 'uppercase',
+//               opacity: 0.8,
+//               position: 'relative',
+//               padding: { xs: '0 25px', sm: '0 30px', md: '0 35px' },
+//               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+//               mt: 1,
+//               '&::before, &::after': {
+//                 content: '""',
+//                 position: 'absolute',
+//                 top: '50%',
+//                 width: { xs: '15px', sm: '20px', md: '25px' },
+//                 height: '1px',
+//                 background: '#FFFFFF',
+//                 opacity: 0.5,
+//               },
+//               '&::before': {
+//                 left: 0,
+//               },
+//               '&::after': {
+//                 right: 0,
+//               },
+//             }}
+//           >
+//             THE OUTCOME PARTNER FOR INDUSTRY LEADERS
+//           </Typography>
+
+//           {/* Walmart Logo/Text - Added based on image */}
+//           <Typography
+//             component="div"
+//             sx={{
+//               color: '#FFFFFF',
+//               fontWeight: 700,
+//               fontSize: {
+//                 xs: '0.7rem',
+//                 sm: '0.8rem',
+//                 md: '0.9rem'
+//               },
+//               letterSpacing: '2px',
+//               textTransform: 'uppercase',
+//               opacity: 0.7,
+//               mt: { xs: 4, sm: 5, md: 6 },
+//               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+//               borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+//               pt: 2,
+//               width: '100%',
+//               maxWidth: '200px',
+//             }}
+//           >
+//             Walmart
+//           </Typography>
+//         </motion.div>
+//       </Container>
+
+//       {/* Scroll Indicator */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           bottom: { xs: '15px', sm: '25px', md: '35px' },
+//           right: { xs: '15px', sm: '25px', md: '35px' },
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           zIndex: 2,
+//           opacity: 0.7,
+//         }}
+//       >
+//         <Typography
+//           variant="caption"
+//           sx={{
+//             color: '#FFFFFF',
+//             fontSize: { xs: '0.5rem', sm: '0.6rem' },
+//             letterSpacing: '1.5px',
+//             textTransform: 'uppercase',
+//             mb: 1,
+//             writingMode: 'vertical-rl',
+//             transform: 'rotate(180deg)',
+//             fontWeight: 600,
+//             textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+//           }}
+//         >
+//           SCROLL
+//         </Typography>
+//         <Box
+//           sx={{
+//             width: '1px',
+//             height: { xs: '20px', sm: '25px' },
+//             background: 'linear-gradient(to bottom, #cf3476, #fa8072)',
+//             animation: 'scrollBounce 2s infinite',
+//             '@keyframes scrollBounce': {
+//               '0%, 100%': {
+//                 transform: 'translateY(0)',
+//                 opacity: 0.5,
+//               },
+//               '50%': {
+//                 transform: 'translateY(6px)',
+//                 opacity: 1,
+//               },
+//             },
+//           }}
+//         />
+//       </Box>
+
+//       {/* TIM Indicator */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           bottom: { xs: '15px', sm: '25px', md: '35px' },
+//           left: { xs: '15px', sm: '25px', md: '35px' },
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           zIndex: 2,
+//           opacity: 0.7,
+//         }}
+//       >
+//         <Typography
+//           variant="caption"
+//           sx={{
+//             color: '#FFFFFF',
+//             fontSize: { xs: '0.5rem', sm: '0.6rem' },
+//             letterSpacing: '1.5px',
+//             textTransform: 'uppercase',
+//             mb: 1,
+//             writingMode: 'vertical-rl',
+//             fontWeight: 600,
+//             textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
+//           }}
+//         >
+//           TIM
+//         </Typography>
+//         <Box
+//           sx={{
+//             width: '1px',
+//             height: { xs: '20px', sm: '25px' },
+//             background: 'linear-gradient(to bottom, #fa8072, #cf3476)',
+//             animation: 'timBounce 2s infinite 0.5s',
+//             '@keyframes timBounce': {
+//               '0%, 100%': {
+//                 transform: 'translateY(0)',
+//                 opacity: 0.5,
+//               },
+//               '50%': {
+//                 transform: 'translateY(6px)',
+//                 opacity: 1,
+//               },
+//             },
+//           }}
+//         />
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default HeroSection;
+
+
 import React from 'react';
 import {
   Box,
@@ -8088,31 +9547,32 @@ const HeroSection = () => {
         position: 'relative',
         minHeight: '100vh',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'center', // Changed from 'center' to 'flex-start' to push content down
         justifyContent: 'center',
         backgroundColor: 'transparent',
         padding: { xs: '20px', sm: '30px', md: '40px' },
         overflow: 'hidden',
+        pt: { xs: '10vh', sm: '20vh', md: '5vh' }, // Added top padding to push content down
       }}
     >
-      {/* Custom Color Wheel Animation */}
+      {/* Custom Color Wheel Animation - SMALLER and Moved Up */}
       <Box
         sx={{
           position: 'absolute',
-          top: '50%',
+          top: '30%', // Moved up from 50% to 30%
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: {
-            xs: '300px',
-            sm: '400px',
-            md: '500px',
-            lg: '600px'
+            xs: '150px',
+            sm: '200px',
+            md: '250px',
+            lg: '300px'
           },
           height: {
-            xs: '300px',
-            sm: '400px',
-            md: '500px',
-            lg: '600px'
+            xs: '150px',
+            sm: '200px',
+            md: '250px',
+            lg: '300px'
           },
           zIndex: 0,
           opacity: 0.6,
@@ -8138,7 +9598,7 @@ const HeroSection = () => {
                 transform: 'translate(-50%, -50%) rotate(360deg)',
               },
             },
-            filter: 'blur(10px)',
+            filter: 'blur(8px)',
           }}
         />
 
@@ -8162,7 +9622,7 @@ const HeroSection = () => {
                 transform: 'translate(-50%, -50%) rotate(0deg)',
               },
             },
-            filter: 'blur(5px)',
+            filter: 'blur(4px)',
             opacity: 0.8,
           }}
         />
@@ -8189,7 +9649,7 @@ const HeroSection = () => {
                 transform: 'translate(-50%, -50%) scale(1.1)',
               },
             },
-            boxShadow: '0 0 40px rgba(207, 52, 118, 0.5)',
+            boxShadow: '0 0 30px rgba(207, 52, 118, 0.5)',
           }}
         />
 
@@ -8201,14 +9661,14 @@ const HeroSection = () => {
               position: 'absolute',
               top: '50%',
               left: '50%',
-              width: '20px',
-              height: '20px',
+              width: '12px',
+              height: '12px',
               borderRadius: '50%',
               background: i % 2 === 0 ? '#cf3476' : '#fa8072',
               transform: `
                 translate(-50%, -50%) 
                 rotate(${i * 45}deg) 
-                translateX(200px)
+                translateX(90px)
               `,
               animation: `orbit ${Math.random() * 10 + 8}s linear infinite ${i * 0.2}s`,
               '@keyframes orbit': {
@@ -8216,7 +9676,7 @@ const HeroSection = () => {
                   transform: `
                     translate(-50%, -50%) 
                     rotate(${i * 45}deg) 
-                    translateX(200px) 
+                    translateX(90px) 
                     rotate(0deg)
                   `,
                 },
@@ -8224,21 +9684,21 @@ const HeroSection = () => {
                   transform: `
                     translate(-50%, -50%) 
                     rotate(${i * 45 + 360}deg) 
-                    translateX(200px) 
+                    translateX(90px) 
                     rotate(-360deg)
                   `,
                 },
               },
-              filter: 'blur(2px)',
-              boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+              filter: 'blur(1.5px)',
+              boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
             }}
           />
         ))}
       </Box>
 
-      {/* Main Content Container */}
+      {/* Main Content Container - Positioned Lower */}
       <Container
-        maxWidth="lg"
+        maxWidth="md"
         sx={{
           position: 'relative',
           zIndex: 2,
@@ -8246,7 +9706,10 @@ const HeroSection = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'flex-start', // Changed from 'center' to 'flex-start'
+          height: '100%',
+          minHeight: '100vh',
+          pt: { xs: '10vh', sm: '15vh', md: '20vh' }, // Added top padding
         }}
       >
         <motion.div
@@ -8258,20 +9721,23 @@ const HeroSection = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'flex-start', // Changed from 'center' to 'flex-start'
+            flex: 1,
+            gap: '20px', // Increased gap for better spacing
           }}
         >
-          {/* Main Heading - EXACTLY like image with period */}
+          {/* Main Heading */}
           <Typography
             component="h1"
             sx={{
-              mb: { xs: 1.5, sm: 2, md: 2.5 },
+              mb: { xs: 0.5, sm: 1, md: 1.5 },
               color: '#FFFFFF',
               fontWeight: 900,
               fontSize: {
-                xs: '2rem',
-                sm: '2.5rem',
-                md: '3rem',
-                lg: '3.5rem'
+                xs: '1.8rem',
+                sm: '2.2rem',
+                md: '2.8rem',
+                lg: '3rem'
               },
               lineHeight: 1.1,
               letterSpacing: { xs: '0px', sm: '0px', md: '0px' },
@@ -8284,23 +9750,24 @@ const HeroSection = () => {
             GUARANTEED AI OUTCOMES.
           </Typography>
 
-          {/* Sub Heading - NOT capitalized */}
+          {/* Sub Heading */}
           <Typography
             component="h2"
             sx={{
-              mb: { xs: 2.5, sm: 3, md: 3.5 },
+              mb: { xs: 2, sm: 2.5, md: 3 },
               color: '#FFFFFF',
-              fontWeight: 800,
+              fontWeight: 600,
               fontSize: {
-                xs: '1.1rem',
-                sm: '1.4rem',
-                md: '1.7rem',
-                lg: '2rem'
+                xs: '0.95rem',
+                sm: '1.1rem',
+                md: '1.3rem',
+                lg: '1.5rem'
               },
               lineHeight: 1.2,
-              letterSpacing: { xs: '0.3px', sm: '0.5px', md: '0.7px' },
+              letterSpacing: { xs: '0.2px', sm: '0.3px', md: '0.4px' },
               maxWidth: '100%',
               textShadow: '0 1px 5px rgba(0, 0, 0, 0.7)',
+              fontStyle: 'italic',
             }}
           >
             Delivered by Our Team, or Yours
@@ -8308,18 +9775,18 @@ const HeroSection = () => {
 
           {/* Description */}
           <Typography
-            variant="h6"
+            variant="body1"
             sx={{
-              mb: { xs: 3, sm: 4, md: 5 },
+              mb: { xs: 2.5, sm: 3.5, md: 4 },
               color: '#E0E0E0',
               fontSize: {
-                xs: '0.85rem',
-                sm: '1rem',
-                md: '1.1rem'
+                xs: '0.75rem',
+                sm: '0.85rem',
+                md: '0.95rem'
               },
               lineHeight: { xs: 1.5, sm: 1.6, md: 1.7 },
               fontWeight: 400,
-              maxWidth: { xs: '100%', sm: '90%', md: '800px' },
+              maxWidth: { xs: '100%', sm: '85%', md: '550px' },
               mx: 'auto',
               opacity: 0.9,
               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
@@ -8328,44 +9795,44 @@ const HeroSection = () => {
             Your most ambitious AI goals, executed with certainty. We offer flexible partnership models from turnkey projects to dedicated innovation hubs, designed to deliver the results you need.
           </Typography>
 
-          {/* Divider Line - EXACT like image */}
+          {/* Divider Line */}
           <Box
             sx={{
-              width: { xs: '80px', sm: '100px', md: '120px' },
+              width: { xs: '50px', sm: '70px', md: '90px' },
               height: '1px',
               background: '#FFFFFF',
-              mb: { xs: 3, sm: 4, md: 5 },
+              mb: { xs: 2.5, sm: 3.5, md: 4 },
               opacity: 0.5,
             }}
           />
 
-          {/* CTA Button - WITHOUT arrow */}
+          {/* CTA Button */}
           <Button
             variant="contained"
-            size="large"
+            size="medium"
             onClick={handleGetStarted}
             sx={{
-              px: { xs: 4, sm: 5, md: 6 },
-              py: { xs: 1.25, sm: 1.5, md: 1.75 },
+              px: { xs: 3, sm: 4, md: 5 },
+              py: { xs: 1, sm: 1.25, md: 1.5 },
               fontSize: {
-                xs: '0.9rem',
-                sm: '1rem',
-                md: '1.1rem'
+                xs: '0.8rem',
+                sm: '0.85rem',
+                md: '0.95rem'
               },
-              fontWeight: 700,
+              fontWeight: 600,
               background: 'linear-gradient(135deg, #cf3476 0%, #fa8072 100%)',
               color: '#FFFFFF',
-              mb: { xs: 4, sm: 5, md: 6 },
-              minWidth: { xs: '200px', sm: '250px', md: '300px' },
+              mb: { xs: 3.5, sm: 4, md: 4.5 },
+              minWidth: { xs: '170px', sm: '190px', md: '210px' },
               textTransform: 'uppercase',
-              letterSpacing: '0.5px',
+              letterSpacing: '0.3px',
               border: 'none',
               position: 'relative',
               overflow: 'hidden',
               '&:hover': {
                 background: 'linear-gradient(135deg, #d94b8a 0%, #fb9488 100%)',
                 transform: 'translateY(-2px)',
-                boxShadow: '0 10px 25px rgba(207, 52, 118, 0.5), 0 0 15px rgba(250, 128, 114, 0.3)',
+                boxShadow: '0 8px 20px rgba(207, 52, 118, 0.5), 0 0 10px rgba(250, 128, 114, 0.3)',
                 '&::before': {
                   transform: 'translateX(100%)',
                 },
@@ -8388,7 +9855,7 @@ const HeroSection = () => {
               },
             }}
           >
-            Explore Solutions
+            EXPLORE SOLUTIONS
           </Button>
 
           {/* Bottom Tagline */}
@@ -8396,23 +9863,24 @@ const HeroSection = () => {
             component="h3"
             sx={{
               color: '#FFFFFF',
-              fontWeight: 700,
+              fontWeight: 600,
               fontSize: {
-                xs: '0.7rem',
-                sm: '0.8rem',
-                md: '0.9rem'
+                xs: '0.6rem',
+                sm: '0.7rem',
+                md: '0.8rem'
               },
-              letterSpacing: { xs: '1.5px', sm: '2px', md: '2.5px' },
+              letterSpacing: { xs: '1px', sm: '1.5px', md: '2px' },
               textTransform: 'uppercase',
-              opacity: 0.9,
+              opacity: 0.8,
               position: 'relative',
-              padding: { xs: '0 30px', sm: '0 40px', md: '0 50px' },
+              padding: { xs: '0 20px', sm: '0 25px', md: '0 30px' },
               textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+              mt: 1,
               '&::before, &::after': {
                 content: '""',
                 position: 'absolute',
                 top: '50%',
-                width: { xs: '20px', sm: '30px', md: '40px' },
+                width: { xs: '12px', sm: '15px', md: '20px' },
                 height: '1px',
                 background: '#FFFFFF',
                 opacity: 0.5,
@@ -8427,6 +9895,31 @@ const HeroSection = () => {
           >
             THE OUTCOME PARTNER FOR INDUSTRY LEADERS
           </Typography>
+
+          {/* Walmart Logo/Text */}
+          <Typography
+            component="div"
+            sx={{
+              color: '#FFFFFF',
+              fontWeight: 700,
+              fontSize: {
+                xs: '0.65rem',
+                sm: '0.75rem',
+                md: '0.85rem'
+              },
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              opacity: 0.7,
+              mt: { xs: 5, sm: 6, md: 7 }, // Increased margin top
+              textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+              borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+              pt: 2,
+              width: '100%',
+              maxWidth: '180px',
+            }}
+          >
+            WALMART
+          </Typography>
         </motion.div>
       </Container>
 
@@ -8434,20 +9927,20 @@ const HeroSection = () => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: { xs: '20px', sm: '30px', md: '40px' },
-          right: { xs: '20px', sm: '30px', md: '40px' },
+          bottom: { xs: '15px', sm: '25px', md: '35px' },
+          right: { xs: '15px', sm: '25px', md: '35px' },
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           zIndex: 2,
-          opacity: 0.8,
+          opacity: 0.7,
         }}
       >
         <Typography
           variant="caption"
           sx={{
             color: '#FFFFFF',
-            fontSize: { xs: '0.6rem', sm: '0.7rem' },
+            fontSize: { xs: '0.5rem', sm: '0.6rem' },
             letterSpacing: '1.5px',
             textTransform: 'uppercase',
             mb: 1,
@@ -8462,7 +9955,7 @@ const HeroSection = () => {
         <Box
           sx={{
             width: '1px',
-            height: { xs: '25px', sm: '35px' },
+            height: { xs: '20px', sm: '25px' },
             background: 'linear-gradient(to bottom, #cf3476, #fa8072)',
             animation: 'scrollBounce 2s infinite',
             '@keyframes scrollBounce': {
@@ -8471,7 +9964,7 @@ const HeroSection = () => {
                 opacity: 0.5,
               },
               '50%': {
-                transform: 'translateY(8px)',
+                transform: 'translateY(6px)',
                 opacity: 1,
               },
             },
@@ -8483,20 +9976,20 @@ const HeroSection = () => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: { xs: '20px', sm: '30px', md: '40px' },
-          left: { xs: '20px', sm: '30px', md: '40px' },
+          bottom: { xs: '15px', sm: '25px', md: '35px' },
+          left: { xs: '15px', sm: '25px', md: '35px' },
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           zIndex: 2,
-          opacity: 0.8,
+          opacity: 0.7,
         }}
       >
         <Typography
           variant="caption"
           sx={{
             color: '#FFFFFF',
-            fontSize: { xs: '0.6rem', sm: '0.7rem' },
+            fontSize: { xs: '0.5rem', sm: '0.6rem' },
             letterSpacing: '1.5px',
             textTransform: 'uppercase',
             mb: 1,
@@ -8510,7 +10003,7 @@ const HeroSection = () => {
         <Box
           sx={{
             width: '1px',
-            height: { xs: '25px', sm: '35px' },
+            height: { xs: '20px', sm: '25px' },
             background: 'linear-gradient(to bottom, #fa8072, #cf3476)',
             animation: 'timBounce 2s infinite 0.5s',
             '@keyframes timBounce': {
@@ -8519,7 +10012,7 @@ const HeroSection = () => {
                 opacity: 0.5,
               },
               '50%': {
-                transform: 'translateY(8px)',
+                transform: 'translateY(6px)',
                 opacity: 1,
               },
             },

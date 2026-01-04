@@ -2703,6 +2703,1100 @@
 
 // export default AboutSection;
 
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Button,
+//   Grid,
+//   Card,
+//   CardContent,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+// import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+// import TimelineIcon from '@mui/icons-material/Timeline';
+// import GroupsIcon from '@mui/icons-material/Groups';
+// import { useNavigate } from 'react-router-dom';
+
+// const AboutSection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+  
+//   // Color scheme
+//   const primaryColor = '#cf3476'; // Telemagenta
+//   const secondaryColor = '#fa8072'; // Salmon
+//   const primaryColorHover = '#d94b8a';
+//   const secondaryColorHover = '#fb9488';
+
+//   const handleLearnMore = () => {
+//     navigate('/about');
+//   };
+
+//   // Animation variants
+//   const containerVariants = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.2,
+//         delayChildren: 0.3
+//       }
+//     }
+//   };
+
+//   const itemVariants = {
+//     hidden: { 
+//       opacity: 0, 
+//       y: 30,
+//       scale: 0.95 
+//     },
+//     visible: { 
+//       opacity: 1, 
+//       y: 0,
+//       scale: 1,
+//       transition: {
+//         type: "spring",
+//         stiffness: 100,
+//         damping: 15
+//       }
+//     }
+//   };
+
+//   const statsVariants = {
+//     hidden: { 
+//       opacity: 0, 
+//       scale: 0.8,
+//       rotateX: 90 
+//     },
+//     visible: (i) => ({ 
+//       opacity: 1, 
+//       scale: 1,
+//       rotateX: 0,
+//       transition: {
+//         delay: i * 0.15,
+//         type: "spring",
+//         stiffness: 120,
+//         damping: 12
+//       }
+//     })
+//   };
+
+//   const glowAnimation = {
+//     hidden: { boxShadow: `0 0 0px ${primaryColor}` },
+//     visible: {
+//       boxShadow: [
+//         `0 0 0px ${primaryColor}`,
+//         `0 0 20px ${primaryColor}`,
+//         `0 0 0px ${primaryColor}`
+//       ],
+//       transition: {
+//         duration: 3,
+//         repeat: Infinity,
+//         repeatDelay: 2
+//       }
+//     }
+//   };
+
+//   return (
+//     <Box ref={ref} sx={{ 
+//       py: { xs: 8, md: 12 }, 
+//       backgroundColor: 'transparent',
+//       position: 'relative',
+//       overflow: 'hidden'
+//     }}>
+//       {/* Background decorative elements */}
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           top: '10%',
+//           left: '5%',
+//           width: '200px',
+//           height: '200px',
+//           borderRadius: '50%',
+//           background: `radial-gradient(circle, ${primaryColor}15 0%, transparent 70%)`,
+//           filter: 'blur(40px)',
+//           zIndex: 0,
+//           animation: 'float 6s ease-in-out infinite',
+//           '@keyframes float': {
+//             '0%, 100%': {
+//               transform: 'translateY(0px)',
+//             },
+//             '50%': {
+//               transform: 'translateY(-20px)',
+//             },
+//           },
+//         }}
+//       />
+      
+//       <Box
+//         sx={{
+//           position: 'absolute',
+//           bottom: '10%',
+//           right: '5%',
+//           width: '150px',
+//           height: '150px',
+//           borderRadius: '50%',
+//           background: `radial-gradient(circle, ${secondaryColor}15 0%, transparent 70%)`,
+//           filter: 'blur(30px)',
+//           zIndex: 0,
+//           animation: 'float 8s ease-in-out infinite reverse',
+//         }}
+//       />
+
+//       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+//         <Grid container spacing={6} alignItems="center">
+//           <Grid item xs={12} md={6}>
+//             <motion.div
+//               variants={containerVariants}
+//               initial="hidden"
+//               animate={inView ? "visible" : "hidden"}
+//             >
+//               <motion.div variants={itemVariants}>
+//                 <Typography
+//                   variant="h2"
+//                   sx={{
+//                     mb: 3,
+//                     color: primaryColor,
+//                     fontWeight: 800,
+//                     fontSize: { 
+//                       xs: '2rem', 
+//                       sm: '2.5rem', 
+//                       md: '3rem' 
+//                     },
+//                     lineHeight: 1.2,
+//                     position: 'relative',
+//                     display: 'inline-block',
+//                     '&::after': {
+//                       content: '""',
+//                       position: 'absolute',
+//                       bottom: '-10px',
+//                       left: 0,
+//                       width: '80px',
+//                       height: '4px',
+//                       background: `linear-gradient(90deg, ${primaryColor}, ${secondaryColor})`,
+//                       borderRadius: '2px',
+//                     }
+//                   }}
+//                 >
+//                   Leading in Practical AI Solutions
+//                 </Typography>
+//               </motion.div>
+
+//               <motion.div variants={itemVariants}>
+//                 <Typography
+//                   variant="h6"
+//                   sx={{
+//                     mb: 4,
+//                     color: '#ffffff',
+//                     lineHeight: 1.8,
+//                     fontSize: { 
+//                       xs: '0.9rem', 
+//                       sm: '1rem', 
+//                       md: '1.1rem' 
+//                     },
+//                     opacity: 0.9,
+//                   }}
+//                 >
+//                   We specialize in delivering measurable AI solutions that transform how businesses operate, focusing on real-world applications and tangible results.
+//                 </Typography>
+//               </motion.div>
+
+//               <motion.div 
+//                 variants={itemVariants}
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//               >
+//                 <Button
+//                   variant="outlined"
+//                   size="large"
+//                   endIcon={
+//                     <motion.div
+//                       animate={{ x: [0, 5, 0] }}
+//                       transition={{ duration: 1.5, repeat: Infinity }}
+//                     >
+//                       <ArrowForwardIcon />
+//                     </motion.div>
+//                   }
+//                   onClick={handleLearnMore}
+//                   sx={{
+//                     px: 4,
+//                     py: 1.5,
+//                     borderColor: secondaryColor,
+//                     color: secondaryColor,
+//                     fontWeight: 600,
+//                     fontSize: { xs: '0.9rem', md: '1rem' },
+//                     position: 'relative',
+//                     overflow: 'hidden',
+//                     '&::before': {
+//                       content: '""',
+//                       position: 'absolute',
+//                       top: 0,
+//                       left: '-100%',
+//                       width: '100%',
+//                       height: '100%',
+//                       background: `linear-gradient(90deg, transparent, ${secondaryColor}20, transparent)`,
+//                       transition: 'left 0.5s',
+//                     },
+//                     '&:hover': {
+//                       borderColor: secondaryColorHover,
+//                       color: secondaryColorHover,
+//                       backgroundColor: `rgba(250, 128, 114, 0.1)`,
+//                       transform: 'translateY(-2px)',
+//                       '&::before': {
+//                         left: '100%',
+//                       }
+//                     },
+//                     transition: 'all 0.3s ease',
+//                   }}
+//                 >
+//                   Learn More About Us
+//                 </Button>
+//               </motion.div>
+//             </motion.div>
+//           </Grid>
+          
+//           <Grid item xs={12} md={6}>
+//             <motion.div
+//               variants={containerVariants}
+//               initial="hidden"
+//               animate={inView ? "visible" : "hidden"}
+//             >
+//               <Grid container spacing={2}>
+//                 {[
+//                   { 
+//                     label: 'Projects Delivered', 
+//                     value: '150+', 
+//                     icon: <RocketLaunchIcon />,
+//                     color: primaryColor,
+//                     delay: 0
+//                   },
+//                   { 
+//                     label: 'AI Models Deployed', 
+//                     value: '500+', 
+//                     icon: <AutoAwesomeIcon />,
+//                     color: secondaryColor,
+//                     delay: 1
+//                   },
+//                   { 
+//                     label: 'Client Satisfaction', 
+//                     value: '98%', 
+//                     icon: <TimelineIcon />,
+//                     color: primaryColor,
+//                     delay: 2
+//                   },
+//                   { 
+//                     label: 'Team Members', 
+//                     value: '50+', 
+//                     icon: <GroupsIcon />,
+//                     color: secondaryColor,
+//                     delay: 3
+//                   },
+//                 ].map((stat, index) => (
+//                   <Grid item xs={6} key={index}>
+//                     <motion.div
+//                       custom={stat.delay}
+//                       variants={statsVariants}
+//                       whileHover={{ 
+//                         y: -10,
+//                         transition: { type: "spring", stiffness: 300 }
+//                       }}
+//                     >
+//                       <motion.div
+//                         variants={glowAnimation}
+//                         animate={inView ? "visible" : "hidden"}
+//                       >
+//                         <Card
+//                           sx={{
+//                             backgroundColor: '#111111',
+//                             border: `1px solid ${stat.color}40`,
+//                             height: '100%',
+//                             position: 'relative',
+//                             overflow: 'hidden',
+//                             '&::before': {
+//                               content: '""',
+//                               position: 'absolute',
+//                               top: 0,
+//                               left: 0,
+//                               right: 0,
+//                               height: '3px',
+//                               background: `linear-gradient(90deg, ${stat.color}, ${stat.color === primaryColor ? secondaryColor : primaryColor})`,
+//                               transform: 'translateX(-100%)',
+//                               transition: 'transform 0.5s ease',
+//                             },
+//                             '&:hover': {
+//                               borderColor: stat.color,
+//                               transform: 'translateY(-5px)',
+//                               boxShadow: `0 15px 35px ${stat.color}25`,
+//                               '&::before': {
+//                                 transform: 'translateX(0)',
+//                               }
+//                             },
+//                             transition: 'all 0.3s ease',
+//                           }}
+//                         >
+//                           <CardContent sx={{ 
+//                             textAlign: 'center', 
+//                             p: 3,
+//                             position: 'relative',
+//                             zIndex: 1
+//                           }}>
+//                             <motion.div
+//                               whileHover={{ 
+//                                 rotate: 360,
+//                                 scale: 1.2,
+//                                 transition: { duration: 0.5 }
+//                               }}
+//                             >
+//                               <Box sx={{ 
+//                                 color: stat.color, 
+//                                 mb: 2,
+//                                 display: 'flex',
+//                                 justifyContent: 'center',
+//                                 '& .MuiSvgIcon-root': {
+//                                   fontSize: { xs: 28, md: 32 }
+//                                 }
+//                               }}>
+//                                 {stat.icon}
+//                               </Box>
+//                             </motion.div>
+                            
+//                             <motion.div
+//                               initial={{ scale: 0 }}
+//                               animate={inView ? { scale: 1 } : {}}
+//                               transition={{ 
+//                                 delay: 0.5 + index * 0.1,
+//                                 type: "spring",
+//                                 stiffness: 200
+//                               }}
+//                             >
+//                               <Typography
+//                                 variant="h3"
+//                                 sx={{
+//                                   color: stat.color,
+//                                   fontWeight: 800,
+//                                   fontSize: { 
+//                                     xs: '2rem', 
+//                                     sm: '2.2rem', 
+//                                     md: '2.5rem' 
+//                                   },
+//                                   mb: 1,
+//                                   textShadow: `0 0 10px ${stat.color}40`,
+//                                 }}
+//                               >
+//                                 {stat.value}
+//                               </Typography>
+//                             </motion.div>
+                            
+//                             <Typography
+//                               variant="body2"
+//                               sx={{ 
+//                                 color: '#ffffff',
+//                                 fontSize: { xs: '0.8rem', md: '0.85rem' },
+//                                 fontWeight: 500,
+//                                 opacity: 0.9,
+//                               }}
+//                             >
+//                               {stat.label}
+//                             </Typography>
+                            
+//                             {/* Animated counter for numbers */}
+//                             {stat.value.includes('+') && (
+//                               <motion.div
+//                                 initial={{ opacity: 0 }}
+//                                 animate={inView ? { opacity: 1 } : {}}
+//                                 transition={{ delay: 0.7 + index * 0.1 }}
+//                                 style={{
+//                                   position: 'absolute',
+//                                   top: 5,
+//                                   right: 5,
+//                                   fontSize: '0.6rem',
+//                                   color: stat.color,
+//                                   fontWeight: 'bold'
+//                                 }}
+//                               >
+//                                 +
+//                               </motion.div>
+//                             )}
+//                           </CardContent>
+//                         </Card>
+//                       </motion.div>
+//                     </motion.div>
+//                   </Grid>
+//                 ))}
+//               </Grid>
+//             </motion.div>
+//           </Grid>
+//         </Grid>
+//       </Container>
+
+//       {/* Animated connecting lines */}
+//       <svg
+//         style={{
+//           position: 'absolute',
+//           top: 0,
+//           left: 0,
+//           width: '100%',
+//           height: '100%',
+//           pointerEvents: 'none',
+//           zIndex: 0
+//         }}
+//       >
+//         <motion.path
+//           d="M20,50 Q100,20 180,50"
+//           stroke={`url(#gradient-${primaryColor})`}
+//           strokeWidth="1"
+//           fill="none"
+//           initial={{ pathLength: 0, opacity: 0 }}
+//           animate={inView ? { pathLength: 1, opacity: 0.3 } : {}}
+//           transition={{ duration: 2, delay: 0.5 }}
+//         />
+//         <defs>
+//           <linearGradient id={`gradient-${primaryColor}`} x1="0%" y1="0%" x2="100%" y2="0%">
+//             <stop offset="0%" stopColor={primaryColor} stopOpacity="0.5" />
+//             <stop offset="100%" stopColor={secondaryColor} stopOpacity="0.5" />
+//           </linearGradient>
+//         </defs>
+//       </svg>
+//     </Box>
+//   );
+// };
+
+// export default AboutSection;
+
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Button,
+//   Grid,
+//   Card,
+//   CardContent,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+// import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+// import TimelineIcon from '@mui/icons-material/Timeline';
+// import GroupsIcon from '@mui/icons-material/Groups';
+// import { useNavigate } from 'react-router-dom';
+
+// const AboutSection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+  
+//   // Pink color scheme
+//   const primaryColor = '#cf3476'; // Pink
+//   const secondaryColor = '#fa8072'; // Light Pink
+//   const primaryColorHover = '#d94b8a';
+//   const secondaryColorHover = '#fb9488';
+
+//   const handleLearnMore = () => {
+//     navigate('/about');
+//   };
+
+//   // Animation variants
+//   const containerVariants = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.2,
+//         delayChildren: 0.3
+//       }
+//     }
+//   };
+
+//   const itemVariants = {
+//     hidden: { 
+//       opacity: 0, 
+//       y: 30,
+//       scale: 0.95 
+//     },
+//     visible: { 
+//       opacity: 1, 
+//       y: 0,
+//       scale: 1,
+//       transition: {
+//         type: "spring",
+//         stiffness: 100,
+//         damping: 15
+//       }
+//     }
+//   };
+
+//   const statsVariants = {
+//     hidden: { 
+//       opacity: 0, 
+//       scale: 0.8,
+//       rotateX: 90 
+//     },
+//     visible: (i) => ({ 
+//       opacity: 1, 
+//       scale: 1,
+//       rotateX: 0,
+//       transition: {
+//         delay: i * 0.15,
+//         type: "spring",
+//         stiffness: 120,
+//         damping: 12
+//       }
+//     })
+//   };
+
+//   const textGlowAnimation = {
+//     hidden: { 
+//       textShadow: `0 0 0px ${primaryColor}`,
+//       opacity: 0.8 
+//     },
+//     visible: {
+//       textShadow: [
+//         `0 0 0px ${primaryColor}`,
+//         `0 0 15px ${primaryColor}`,
+//         `0 0 0px ${primaryColor}`
+//       ],
+//       opacity: 1,
+//       transition: {
+//         duration: 3,
+//         repeat: Infinity,
+//         repeatDelay: 1
+//       }
+//     }
+//   };
+
+//   const pulseAnimation = {
+//     hidden: { 
+//       scale: 1,
+//       boxShadow: `0 0 0px ${primaryColor}` 
+//     },
+//     visible: {
+//       scale: [1, 1.02, 1],
+//       boxShadow: [
+//         `0 0 0px ${primaryColor}`,
+//         `0 0 20px ${primaryColor}`,
+//         `0 0 0px ${primaryColor}`
+//       ],
+//       transition: {
+//         duration: 2,
+//         repeat: Infinity,
+//         repeatDelay: 1
+//       }
+//     }
+//   };
+
+//   const floatingAnimation = {
+//     hidden: { y: 0 },
+//     visible: {
+//       y: [-5, 5, -5],
+//       transition: {
+//         duration: 4,
+//         repeat: Infinity,
+//         ease: "easeInOut"
+//       }
+//     }
+//   };
+
+//   const rippleAnimation = {
+//     hidden: { 
+//       scale: 0,
+//       opacity: 1 
+//     },
+//     visible: { 
+//       scale: 4,
+//       opacity: 0,
+//       transition: {
+//         duration: 2,
+//         repeat: Infinity
+//       }
+//     }
+//   };
+
+//   return (
+//     <Box ref={ref} sx={{ 
+//       py: { xs: 10, md: 15 }, 
+//       backgroundColor: 'transparent',
+//       position: 'relative',
+//       overflow: 'hidden'
+//     }}>
+//       {/* Background decorative elements with animations */}
+//       <motion.div
+//         variants={floatingAnimation}
+//         initial="hidden"
+//         animate={inView ? "visible" : "hidden"}
+//       >
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             top: '10%',
+//             left: '5%',
+//             width: '200px',
+//             height: '200px',
+//             borderRadius: '50%',
+//             background: `radial-gradient(circle, ${primaryColor}20 0%, transparent 70%)`,
+//             filter: 'blur(40px)',
+//             zIndex: 0,
+//           }}
+//         />
+//       </motion.div>
+
+//       <motion.div
+//         variants={floatingAnimation}
+//         initial="hidden"
+//         animate={inView ? "visible" : "hidden"}
+//         transition={{ delay: 0.5 }}
+//       >
+//         <Box
+//           sx={{
+//             position: 'absolute',
+//             bottom: '10%',
+//             right: '5%',
+//             width: '150px',
+//             height: '150px',
+//             borderRadius: '50%',
+//             background: `radial-gradient(circle, ${secondaryColor}20 0%, transparent 70%)`,
+//             filter: 'blur(30px)',
+//             zIndex: 0,
+//           }}
+//         />
+//       </motion.div>
+
+//       {/* Ripple effect circles */}
+//       <motion.div
+//         variants={rippleAnimation}
+//         initial="hidden"
+//         animate={inView ? "visible" : "hidden"}
+//         style={{
+//           position: 'absolute',
+//           top: '50%',
+//           left: '50%',
+//           transform: 'translate(-50%, -50%)',
+//           width: '100px',
+//           height: '100px',
+//           borderRadius: '50%',
+//           border: `2px solid ${primaryColor}30`,
+//           zIndex: 0,
+//         }}
+//       />
+
+//       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+//         <Grid container spacing={6} alignItems="center">
+//           <Grid item xs={12} md={6}>
+//             <motion.div
+//               variants={containerVariants}
+//               initial="hidden"
+//               animate={inView ? "visible" : "hidden"}
+//             >
+//               <motion.div variants={itemVariants}>
+//                 <motion.div
+//                   variants={textGlowAnimation}
+//                   initial="hidden"
+//                   animate={inView ? "visible" : "hidden"}
+//                 >
+//                   <Typography
+//                     variant="h2"
+//                     sx={{
+//                       mb: 3,
+//                       color: primaryColor,
+//                       fontWeight: 800,
+//                       fontSize: { 
+//                         xs: '2rem', 
+//                         sm: '2.5rem', 
+//                         md: '3rem' 
+//                       },
+//                       lineHeight: 1.2,
+//                       position: 'relative',
+//                       display: 'inline-block',
+//                       '&::after': {
+//                         content: '""',
+//                         position: 'absolute',
+//                         bottom: '-10px',
+//                         left: 0,
+//                         width: '80px',
+//                         height: '4px',
+//                         background: `linear-gradient(90deg, ${primaryColor}, ${secondaryColor})`,
+//                         borderRadius: '2px',
+//                         animation: 'widthGrow 2s infinite alternate',
+//                         '@keyframes widthGrow': {
+//                           '0%': { width: '80px' },
+//                           '100%': { width: '120px' },
+//                         }
+//                       }
+//                     }}
+//                   >
+//                     Leading in Practical AI Solutions
+//                   </Typography>
+//                 </motion.div>
+//               </motion.div>
+
+//               <motion.div variants={itemVariants}>
+//                 <Typography
+//                   variant="h6"
+//                   sx={{
+//                     mb: 4,
+//                     color: primaryColor, // Changed from #ffffff to primaryColor
+//                     lineHeight: 1.8,
+//                     fontSize: { 
+//                       xs: '0.9rem', 
+//                       sm: '1rem', 
+//                       md: '1.1rem' 
+//                     },
+//                     opacity: 0.9,
+//                     fontWeight: 500,
+//                   }}
+//                 >
+//                   We specialize in delivering measurable AI solutions that transform how businesses operate, focusing on real-world applications and tangible results.
+//                 </Typography>
+//               </motion.div>
+
+//               <motion.div 
+//                 variants={itemVariants}
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//               >
+//                 <motion.div
+//                   variants={pulseAnimation}
+//                   initial="hidden"
+//                   animate={inView ? "visible" : "hidden"}
+//                 >
+//                   <Button
+//                     variant="outlined"
+//                     size="large"
+//                     endIcon={
+//                       <motion.div
+//                         animate={{ 
+//                           x: [0, 5, 0],
+//                           rotate: [0, 10, -10, 0]
+//                         }}
+//                         transition={{ 
+//                           duration: 1.5, 
+//                           repeat: Infinity,
+//                           repeatDelay: 0.5
+//                         }}
+//                       >
+//                         <ArrowForwardIcon />
+//                       </motion.div>
+//                     }
+//                     onClick={handleLearnMore}
+//                     sx={{
+//                       px: 4,
+//                       py: 1.5,
+//                       borderColor: secondaryColor,
+//                       color: secondaryColor, // Using secondary color for text
+//                       fontWeight: 600,
+//                       fontSize: { xs: '0.9rem', md: '1rem' },
+//                       position: 'relative',
+//                       overflow: 'hidden',
+//                       '&::before': {
+//                         content: '""',
+//                         position: 'absolute',
+//                         top: 0,
+//                         left: '-100%',
+//                         width: '100%',
+//                         height: '100%',
+//                         background: `linear-gradient(90deg, transparent, ${secondaryColor}20, transparent)`,
+//                         transition: 'left 0.5s',
+//                       },
+//                       '&:hover': {
+//                         borderColor: secondaryColorHover,
+//                         color: secondaryColorHover,
+//                         backgroundColor: `rgba(250, 128, 114, 0.1)`,
+//                         transform: 'translateY(-2px)',
+//                         '&::before': {
+//                           left: '100%',
+//                         }
+//                       },
+//                       transition: 'all 0.3s ease',
+//                     }}
+//                   >
+//                     Learn More About Us
+//                   </Button>
+//                 </motion.div>
+//               </motion.div>
+//             </motion.div>
+//           </Grid>
+          
+//           <Grid item xs={12} md={6}>
+//             <motion.div
+//               variants={containerVariants}
+//               initial="hidden"
+//               animate={inView ? "visible" : "hidden"}
+//             >
+//               <Grid container spacing={3}>
+//                 {[
+//                   { 
+//                     label: 'Projects Delivered', 
+//                     value: '150+', 
+//                     icon: <RocketLaunchIcon />,
+//                     color: primaryColor,
+//                     delay: 0
+//                   },
+//                   { 
+//                     label: 'AI Models Deployed', 
+//                     value: '500+', 
+//                     icon: <AutoAwesomeIcon />,
+//                     color: secondaryColor,
+//                     delay: 1
+//                   },
+//                   { 
+//                     label: 'Client Satisfaction', 
+//                     value: '98%', 
+//                     icon: <TimelineIcon />,
+//                     color: primaryColor,
+//                     delay: 2
+//                   },
+//                   { 
+//                     label: 'Team Members', 
+//                     value: '50+', 
+//                     icon: <GroupsIcon />,
+//                     color: secondaryColor,
+//                     delay: 3
+//                   },
+//                 ].map((stat, index) => (
+//                   <Grid item xs={6} key={index}>
+//                     <motion.div
+//                       custom={stat.delay}
+//                       variants={statsVariants}
+//                       whileHover={{ 
+//                         y: -15,
+//                         scale: 1.05,
+//                         transition: { type: "spring", stiffness: 300 }
+//                       }}
+//                     >
+//                       <motion.div
+//                         variants={pulseAnimation}
+//                         initial="hidden"
+//                         animate={inView ? "visible" : "hidden"}
+//                         transition={{ delay: index * 0.3 }}
+//                       >
+//                         <Card
+//                           sx={{
+//                             backgroundColor: 'rgba(207, 52, 118, 0.05)', // Pink tint background
+//                             border: `2px solid ${stat.color}40`,
+//                             height: '100%',
+//                             position: 'relative',
+//                             overflow: 'hidden',
+//                             backdropFilter: 'blur(10px)',
+//                             '&::before': {
+//                               content: '""',
+//                               position: 'absolute',
+//                               top: 0,
+//                               left: 0,
+//                               right: 0,
+//                               height: '3px',
+//                               background: `linear-gradient(90deg, ${stat.color}, ${stat.color === primaryColor ? secondaryColor : primaryColor})`,
+//                               transform: 'translateX(-100%)',
+//                               transition: 'transform 0.5s ease',
+//                             },
+//                             '&:hover': {
+//                               borderColor: stat.color,
+//                               transform: 'translateY(-5px)',
+//                               boxShadow: `0 20px 40px ${stat.color}40`,
+//                               '&::before': {
+//                                 transform: 'translateX(0)',
+//                               }
+//                             },
+//                             transition: 'all 0.3s ease',
+//                           }}
+//                         >
+//                           <CardContent sx={{ 
+//                             textAlign: 'center', 
+//                             p: 3,
+//                             position: 'relative',
+//                             zIndex: 1
+//                           }}>
+//                             <motion.div
+//                               whileHover={{ 
+//                                 rotate: 360,
+//                                 scale: 1.3,
+//                                 transition: { duration: 0.5 }
+//                               }}
+//                               whileTap={{ scale: 0.9 }}
+//                             >
+//                               <Box sx={{ 
+//                                 color: stat.color, 
+//                                 mb: 2,
+//                                 display: 'flex',
+//                                 justifyContent: 'center',
+//                                 '& .MuiSvgIcon-root': {
+//                                   fontSize: { xs: 32, md: 36 }
+//                                 }
+//                               }}>
+//                                 {stat.icon}
+//                               </Box>
+//                             </motion.div>
+                            
+//                             <motion.div
+//                               initial={{ scale: 0, opacity: 0 }}
+//                               animate={inView ? { scale: 1, opacity: 1 } : {}}
+//                               transition={{ 
+//                                 delay: 0.5 + index * 0.1,
+//                                 type: "spring",
+//                                 stiffness: 200
+//                               }}
+//                             >
+//                               <Typography
+//                                 variant="h3"
+//                                 sx={{
+//                                   color: stat.color,
+//                                   fontWeight: 900,
+//                                   fontSize: { 
+//                                     xs: '2.5rem', 
+//                                     sm: '2.8rem', 
+//                                     md: '3.2rem' 
+//                                   },
+//                                   mb: 1,
+//                                   textShadow: `0 0 15px ${stat.color}60`,
+//                                 }}
+//                               >
+//                                 {stat.value}
+//                               </Typography>
+//                             </motion.div>
+                            
+//                             <Typography
+//                               variant="body2"
+//                               sx={{ 
+//                                 color: primaryColor, // Changed from #ffffff to primaryColor
+//                                 fontSize: { xs: '0.85rem', md: '0.95rem' },
+//                                 fontWeight: 600,
+//                                 opacity: 0.9,
+//                                 letterSpacing: '0.5px',
+//                               }}
+//                             >
+//                               {stat.label}
+//                             </Typography>
+                            
+//                             {/* Animated counter for numbers */}
+//                             {stat.value.includes('+') && (
+//                               <motion.div
+//                                 initial={{ 
+//                                   opacity: 0,
+//                                   scale: 0 
+//                                 }}
+//                                 animate={inView ? { 
+//                                   opacity: 1,
+//                                   scale: [1, 1.2, 1],
+//                                   rotate: [0, 180, 360]
+//                                 } : {}}
+//                                 transition={{ 
+//                                   delay: 0.8 + index * 0.1,
+//                                   duration: 1,
+//                                   repeat: Infinity,
+//                                   repeatDelay: 2
+//                                 }}
+//                                 style={{
+//                                   position: 'absolute',
+//                                   top: 10,
+//                                   right: 10,
+//                                   fontSize: '0.8rem',
+//                                   color: stat.color,
+//                                   fontWeight: 'bold'
+//                                 }}
+//                               >
+//                                 +
+//                               </motion.div>
+//                             )}
+
+//                             {/* Animated percentage symbol */}
+//                             {stat.value.includes('%') && (
+//                               <motion.div
+//                                 initial={{ 
+//                                   opacity: 0,
+//                                   scale: 0 
+//                                 }}
+//                                 animate={inView ? { 
+//                                   opacity: 1,
+//                                   scale: [1, 1.1, 1],
+//                                 } : {}}
+//                                 transition={{ 
+//                                   delay: 0.8 + index * 0.1,
+//                                   duration: 2,
+//                                   repeat: Infinity
+//                                 }}
+//                                 style={{
+//                                   position: 'absolute',
+//                                   top: 10,
+//                                   right: 10,
+//                                   fontSize: '0.8rem',
+//                                   color: stat.color,
+//                                   fontWeight: 'bold'
+//                                 }}
+//                               >
+//                                 %
+//                               </motion.div>
+//                             )}
+//                           </CardContent>
+//                         </Card>
+//                       </motion.div>
+//                     </motion.div>
+//                   </Grid>
+//                 ))}
+//               </Grid>
+//             </motion.div>
+//           </Grid>
+//         </Grid>
+//       </Container>
+
+//       {/* Animated connecting lines */}
+//       <svg
+//         style={{
+//           position: 'absolute',
+//           top: 0,
+//           left: 0,
+//           width: '100%',
+//           height: '100%',
+//           pointerEvents: 'none',
+//           zIndex: 0
+//         }}
+//       >
+//         <motion.path
+//           d="M20,100 Q200,20 400,150"
+//           stroke={`url(#gradient-${primaryColor})`}
+//           strokeWidth="2"
+//           fill="none"
+//           initial={{ pathLength: 0, opacity: 0 }}
+//           animate={inView ? { pathLength: 1, opacity: 0.3 } : {}}
+//           transition={{ duration: 3, delay: 0.5 }}
+//         />
+//         <motion.path
+//           d="M400,200 Q600,100 800,250"
+//           stroke={`url(#gradient-${secondaryColor})`}
+//           strokeWidth="2"
+//           fill="none"
+//           initial={{ pathLength: 0, opacity: 0 }}
+//           animate={inView ? { pathLength: 1, opacity: 0.3 } : {}}
+//           transition={{ duration: 3, delay: 1 }}
+//         />
+//         <defs>
+//           <linearGradient id={`gradient-${primaryColor}`} x1="0%" y1="0%" x2="100%" y2="0%">
+//             <stop offset="0%" stopColor={primaryColor} stopOpacity="0.5" />
+//             <stop offset="100%" stopColor={secondaryColor} stopOpacity="0.5" />
+//           </linearGradient>
+//           <linearGradient id={`gradient-${secondaryColor}`} x1="0%" y1="0%" x2="100%" y2="0%">
+//             <stop offset="0%" stopColor={secondaryColor} stopOpacity="0.5" />
+//             <stop offset="100%" stopColor={primaryColor} stopOpacity="0.5" />
+//           </linearGradient>
+//         </defs>
+//       </svg>
+//     </Box>
+//   );
+// };
+
+// export default AboutSection;
+
+
 import React from 'react';
 import {
   Box,
@@ -2730,11 +3824,10 @@ const AboutSection = () => {
 
   const navigate = useNavigate();
   
-  // Color scheme
-  const primaryColor = '#cf3476'; // Telemagenta
-  const secondaryColor = '#fa8072'; // Salmon
-  const primaryColorHover = '#d94b8a';
-  const secondaryColorHover = '#fb9488';
+  // Salmon color scheme
+  const salmonColor = '#fa8072'; // Salmon
+  const salmonColorHover = '#fb9488';
+  const salmonColorLight = '#ffb6a4';
 
   const handleLearnMore = () => {
     navigate('/about');
@@ -2789,65 +3882,137 @@ const AboutSection = () => {
     })
   };
 
-  const glowAnimation = {
-    hidden: { boxShadow: `0 0 0px ${primaryColor}` },
+  const textGlowAnimation = {
+    hidden: { 
+      textShadow: `0 0 0px ${salmonColor}`,
+      opacity: 0.8 
+    },
     visible: {
-      boxShadow: [
-        `0 0 0px ${primaryColor}`,
-        `0 0 20px ${primaryColor}`,
-        `0 0 0px ${primaryColor}`
+      textShadow: [
+        `0 0 0px ${salmonColor}`,
+        `0 0 15px ${salmonColor}`,
+        `0 0 0px ${salmonColor}`
       ],
+      opacity: 1,
       transition: {
         duration: 3,
         repeat: Infinity,
-        repeatDelay: 2
+        repeatDelay: 1
+      }
+    }
+  };
+
+  const pulseAnimation = {
+    hidden: { 
+      scale: 1,
+      boxShadow: `0 0 0px ${salmonColor}` 
+    },
+    visible: {
+      scale: [1, 1.02, 1],
+      boxShadow: [
+        `0 0 0px ${salmonColor}`,
+        `0 0 20px ${salmonColor}`,
+        `0 0 0px ${salmonColor}`
+      ],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        repeatDelay: 1
+      }
+    }
+  };
+
+  const floatingAnimation = {
+    hidden: { y: 0 },
+    visible: {
+      y: [-5, 5, -5],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const rippleAnimation = {
+    hidden: { 
+      scale: 0,
+      opacity: 1 
+    },
+    visible: { 
+      scale: 4,
+      opacity: 0,
+      transition: {
+        duration: 2,
+        repeat: Infinity
       }
     }
   };
 
   return (
     <Box ref={ref} sx={{ 
-      py: { xs: 8, md: 12 }, 
+      py: { xs: 10, md: 15 }, 
       backgroundColor: 'transparent',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Background decorative elements */}
-      <Box
-        sx={{
+      {/* Background decorative elements with animations */}
+      <motion.div
+        variants={floatingAnimation}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '10%',
+            left: '5%',
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${salmonColor}20 0%, transparent 70%)`,
+            filter: 'blur(40px)',
+            zIndex: 0,
+          }}
+        />
+      </motion.div>
+
+      <motion.div
+        variants={floatingAnimation}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        transition={{ delay: 0.5 }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: '10%',
+            right: '5%',
+            width: '150px',
+            height: '150px',
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${salmonColorLight}20 0%, transparent 70%)`,
+            filter: 'blur(30px)',
+            zIndex: 0,
+          }}
+        />
+      </motion.div>
+
+      {/* Ripple effect circles */}
+      <motion.div
+        variants={rippleAnimation}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        style={{
           position: 'absolute',
-          top: '10%',
-          left: '5%',
-          width: '200px',
-          height: '200px',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100px',
+          height: '100px',
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${primaryColor}15 0%, transparent 70%)`,
-          filter: 'blur(40px)',
+          border: `2px solid ${salmonColor}30`,
           zIndex: 0,
-          animation: 'float 6s ease-in-out infinite',
-          '@keyframes float': {
-            '0%, 100%': {
-              transform: 'translateY(0px)',
-            },
-            '50%': {
-              transform: 'translateY(-20px)',
-            },
-          },
-        }}
-      />
-      
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: '10%',
-          right: '5%',
-          width: '150px',
-          height: '150px',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${secondaryColor}15 0%, transparent 70%)`,
-          filter: 'blur(30px)',
-          zIndex: 0,
-          animation: 'float 8s ease-in-out infinite reverse',
         }}
       />
 
@@ -2860,34 +4025,45 @@ const AboutSection = () => {
               animate={inView ? "visible" : "hidden"}
             >
               <motion.div variants={itemVariants}>
-                <Typography
-                  variant="h2"
-                  sx={{
-                    mb: 3,
-                    color: primaryColor,
-                    fontWeight: 800,
-                    fontSize: { 
-                      xs: '2rem', 
-                      sm: '2.5rem', 
-                      md: '3rem' 
-                    },
-                    lineHeight: 1.2,
-                    position: 'relative',
-                    display: 'inline-block',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: '-10px',
-                      left: 0,
-                      width: '80px',
-                      height: '4px',
-                      background: `linear-gradient(90deg, ${primaryColor}, ${secondaryColor})`,
-                      borderRadius: '2px',
-                    }
-                  }}
+                <motion.div
+                  variants={textGlowAnimation}
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
                 >
-                  Leading in Practical AI Solutions
-                </Typography>
+                  <Typography
+                    variant="h2"
+                    sx={{
+                      mb: 3,
+                      color: salmonColor, // Salmon color
+                      fontWeight: 800,
+                      fontSize: { 
+                        xs: '2rem', 
+                        sm: '2.5rem', 
+                        md: '3rem' 
+                      },
+                      lineHeight: 1.2,
+                      position: 'relative',
+                      display: 'inline-block',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: '-10px',
+                        left: 0,
+                        width: '80px',
+                        height: '4px',
+                        background: `linear-gradient(90deg, ${salmonColor}, ${salmonColorLight})`,
+                        borderRadius: '2px',
+                        animation: 'widthGrow 2s infinite alternate',
+                        '@keyframes widthGrow': {
+                          '0%': { width: '80px' },
+                          '100%': { width: '120px' },
+                        }
+                      }
+                    }}
+                  >
+                    Leading in Practical AI Solutions
+                  </Typography>
+                </motion.div>
               </motion.div>
 
               <motion.div variants={itemVariants}>
@@ -2895,7 +4071,7 @@ const AboutSection = () => {
                   variant="h6"
                   sx={{
                     mb: 4,
-                    color: '#ffffff',
+                    color: salmonColor, // Salmon color
                     lineHeight: 1.8,
                     fontSize: { 
                       xs: '0.9rem', 
@@ -2903,6 +4079,7 @@ const AboutSection = () => {
                       md: '1.1rem' 
                     },
                     opacity: 0.9,
+                    fontWeight: 500,
                   }}
                 >
                   We specialize in delivering measurable AI solutions that transform how businesses operate, focusing on real-world applications and tangible results.
@@ -2914,51 +4091,64 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button
-                  variant="outlined"
-                  size="large"
-                  endIcon={
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <ArrowForwardIcon />
-                    </motion.div>
-                  }
-                  onClick={handleLearnMore}
-                  sx={{
-                    px: 4,
-                    py: 1.5,
-                    borderColor: secondaryColor,
-                    color: secondaryColor,
-                    fontWeight: 600,
-                    fontSize: { xs: '0.9rem', md: '1rem' },
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: '-100%',
-                      width: '100%',
-                      height: '100%',
-                      background: `linear-gradient(90deg, transparent, ${secondaryColor}20, transparent)`,
-                      transition: 'left 0.5s',
-                    },
-                    '&:hover': {
-                      borderColor: secondaryColorHover,
-                      color: secondaryColorHover,
-                      backgroundColor: `rgba(250, 128, 114, 0.1)`,
-                      transform: 'translateY(-2px)',
-                      '&::before': {
-                        left: '100%',
-                      }
-                    },
-                    transition: 'all 0.3s ease',
-                  }}
+                <motion.div
+                  variants={pulseAnimation}
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
                 >
-                  Learn More About Us
-                </Button>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    endIcon={
+                      <motion.div
+                        animate={{ 
+                          x: [0, 5, 0],
+                          rotate: [0, 10, -10, 0]
+                        }}
+                        transition={{ 
+                          duration: 1.5, 
+                          repeat: Infinity,
+                          repeatDelay: 0.5
+                        }}
+                      >
+                        <ArrowForwardIcon sx={{ color: salmonColor }} />
+                      </motion.div>
+                    }
+                    onClick={handleLearnMore}
+                    sx={{
+                      px: 4,
+                      py: 1.5,
+                      borderColor: salmonColor,
+                      color: salmonColor, // Salmon color
+                      fontWeight: 600,
+                      fontSize: { xs: '0.9rem', md: '1rem' },
+                      position: 'relative',
+                      overflow: 'hidden',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: '-100%',
+                        width: '100%',
+                        height: '100%',
+                        background: `linear-gradient(90deg, transparent, ${salmonColor}20, transparent)`,
+                        transition: 'left 0.5s',
+                      },
+                      '&:hover': {
+                        borderColor: salmonColorHover,
+                        color: salmonColorHover,
+                        backgroundColor: `rgba(250, 128, 114, 0.1)`,
+                        transform: 'translateY(-2px)',
+                        '&::before': {
+                          left: '100%',
+                        }
+                      },
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    Learn More About Us
+                  </Button>
+                </motion.div>
               </motion.div>
             </motion.div>
           </Grid>
@@ -2969,34 +4159,34 @@ const AboutSection = () => {
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
             >
-              <Grid container spacing={2}>
+              <Grid container spacing={3}>
                 {[
                   { 
                     label: 'Projects Delivered', 
                     value: '150+', 
                     icon: <RocketLaunchIcon />,
-                    color: primaryColor,
+                    color: salmonColor,
                     delay: 0
                   },
                   { 
                     label: 'AI Models Deployed', 
                     value: '500+', 
                     icon: <AutoAwesomeIcon />,
-                    color: secondaryColor,
+                    color: salmonColor,
                     delay: 1
                   },
                   { 
                     label: 'Client Satisfaction', 
                     value: '98%', 
                     icon: <TimelineIcon />,
-                    color: primaryColor,
+                    color: salmonColor,
                     delay: 2
                   },
                   { 
                     label: 'Team Members', 
                     value: '50+', 
                     icon: <GroupsIcon />,
-                    color: secondaryColor,
+                    color: salmonColor,
                     delay: 3
                   },
                 ].map((stat, index) => (
@@ -3005,21 +4195,25 @@ const AboutSection = () => {
                       custom={stat.delay}
                       variants={statsVariants}
                       whileHover={{ 
-                        y: -10,
+                        y: -15,
+                        scale: 1.05,
                         transition: { type: "spring", stiffness: 300 }
                       }}
                     >
                       <motion.div
-                        variants={glowAnimation}
+                        variants={pulseAnimation}
+                        initial="hidden"
                         animate={inView ? "visible" : "hidden"}
+                        transition={{ delay: index * 0.3 }}
                       >
                         <Card
                           sx={{
-                            backgroundColor: '#111111',
-                            border: `1px solid ${stat.color}40`,
+                            backgroundColor: 'rgba(250, 128, 114, 0.05)', // Salmon tint background
+                            border: `2px solid ${salmonColor}40`,
                             height: '100%',
                             position: 'relative',
                             overflow: 'hidden',
+                            backdropFilter: 'blur(10px)',
                             '&::before': {
                               content: '""',
                               position: 'absolute',
@@ -3027,14 +4221,14 @@ const AboutSection = () => {
                               left: 0,
                               right: 0,
                               height: '3px',
-                              background: `linear-gradient(90deg, ${stat.color}, ${stat.color === primaryColor ? secondaryColor : primaryColor})`,
+                              background: `linear-gradient(90deg, ${salmonColor}, ${salmonColorLight})`,
                               transform: 'translateX(-100%)',
                               transition: 'transform 0.5s ease',
                             },
                             '&:hover': {
-                              borderColor: stat.color,
+                              borderColor: salmonColor,
                               transform: 'translateY(-5px)',
-                              boxShadow: `0 15px 35px ${stat.color}25`,
+                              boxShadow: `0 20px 40px ${salmonColor}40`,
                               '&::before': {
                                 transform: 'translateX(0)',
                               }
@@ -3051,17 +4245,18 @@ const AboutSection = () => {
                             <motion.div
                               whileHover={{ 
                                 rotate: 360,
-                                scale: 1.2,
+                                scale: 1.3,
                                 transition: { duration: 0.5 }
                               }}
+                              whileTap={{ scale: 0.9 }}
                             >
                               <Box sx={{ 
-                                color: stat.color, 
+                                color: salmonColor, // Salmon color
                                 mb: 2,
                                 display: 'flex',
                                 justifyContent: 'center',
                                 '& .MuiSvgIcon-root': {
-                                  fontSize: { xs: 28, md: 32 }
+                                  fontSize: { xs: 32, md: 36 }
                                 }
                               }}>
                                 {stat.icon}
@@ -3069,8 +4264,8 @@ const AboutSection = () => {
                             </motion.div>
                             
                             <motion.div
-                              initial={{ scale: 0 }}
-                              animate={inView ? { scale: 1 } : {}}
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={inView ? { scale: 1, opacity: 1 } : {}}
                               transition={{ 
                                 delay: 0.5 + index * 0.1,
                                 type: "spring",
@@ -3080,15 +4275,15 @@ const AboutSection = () => {
                               <Typography
                                 variant="h3"
                                 sx={{
-                                  color: stat.color,
-                                  fontWeight: 800,
+                                  color: salmonColor, // Salmon color
+                                  fontWeight: 900,
                                   fontSize: { 
-                                    xs: '2rem', 
-                                    sm: '2.2rem', 
-                                    md: '2.5rem' 
+                                    xs: '2.5rem', 
+                                    sm: '2.8rem', 
+                                    md: '3.2rem' 
                                   },
                                   mb: 1,
-                                  textShadow: `0 0 10px ${stat.color}40`,
+                                  textShadow: `0 0 15px ${salmonColor}60`,
                                 }}
                               >
                                 {stat.value}
@@ -3098,10 +4293,11 @@ const AboutSection = () => {
                             <Typography
                               variant="body2"
                               sx={{ 
-                                color: '#ffffff',
-                                fontSize: { xs: '0.8rem', md: '0.85rem' },
-                                fontWeight: 500,
+                                color: salmonColor, // Salmon color
+                                fontSize: { xs: '0.85rem', md: '0.95rem' },
+                                fontWeight: 600,
                                 opacity: 0.9,
+                                letterSpacing: '0.5px',
                               }}
                             >
                               {stat.label}
@@ -3110,19 +4306,60 @@ const AboutSection = () => {
                             {/* Animated counter for numbers */}
                             {stat.value.includes('+') && (
                               <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={inView ? { opacity: 1 } : {}}
-                                transition={{ delay: 0.7 + index * 0.1 }}
+                                initial={{ 
+                                  opacity: 0,
+                                  scale: 0 
+                                }}
+                                animate={inView ? { 
+                                  opacity: 1,
+                                  scale: [1, 1.2, 1],
+                                  rotate: [0, 180, 360]
+                                } : {}}
+                                transition={{ 
+                                  delay: 0.8 + index * 0.1,
+                                  duration: 1,
+                                  repeat: Infinity,
+                                  repeatDelay: 2
+                                }}
                                 style={{
                                   position: 'absolute',
-                                  top: 5,
-                                  right: 5,
-                                  fontSize: '0.6rem',
-                                  color: stat.color,
+                                  top: 10,
+                                  right: 10,
+                                  fontSize: '0.8rem',
+                                  color: salmonColor,
                                   fontWeight: 'bold'
                                 }}
                               >
                                 +
+                              </motion.div>
+                            )}
+
+                            {/* Animated percentage symbol */}
+                            {stat.value.includes('%') && (
+                              <motion.div
+                                initial={{ 
+                                  opacity: 0,
+                                  scale: 0 
+                                }}
+                                animate={inView ? { 
+                                  opacity: 1,
+                                  scale: [1, 1.1, 1],
+                                } : {}}
+                                transition={{ 
+                                  delay: 0.8 + index * 0.1,
+                                  duration: 2,
+                                  repeat: Infinity
+                                }}
+                                style={{
+                                  position: 'absolute',
+                                  top: 10,
+                                  right: 10,
+                                  fontSize: '0.8rem',
+                                  color: salmonColor,
+                                  fontWeight: 'bold'
+                                }}
+                              >
+                                %
                               </motion.div>
                             )}
                           </CardContent>
@@ -3150,18 +4387,27 @@ const AboutSection = () => {
         }}
       >
         <motion.path
-          d="M20,50 Q100,20 180,50"
-          stroke={`url(#gradient-${primaryColor})`}
-          strokeWidth="1"
+          d="M20,100 Q200,20 400,150"
+          stroke={`url(#gradient-${salmonColor})`}
+          strokeWidth="2"
           fill="none"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={inView ? { pathLength: 1, opacity: 0.3 } : {}}
-          transition={{ duration: 2, delay: 0.5 }}
+          transition={{ duration: 3, delay: 0.5 }}
+        />
+        <motion.path
+          d="M400,200 Q600,100 800,250"
+          stroke={`url(#gradient-${salmonColor})`}
+          strokeWidth="2"
+          fill="none"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={inView ? { pathLength: 1, opacity: 0.3 } : {}}
+          transition={{ duration: 3, delay: 1 }}
         />
         <defs>
-          <linearGradient id={`gradient-${primaryColor}`} x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor={primaryColor} stopOpacity="0.5" />
-            <stop offset="100%" stopColor={secondaryColor} stopOpacity="0.5" />
+          <linearGradient id={`gradient-${salmonColor}`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor={salmonColor} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={salmonColorLight} stopOpacity="0.5" />
           </linearGradient>
         </defs>
       </svg>
