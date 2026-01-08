@@ -2314,335 +2314,884 @@
 // export default Footer;
 
 
-import React from 'react';
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Grid,
+//   Typography,
+//   Link,
+//   IconButton,
+//   Divider,
+//   Button,
+//   TextField,
+// } from '@mui/material';
+// import {
+//   LinkedIn as LinkedInIcon,
+//   Twitter as TwitterIcon,
+//   GitHub as GitHubIcon,
+//   Email as EmailIcon,
+// } from '@mui/icons-material';
+// import { motion } from 'framer-motion';
+// import Logo from './Logo';
+
+// const Footer = () => {
+//   const currentYear = new Date().getFullYear();
+
+//   const footerLinks = {
+//     'Solutions': [
+//       { label: 'AI Strategy', href: '/services#ai-strategy' },
+//       { label: 'Machine Learning', href: '/services#ml-development' },
+//       { label: 'NLP Solutions', href: '/services#nlp-solutions' },
+//       { label: 'Computer Vision', href: '/services#computer-vision' },
+//     ],
+//     'Resources': [
+//       { label: 'AI Research', href: '/research' },
+//       { label: 'Case Studies', href: '/case-studies' },
+//       { label: 'Documentation', href: '/docs' },
+//       { label: 'AI Tools', href: '/tools' },
+//     ],
+//     'Company': [
+//       { label: 'About Us', href: '/about' },
+//       { label: 'Our Team', href: '/team' },
+//       { label: 'Careers', href: '/careers' },
+//       { label: 'Contact', href: '/contact' },
+//     ],
+//     'Legal': [
+//       { label: 'Privacy Policy', href: '/privacy' },
+//       { label: 'Terms of Service', href: '/terms' },
+//       { label: 'Cookie Policy', href: '/cookies' },
+//       { label: 'Security', href: '/security' },
+//     ],
+//   };
+
+//   const socialLinks = [
+//     { icon: <LinkedInIcon />, label: 'LinkedIn', href: 'https://linkedin.com' },
+//     { icon: <TwitterIcon />, label: 'Twitter', href: 'https://twitter.com' },
+//     { icon: <GitHubIcon />, label: 'GitHub', href: 'https://github.com' },
+//     { icon: <EmailIcon />, label: 'Email', href: 'mailto:contact@zenturatech.com' },
+//   ];
+
+//   return (
+//     <Box
+//       component="footer"
+//       sx={{
+//         bgcolor: '#000000',
+//         position: 'relative',
+//         pt: 8,
+//         pb: 6,
+//         borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+//       }}
+//     >
+//       <Container maxWidth="xl">
+//         {/* Logo and Company Info Section */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6 }}
+//         >
+//           <Box sx={{ textAlign: 'center', mb: 6 }}>
+//             {/* Logo */}
+//             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+//               <Logo variant="Classic" size="large" />
+//             </Box>
+            
+//             <Typography variant="body1" sx={{ 
+//               mb: 4, 
+//               lineHeight: 1.8, 
+//               color: 'rgba(255, 255, 255, 0.7)',
+//               maxWidth: '600px',
+//               mx: 'auto',
+//               fontSize: '1rem',
+//             }}>
+//               Pioneering the future of artificial intelligence. We build intelligent solutions 
+//               that transform businesses through cutting-edge AI technology.
+//             </Typography>
+            
+//             {/* Social Links */}
+//             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 6 }}>
+//               {socialLinks.map((social, index) => (
+//                 <motion.div
+//                   key={social.label}
+//                   initial={{ opacity: 0, scale: 0 }}
+//                   animate={{ opacity: 1, scale: 1 }}
+//                   transition={{ duration: 0.3, delay: index * 0.1 }}
+//                   whileHover={{ scale: 1.1 }}
+//                 >
+//                   <IconButton
+//                     href={social.href}
+//                     target="_blank"
+//                     rel="noopener noreferrer"
+//                     sx={{
+//                       bgcolor: 'rgba(255, 255, 255, 0.05)',
+//                       border: '1px solid rgba(255, 255, 255, 0.1)',
+//                       color: '#FFFFFF',
+//                       '&:hover': {
+//                         bgcolor: 'rgba(255, 255, 255, 0.1)',
+//                         borderColor: 'rgba(255, 255, 255, 0.3)',
+//                       },
+//                     }}
+//                   >
+//                     {social.icon}
+//                   </IconButton>
+//                 </motion.div>
+//               ))}
+//             </Box>
+//           </Box>
+//         </motion.div>
+
+//         {/* Main Footer Content */}
+//         <Grid container spacing={4}>
+//           {/* Contact Info */}
+//           <Grid item xs={12} md={4}>
+//             <motion.div
+//               initial={{ opacity: 0, x: -20 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               transition={{ duration: 0.5 }}
+//             >
+//               <Typography
+//                 variant="h6"
+//                 sx={{
+//                   mb: 3,
+//                   fontWeight: 600,
+//                   color: '#FFFFFF',
+//                   fontSize: '1.1rem',
+//                   letterSpacing: '0.5px',
+//                 }}
+//               >
+//                 Contact Information
+//               </Typography>
+              
+//               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+//                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+//                   <EmailIcon sx={{ color: '#FFFFFF', fontSize: 20, opacity: 0.7 }} />
+//                   <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+//                     contact@zenturatech.com
+//                   </Typography>
+//                 </Box>
+                
+//                 <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+//                   San Francisco, California
+//                 </Typography>
+//               </Box>
+
+//               {/* Newsletter Subscription */}
+//               <Box sx={{ mt: 4 }}>
+//                 <Typography
+//                   variant="h6"
+//                   sx={{
+//                     mb: 2,
+//                     fontWeight: 600,
+//                     color: '#FFFFFF',
+//                     fontSize: '1.1rem',
+//                     letterSpacing: '0.5px',
+//                   }}
+//                 >
+//                   AI Insights Newsletter
+//                 </Typography>
+//                 <Typography variant="body2" sx={{ mb: 3, color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.9rem' }}>
+//                   Get the latest AI research and trends.
+//                 </Typography>
+//                 <Box component="form">
+//                   <TextField
+//                     fullWidth
+//                     placeholder="Your email address"
+//                     variant="outlined"
+//                     size="small"
+//                     sx={{
+//                       mb: 2,
+//                       '& .MuiOutlinedInput-root': {
+//                         bgcolor: 'rgba(255, 255, 255, 0.05)',
+//                         borderColor: 'rgba(255,255,255,0.1)',
+//                         color: '#FFFFFF',
+//                         '&:hover': {
+//                           borderColor: 'rgba(255, 255, 255, 0.3)',
+//                         },
+//                         '&.Mui-focused': {
+//                           borderColor: 'rgba(255, 255, 255, 0.3)',
+//                         }
+//                       },
+//                       '& .MuiOutlinedInput-input': {
+//                         color: '#FFFFFF',
+//                         fontSize: '0.9rem',
+//                         padding: '10px 14px',
+//                       }
+//                     }}
+//                   />
+//                   <motion.div
+//                     whileHover={{ scale: 1.02 }}
+//                     whileTap={{ scale: 0.98 }}
+//                   >
+//                     <Button
+//                       fullWidth
+//                       variant="contained"
+//                       sx={{
+//                         bgcolor: '#FFFFFF',
+//                         color: '#000000',
+//                         fontWeight: 600,
+//                         py: 1,
+//                         fontSize: '0.9rem',
+//                         '&:hover': {
+//                           bgcolor: 'rgba(255, 255, 255, 0.9)',
+//                         }
+//                       }}
+//                     >
+//                       Subscribe
+//                     </Button>
+//                   </motion.div>
+//                 </Box>
+//               </Box>
+//             </motion.div>
+//           </Grid>
+
+//           {/* Footer Links Sections */}
+//           {Object.entries(footerLinks).map(([category, links], index) => (
+//             <Grid item xs={6} sm={3} md={2} key={category}>
+//               <motion.div
+//                 initial={{ opacity: 0, y: 20 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.5, delay: index * 0.1 }}
+//               >
+//                 <Typography
+//                   variant="h6"
+//                   sx={{
+//                     mb: 3,
+//                     fontWeight: 600,
+//                     color: '#FFFFFF',
+//                     fontSize: '1rem',
+//                     letterSpacing: '0.5px',
+//                   }}
+//                 >
+//                   {category}
+//                 </Typography>
+//                 <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+//                   {links.map((link) => (
+//                     <motion.li
+//                       key={link.label}
+//                       whileHover={{ x: 5 }}
+//                       style={{ marginBottom: '12px' }}
+//                     >
+//                       <Link
+//                         href={link.href}
+//                         sx={{
+//                           color: 'rgba(255, 255, 255, 0.7)',
+//                           textDecoration: 'none',
+//                           transition: 'all 0.3s ease',
+//                           fontSize: '0.9rem',
+//                           '&:hover': {
+//                             color: '#FFFFFF',
+//                           },
+//                         }}
+//                       >
+//                         {link.label}
+//                       </Link>
+//                     </motion.li>
+//                   ))}
+//                 </Box>
+//               </motion.div>
+//             </Grid>
+//           ))}
+//         </Grid>
+
+//         <Divider sx={{ 
+//           my: 6, 
+//           borderColor: 'rgba(255, 255, 255, 0.1)',
+//           borderWidth: '1px',
+//         }} />
+
+//         {/* Copyright Section */}
+//         <Box sx={{ 
+//           display: 'flex', 
+//           flexDirection: { xs: 'column', md: 'row' }, 
+//           justifyContent: 'space-between', 
+//           alignItems: 'center',
+//           gap: 3,
+//         }}>
+//           <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+//             © {currentYear} ZenturaTech AI Solutions. All rights reserved.
+//           </Typography>
+          
+//           <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+//             <Link href="/privacy" sx={{ textDecoration: 'none' }}>
+//               <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)', '&:hover': { color: '#FFFFFF' } }}>
+//                 Privacy Policy
+//               </Typography>
+//             </Link>
+//             <Link href="/terms" sx={{ textDecoration: 'none' }}>
+//               <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)', '&:hover': { color: '#FFFFFF' } }}>
+//                 Terms of Service
+//               </Typography>
+//             </Link>
+//             <Link href="/cookies" sx={{ textDecoration: 'none' }}>
+//               <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)', '&:hover': { color: '#FFFFFF' } }}>
+//                 Cookie Policy
+//               </Typography>
+//             </Link>
+//           </Box>
+//         </Box>
+
+//         {/* AI Badge - Minimal */}
+//         <Box sx={{ 
+//           display: 'flex', 
+//           justifyContent: 'center', 
+//           mt: 4,
+//           alignItems: 'center',
+//           gap: 1,
+//         }}>
+//           <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+//             Powered by Advanced AI
+//           </Typography>
+//         </Box>
+//       </Container>
+//     </Box>
+//   );
+// };
+
+// export default Footer;
+
+
+import React, { useState } from 'react';
 import {
   Box,
   Container,
-  Grid,
   Typography,
-  Link,
   IconButton,
-  Divider,
-  Button,
-  TextField,
 } from '@mui/material';
-import {
-  LinkedIn as LinkedInIcon,
-  Twitter as TwitterIcon,
-  GitHub as GitHubIcon,
-  Email as EmailIcon,
-} from '@mui/icons-material';
-import { motion } from 'framer-motion';
-import Logo from './Logo';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
-  const footerLinks = {
-    'Solutions': [
-      { label: 'AI Strategy', href: '/services#ai-strategy' },
-      { label: 'Machine Learning', href: '/services#ml-development' },
-      { label: 'NLP Solutions', href: '/services#nlp-solutions' },
-      { label: 'Computer Vision', href: '/services#computer-vision' },
-    ],
-    'Resources': [
-      { label: 'AI Research', href: '/research' },
-      { label: 'Case Studies', href: '/case-studies' },
-      { label: 'Documentation', href: '/docs' },
-      { label: 'AI Tools', href: '/tools' },
-    ],
-    'Company': [
-      { label: 'About Us', href: '/about' },
-      { label: 'Our Team', href: '/team' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Contact', href: '/contact' },
-    ],
-    'Legal': [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Cookie Policy', href: '/cookies' },
-      { label: 'Security', href: '/security' },
-    ],
+  const navigate = useNavigate();
+  const [activePortal, setActivePortal] = useState(null);
+  
+  const primary = '#cf3476';
+  const secondary = '#fa8072';
+  const white = '#ffffff';
+  const darkBg = '#000000';
+
+  // Wormhole portal animation
+  const wormholeVariants = {
+    hidden: { scale: 0, rotate: 0 },
+    visible: {
+      scale: 1,
+      rotate: 360,
+      transition: {
+        scale: { duration: 1 },
+        rotate: {
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }
+      }
+    }
   };
 
-  const socialLinks = [
-    { icon: <LinkedInIcon />, label: 'LinkedIn', href: 'https://linkedin.com' },
-    { icon: <TwitterIcon />, label: 'Twitter', href: 'https://twitter.com' },
-    { icon: <GitHubIcon />, label: 'GitHub', href: 'https://github.com' },
-    { icon: <EmailIcon />, label: 'Email', href: 'mailto:contact@zenturatech.com' },
+  // Particle streaming into wormhole
+  const particleStream = {
+    animate: (i) => ({
+      x: [Math.random() * 500 - 250, 0],
+      y: [Math.random() * 500 - 250, 0],
+      opacity: [0, 1, 0],
+      scale: [0, 1, 0],
+      transition: {
+        duration: 2,
+        delay: i * 0.1,
+        repeat: Infinity,
+        repeatDelay: Math.random() * 2
+      }
+    })
+  };
+
+  // Portal navigation items
+  const portals = [
+    { id: 1, label: 'LAUNCH', icon: <RocketLaunchIcon />, color: primary, destination: '/services' },
+    { id: 2, label: 'INNOVATE', icon: <AutoAwesomeIcon />, color: secondary, destination: '/research' },
+    { id: 3, label: 'CONNECT', icon: <PsychologyIcon />, color: primary, destination: '/contact' },
   ];
 
-  return (
-    <Box
-      component="footer"
-      sx={{
-        bgcolor: '#000000',
-        position: 'relative',
-        pt: 8,
-        pb: 6,
-        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-      }}
-    >
-      <Container maxWidth="xl">
-        {/* Logo and Company Info Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
-            {/* Logo */}
-            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
-              <Logo variant="Classic" size="large" />
-            </Box>
-            
-            <Typography variant="body1" sx={{ 
-              mb: 4, 
-              lineHeight: 1.8, 
-              color: 'rgba(255, 255, 255, 0.7)',
-              maxWidth: '600px',
-              mx: 'auto',
-              fontSize: '1rem',
-            }}>
-              Pioneering the future of artificial intelligence. We build intelligent solutions 
-              that transform businesses through cutting-edge AI technology.
-            </Typography>
-            
-            {/* Social Links */}
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 6 }}>
-              {socialLinks.map((social, index) => (
-                <motion.div
-                  key={social.label}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <IconButton
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      bgcolor: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: '#FFFFFF',
-                      '&:hover': {
-                        bgcolor: 'rgba(255, 255, 255, 0.1)',
-                        borderColor: 'rgba(255, 255, 255, 0.3)',
-                      },
-                    }}
-                  >
-                    {social.icon}
-                  </IconButton>
-                </motion.div>
-              ))}
-            </Box>
-          </Box>
-        </motion.div>
+  const handlePortalClick = (destination) => {
+    navigate(destination);
+  };
 
-        {/* Main Footer Content */}
-        <Grid container spacing={4}>
-          {/* Contact Info */}
-          <Grid item xs={12} md={4}>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+  return (
+    <Box ref={ref} sx={{
+      minHeight: '100vh',
+      backgroundColor: darkBg,
+      position: 'relative',
+      overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'center',
+    }}>
+      
+      {/* Wormhole Effect */}
+      <Box sx={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '600px',
+        height: '600px',
+        zIndex: 0,
+      }}>
+        {/* Outer wormhole ring */}
+        <motion.div
+          variants={wormholeVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '500px',
+            height: '500px',
+            borderRadius: '50%',
+            border: `10px solid transparent`,
+            borderTop: `10px solid ${primary}`,
+            borderRight: `10px solid ${secondary}`,
+            filter: 'blur(2px)',
+            opacity: 0.7,
+          }}
+        />
+
+        {/* Inner wormhole ring */}
+        <motion.div
+          variants={wormholeVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={{ rotate: { duration: 15, repeat: Infinity, ease: "linear" }}}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            border: `8px solid transparent`,
+            borderBottom: `8px solid ${secondary}`,
+            borderLeft: `8px solid ${primary}`,
+            filter: 'blur(1px)',
+            opacity: 0.5,
+          }}
+        />
+
+        {/* Particle streaming into wormhole */}
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            custom={i}
+            animate="animate"
+            variants={particleStream}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '4px',
+              height: '4px',
+              borderRadius: '50%',
+              background: i % 2 === 0 ? primary : secondary,
+            }}
+          />
+        ))}
+
+        {/* Wormhole core - pulls everything in */}
+        <motion.div
+          animate={inView ? {
+            scale: [1, 1.2, 1],
+            opacity: [0.8, 1, 0.8],
+          } : {}}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100px',
+            height: '100px',
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${primary}, ${secondary}, black)`,
+            boxShadow: `0 0 100px ${primary}80, inset 0 0 50px ${secondary}`,
+            filter: 'blur(1px)',
+          }}
+        />
+      </Box>
+
+      {/* Portal navigation orbiting the wormhole */}
+      {portals.map((portal, i) => {
+        const angle = (i * 120) * Math.PI / 180;
+        const radius = 300;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        return (
+          <motion.div
+            key={portal.id}
+            initial={{ scale: 0, x: 0, y: 0 }}
+            animate={inView ? { 
+              scale: 1,
+              x,
+              y,
+              rotate: -angle * 180 / Math.PI
+            } : {}}
+            transition={{
+              delay: 0.5 + i * 0.2,
+              type: "spring",
+              stiffness: 100
+            }}
+            whileHover={{ 
+              scale: 1.5,
+              zIndex: 100,
+              transition: { type: "spring", stiffness: 300 }
+            }}
+            onHoverStart={() => setActivePortal(portal.id)}
+            onHoverEnd={() => setActivePortal(null)}
+            onClick={() => handlePortalClick(portal.destination)}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              cursor: 'pointer',
+            }}
+          >
+            {/* Portal gate */}
+            <Box
+              sx={{
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                background: `radial-gradient(circle, ${portal.color}40, ${portal.color}20)`,
+                border: `3px solid ${portal.color}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: activePortal === portal.id 
+                  ? `0 0 40px ${portal.color}, 0 0 80px ${portal.color}40`
+                  : `0 0 20px ${portal.color}30`,
+                transition: 'all 0.3s',
+              }}
             >
-              <Typography
-                variant="h6"
-                sx={{
-                  mb: 3,
-                  fontWeight: 600,
-                  color: '#FFFFFF',
-                  fontSize: '1.1rem',
-                  letterSpacing: '0.5px',
+              {/* Portal icon */}
+              <motion.div
+                animate={activePortal === portal.id ? {
+                  rotate: 360,
+                  scale: 1.3,
+                } : {}}
+                transition={{ duration: 0.5 }}
+                style={{
+                  color: portal.color,
+                  fontSize: '2rem',
                 }}
               >
-                Contact Information
-              </Typography>
-              
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <EmailIcon sx={{ color: '#FFFFFF', fontSize: 20, opacity: 0.7 }} />
-                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                    contact@zenturatech.com
-                  </Typography>
-                </Box>
-                
-                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                  San Francisco, California
-                </Typography>
-              </Box>
+                {portal.icon}
+              </motion.div>
 
-              {/* Newsletter Subscription */}
-              <Box sx={{ mt: 4 }}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    mb: 2,
-                    fontWeight: 600,
-                    color: '#FFFFFF',
-                    fontSize: '1.1rem',
-                    letterSpacing: '0.5px',
-                  }}
-                >
-                  AI Insights Newsletter
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 3, color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.9rem' }}>
-                  Get the latest AI research and trends.
-                </Typography>
-                <Box component="form">
-                  <TextField
-                    fullWidth
-                    placeholder="Your email address"
-                    variant="outlined"
-                    size="small"
-                    sx={{
-                      mb: 2,
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: 'rgba(255, 255, 255, 0.05)',
-                        borderColor: 'rgba(255,255,255,0.1)',
-                        color: '#FFFFFF',
-                        '&:hover': {
-                          borderColor: 'rgba(255, 255, 255, 0.3)',
-                        },
-                        '&.Mui-focused': {
-                          borderColor: 'rgba(255, 255, 255, 0.3)',
-                        }
-                      },
-                      '& .MuiOutlinedInput-input': {
-                        color: '#FFFFFF',
-                        fontSize: '0.9rem',
-                        padding: '10px 14px',
-                      }
+              {/* Energy effect inside portal */}
+              <motion.div
+                animate={{
+                  rotate: 360,
+                  scale: [1, 1.5, 1],
+                }}
+                transition={{
+                  rotate: {
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear"
+                  },
+                  scale: {
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }
+                }}
+                style={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  border: `2px dashed ${portal.color}40`,
+                  opacity: 0.5,
+                }}
+              />
+
+              {/* Beam from portal to wormhole */}
+              <AnimatePresence>
+                {activePortal === portal.id && (
+                  <motion.div
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 0.5 }}
+                    exit={{ pathLength: 0, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      width: '1px',
+                      height: `${radius}px`,
+                      background: `linear-gradient(90deg, ${portal.color}, ${portal.color === primary ? secondary : primary})`,
+                      transform: `translate(-50%, -50%) rotate(${-angle}rad) translateX(${-radius/2}px)`,
+                      transformOrigin: 'left center',
+                      zIndex: -1,
                     }}
                   />
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      sx={{
-                        bgcolor: '#FFFFFF',
-                        color: '#000000',
-                        fontWeight: 600,
-                        py: 1,
-                        fontSize: '0.9rem',
-                        '&:hover': {
-                          bgcolor: 'rgba(255, 255, 255, 0.9)',
-                        }
-                      }}
-                    >
-                      Subscribe
-                    </Button>
-                  </motion.div>
-                </Box>
-              </Box>
-            </motion.div>
-          </Grid>
+                )}
+              </AnimatePresence>
+            </Box>
 
-          {/* Footer Links Sections */}
-          {Object.entries(footerLinks).map(([category, links], index) => (
-            <Grid item xs={6} sm={3} md={2} key={category}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+            {/* Portal label */}
+            <motion.div
+              animate={activePortal === portal.id ? {
+                opacity: 1,
+                y: 0,
+              } : {
+                opacity: 0,
+                y: 20
+              }}
+              style={{
+                position: 'absolute',
+                top: '100%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                marginTop: '1rem',
+              }}
+            >
+              <Typography
+                sx={{
+                  color: portal.color,
+                  fontWeight: 900,
+                  fontSize: '0.9rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '3px',
+                  textShadow: `0 0 10px ${portal.color}`,
+                  whiteSpace: 'nowrap',
+                }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    mb: 3,
-                    fontWeight: 600,
-                    color: '#FFFFFF',
-                    fontSize: '1rem',
-                    letterSpacing: '0.5px',
-                  }}
-                >
-                  {category}
-                </Typography>
-                <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
-                  {links.map((link) => (
-                    <motion.li
-                      key={link.label}
-                      whileHover={{ x: 5 }}
-                      style={{ marginBottom: '12px' }}
-                    >
-                      <Link
-                        href={link.href}
-                        sx={{
-                          color: 'rgba(255, 255, 255, 0.7)',
-                          textDecoration: 'none',
-                          transition: 'all 0.3s ease',
-                          fontSize: '0.9rem',
-                          '&:hover': {
-                            color: '#FFFFFF',
-                          },
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    </motion.li>
-                  ))}
-                </Box>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+                {portal.label}
+              </Typography>
+            </motion.div>
+          </motion.div>
+        );
+      })}
 
-        <Divider sx={{ 
-          my: 6, 
-          borderColor: 'rgba(255, 255, 255, 0.1)',
-          borderWidth: '1px',
-        }} />
-
-        {/* Copyright Section */}
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Box sx={{ 
-          display: 'flex', 
-          flexDirection: { xs: 'column', md: 'row' }, 
-          justifyContent: 'space-between', 
-          alignItems: 'center',
-          gap: 3,
+          textAlign: 'center',
+          position: 'relative',
+          minHeight: '80vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          pb: 10
         }}>
-          <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-            © {currentYear} ZenturaTech AI Solutions. All rights reserved.
-          </Typography>
           
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-            <Link href="/privacy" sx={{ textDecoration: 'none' }}>
-              <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)', '&:hover': { color: '#FFFFFF' } }}>
-                Privacy Policy
-              </Typography>
-            </Link>
-            <Link href="/terms" sx={{ textDecoration: 'none' }}>
-              <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)', '&:hover': { color: '#FFFFFF' } }}>
-                Terms of Service
-              </Typography>
-            </Link>
-            <Link href="/cookies" sx={{ textDecoration: 'none' }}>
-              <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)', '&:hover': { color: '#FFFFFF' } }}>
-                Cookie Policy
-              </Typography>
-            </Link>
-          </Box>
-        </Box>
+          {/* Main title - sucked into wormhole */}
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={inView ? { 
+              y: 0, 
+              opacity: 1,
+              scale: [1, 1.05, 1]
+            } : {}}
+            transition={{ 
+              delay: 0.2,
+              scale: {
+                duration: 3,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }
+            }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                color: white,
+                fontWeight: 900,
+                fontSize: { xs: '2.5rem', md: '4rem' },
+                lineHeight: 1.1,
+                mb: 4,
+                textTransform: 'uppercase',
+                letterSpacing: '5px',
+                '& span': {
+                  background: `linear-gradient(45deg, ${primary}, ${secondary})`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }
+              }}
+            >
+              ENTER THE <span>PORTAL</span>
+            </Typography>
+          </motion.div>
 
-        {/* AI Badge - Minimal */}
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          mt: 4,
-          alignItems: 'center',
-          gap: 1,
-        }}>
-          <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-            Powered by Advanced AI
-          </Typography>
+          {/* Subtitle */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5 }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                color: '#aaa',
+                fontWeight: 300,
+                fontSize: '1rem',
+                letterSpacing: '3px',
+                textTransform: 'uppercase',
+                mb: 8,
+              }}
+            >
+              Choose Your Destination
+            </Typography>
+          </motion.div>
+
+          {/* Central call to action */}
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ delay: 1, type: "spring", stiffness: 200 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            style={{ marginTop: '4rem' }}
+          >
+            <IconButton
+              onClick={() => navigate('/')}
+              sx={{
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                background: 'rgba(255,255,255,0.1)',
+                backdropFilter: 'blur(10px)',
+                border: '2px solid rgba(255,255,255,0.2)',
+                color: white,
+                '&:hover': {
+                  background: 'rgba(255,255,255,0.2)',
+                  borderColor: primary,
+                  boxShadow: `0 0 30px ${primary}`,
+                },
+                transition: 'all 0.3s',
+              }}
+            >
+              <ArrowForwardIcon sx={{ fontSize: '2rem' }} />
+            </IconButton>
+            <Typography
+              sx={{
+                color: '#888',
+                fontSize: '0.8rem',
+                textTransform: 'uppercase',
+                letterSpacing: '2px',
+                mt: 2,
+              }}
+            >
+              To Infinity
+            </Typography>
+          </motion.div>
+
+          {/* Copyright - barely visible at bottom */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 0.3 } : {}}
+            transition={{ delay: 2 }}
+            style={{
+              position: 'absolute',
+              bottom: '20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '100%',
+            }}
+          >
+            <Typography
+              sx={{
+                color: '#666',
+                fontSize: '0.7rem',
+                letterSpacing: '3px',
+                textTransform: 'uppercase',
+              }}
+            >
+              © 2024 ZENTURATECH • AI REVOLUTION
+            </Typography>
+          </motion.div>
         </Box>
       </Container>
+
+      {/* Gravity waves */}
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={inView ? {
+            scale: 3,
+            opacity: [0, 0.3, 0],
+          } : {}}
+          transition={{
+            duration: 3,
+            delay: i * 0.8,
+            repeat: Infinity,
+            repeatDelay: 2
+          }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100px',
+            height: '100px',
+            borderRadius: '50%',
+            border: `1px solid ${i % 2 === 0 ? primary : secondary}${30 + i * 10}`,
+            zIndex: 0,
+          }}
+        />
+      ))}
+
+      {/* Grid distortion effect */}
+      <motion.div
+        animate={inView ? {
+          backgroundPosition: ['0% 0%', '100% 100%'],
+          scale: [1, 1.02, 1],
+        } : {}}
+        transition={{
+          backgroundPosition: {
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse"
+          },
+          scale: {
+            duration: 5,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }
+        }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            radial-gradient(circle at 50% 50%, transparent 20%, ${primary}05 40%, transparent 60%),
+            linear-gradient(45deg, transparent 49%, ${secondary}05 50%, transparent 51%),
+            linear-gradient(-45deg, transparent 49%, ${primary}05 50%, transparent 51%)
+          `,
+          backgroundSize: '200px 200px, 20px 20px, 20px 20px',
+          opacity: 0.5,
+          zIndex: 0,
+        }}
+      />
     </Box>
   );
 };

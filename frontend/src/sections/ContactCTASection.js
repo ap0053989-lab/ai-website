@@ -1737,34 +1737,591 @@
 
 // export default ContactCTASection;
 
+// import React, { useState } from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Button,
+//   Grid,
+//   Paper,
+//   IconButton,
+//   TextField,
+//   MenuItem,
+//   Chip,
+//   Divider,
+//   Stack,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+// import AccessTimeIcon from '@mui/icons-material/AccessTime';
+// import LanguageIcon from '@mui/icons-material/Language';
+// import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+// import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+// import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+// import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+// import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+// import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+// import InsightsIcon from '@mui/icons-material/Insights';
+// import { useNavigate } from 'react-router-dom';
+
+// const ContactCTASection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+//   const primaryColor = '#fa8072'; // Salmon color
+//   const secondaryColor = '#cf3476'; // Pink for highlights
+
+//   const [selectedDate, setSelectedDate] = useState(null);
+//   const [selectedTime, setSelectedTime] = useState(null);
+//   const [currentMonth, setCurrentMonth] = useState(new Date());
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [company, setCompany] = useState('');
+
+//   const handleGetInTouch = () => {
+//     navigate('/contact');
+//   };
+
+//   // Generate calendar dates for current month
+//   const generateCalendarDates = () => {
+//     const year = currentMonth.getFullYear();
+//     const month = currentMonth.getMonth();
+//     const firstDay = new Date(year, month, 1);
+//     const lastDay = new Date(year, month + 1, 0);
+    
+//     const dates = [];
+//     // Add empty cells for days before first day of month
+//     for (let i = 0; i < firstDay.getDay(); i++) {
+//       dates.push(null);
+//     }
+    
+//     // Add actual days of month
+//     for (let i = 1; i <= lastDay.getDate(); i++) {
+//       dates.push(new Date(year, month, i));
+//     }
+    
+//     return dates;
+//   };
+
+//   const handlePrevMonth = () => {
+//     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+//   };
+
+//   const handleNextMonth = () => {
+//     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+//   };
+
+//   const handleDateSelect = (date) => {
+//     if (date) {
+//       setSelectedDate(date);
+//       setSelectedTime(null);
+//     }
+//   };
+
+//   const monthNames = ["January", "February", "March", "April", "May", "June",
+//     "July", "August", "September", "October", "November", "December"
+//   ];
+
+//   const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+//   const availableTimes = [
+//     "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", 
+//     "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM"
+//   ];
+
+//   const timeZones = [
+//     "Pacific Time (PT)",
+//     "Mountain Time (MT)",
+//     "Central Time (CT)",
+//     "Eastern Time (ET)",
+//     "GMT (London)",
+//     "CET (Central Europe)",
+//     "IST (India)",
+//     "CST (China)",
+//     "JST (Japan)",
+//     "AEST (Australia)"
+//   ];
+
+//   const handleSubmit = () => {
+//     if (selectedDate && selectedTime && name && email) {
+//       // Handle form submission
+//       console.log({
+//         name,
+//         email,
+//         company,
+//         date: selectedDate,
+//         time: selectedTime
+//       });
+//       alert('Meeting scheduled successfully! We will contact you soon.');
+//     } else {
+//       alert('Please fill all required fields and select date/time.');
+//     }
+//   };
+
+//   return (
+//     <Box ref={ref} sx={{ 
+//       py: { xs: 8, md: 12 }, 
+//       backgroundColor: 'transparent',
+//     }}>
+//       <Container maxWidth="lg">
+//         <motion.div
+//           initial={{ opacity: 0, y: 50 }}
+//           animate={inView ? { opacity: 1, y: 0 } : {}}
+//           transition={{ duration: 0.6 }}
+//         >
+//           <Typography
+//             variant="h2"
+//             sx={{
+//               mb: 6,
+//               color: primaryColor,
+//               fontWeight: 700,
+//               fontSize: { xs: '2rem', md: '2.5rem' },
+//               textAlign: 'center',
+//             }}
+//           >
+//             Ready to Transform Your Business with AI?
+//           </Typography>
+          
+//           <Paper
+//             elevation={0}
+//             sx={{
+//               backgroundColor: '#111111',
+//               border: `1px solid ${primaryColor}33`,
+//               borderRadius: 2,
+//               overflow: 'hidden',
+//               background: 'linear-gradient(145deg, #0a0a0a, #111111)',
+//             }}
+//           >
+//             <Grid container>
+//               {/* Left side - Zenturatech AI Solutions Info */}
+//               <Grid item xs={12} md={5}>
+//                 <Box sx={{ p: { xs: 3, md: 5 }, height: '100%' }}>
+//                   <Typography
+//                     variant="h4"
+//                     sx={{
+//                       mb: 3,
+//                       color: primaryColor,
+//                       fontWeight: 700,
+//                       fontSize: { xs: '1.8rem', md: '2.2rem' },
+//                       display: 'flex',
+//                       alignItems: 'center',
+//                       gap: 1,
+//                     }}
+//                   >
+//                     <AutoAwesomeIcon /> Zenturatech AI Solutions
+//                   </Typography>
+                  
+//                   <Typography
+//                     variant="h5"
+//                     sx={{
+//                       mb: 2,
+//                       color: '#ffffff',
+//                       fontWeight: 600,
+//                       fontSize: '1.3rem',
+//                     }}
+//                   >
+//                     Schedule Your AI Consultation
+//                   </Typography>
+
+//                   <Typography
+//                     sx={{
+//                       mb: 4,
+//                       color: '#ffffff',
+//                       opacity: 0.9,
+//                       fontSize: '0.95rem',
+//                       lineHeight: 1.7,
+//                     }}
+//                   >
+//                     Book a personalized consultation to discover how our AI solutions can revolutionize your business operations and drive unprecedented growth.
+//                   </Typography>
+
+//                   <Stack spacing={2} sx={{ mb: 4 }}>
+//                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+//                       <AccessTimeIcon sx={{ color: primaryColor, fontSize: 20 }} />
+//                       <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', fontWeight: 500 }}>
+//                         45 min. Personalized Consultation
+//                       </Typography>
+//                     </Box>
+                    
+//                     <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+//                       <CheckCircleIcon sx={{ color: primaryColor, fontSize: 20, mt: 0.5 }} />
+//                       <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', opacity: 0.9 }}>
+//                         Detailed AI implementation roadmap provided
+//                       </Typography>
+//                     </Box>
+
+//                     <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+//                       <CheckCircleIcon sx={{ color: primaryColor, fontSize: 20, mt: 0.5 }} />
+//                       <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', opacity: 0.9 }}>
+//                         Custom solution proposal based on your needs
+//                       </Typography>
+//                     </Box>
+//                   </Stack>
+
+//                   <Divider sx={{ my: 4, borderColor: '#333' }} />
+
+//                   {/* AI Features */}
+//                   <Box sx={{ mb: 4 }}>
+//                     <Typography
+//                       variant="h6"
+//                       sx={{
+//                         mb: 2,
+//                         color: primaryColor,
+//                         fontWeight: 600,
+//                         fontSize: '1rem',
+//                       }}
+//                     >
+//                       Our AI Solutions Include:
+//                     </Typography>
+                    
+//                     <Grid container spacing={2}>
+//                       {[
+//                         { icon: <AutoAwesomeIcon />, text: 'Custom AI Models', color: primaryColor },
+//                         { icon: <RocketLaunchIcon />, text: 'Rapid Deployment', color: primaryColor },
+//                         { icon: <TrendingUpIcon />, text: 'ROI Guarantee', color: primaryColor },
+//                         { icon: <InsightsIcon />, text: 'Data Analytics', color: primaryColor },
+//                       ].map((feature) => (
+//                         <Grid item xs={6} key={feature.text}>
+//                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+//                             <Box sx={{ color: feature.color }}>
+//                               {feature.icon}
+//                             </Box>
+//                             <Typography sx={{ 
+//                               color: '#ffffff', 
+//                               fontSize: '0.85rem',
+//                               fontWeight: 500 
+//                             }}>
+//                               {feature.text}
+//                             </Typography>
+//                           </Box>
+//                         </Grid>
+//                       ))}
+//                     </Grid>
+//                   </Box>
+//                 </Box>
+//               </Grid>
+
+//               {/* Right side - Calendar and Booking Form */}
+//               <Grid item xs={12} md={7}>
+//                 <Box sx={{ p: { xs: 3, md: 5 }, backgroundColor: '#0a0a0a' }}>
+//                   <Typography
+//                     variant="h5"
+//                     sx={{
+//                       mb: 4,
+//                       color: '#ffffff',
+//                       fontWeight: 600,
+//                       fontSize: '1.4rem',
+//                       textAlign: 'center',
+//                     }}
+//                   >
+//                     Schedule Your Consultation
+//                   </Typography>
+
+//                   {/* Calendar Section */}
+//                   <Box sx={{ mb: 4 }}>
+//                     <Typography
+//                       sx={{
+//                         mb: 2,
+//                         color: '#ffffff',
+//                         fontWeight: 600,
+//                         fontSize: '0.95rem',
+//                       }}
+//                     >
+//                       Select a Date & Time
+//                     </Typography>
+
+//                     {/* Calendar Header */}
+//                     <Box sx={{ 
+//                       display: 'flex', 
+//                       justifyContent: 'space-between', 
+//                       alignItems: 'center',
+//                       mb: 2 
+//                     }}>
+//                       <IconButton 
+//                         onClick={handlePrevMonth}
+//                         sx={{ color: primaryColor }}
+//                       >
+//                         <ChevronLeftIcon />
+//                       </IconButton>
+                      
+//                       <Typography sx={{ color: '#ffffff', fontWeight: 600 }}>
+//                         {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
+//                       </Typography>
+                      
+//                       <IconButton 
+//                         onClick={handleNextMonth}
+//                         sx={{ color: primaryColor }}
+//                       >
+//                         <ChevronRightIcon />
+//                       </IconButton>
+//                     </Box>
+
+//                     {/* Calendar Grid */}
+//                     <Grid container spacing={0.5}>
+//                       {/* Day headers */}
+//                       {dayNames.map((day) => (
+//                         <Grid item xs key={day} sx={{ textAlign: 'center', mb: 1 }}>
+//                           <Typography sx={{ 
+//                             color: '#666', 
+//                             fontSize: '0.75rem',
+//                             fontWeight: 600 
+//                           }}>
+//                             {day}
+//                           </Typography>
+//                         </Grid>
+//                       ))}
+
+//                       {/* Calendar dates */}
+//                       {generateCalendarDates().map((date, index) => (
+//                         <Grid item xs key={index} sx={{ textAlign: 'center' }}>
+//                           {date ? (
+//                             <Button
+//                               onClick={() => handleDateSelect(date)}
+//                               sx={{
+//                                 minWidth: 'auto',
+//                                 width: 36,
+//                                 height: 36,
+//                                 borderRadius: '50%',
+//                                 color: selectedDate && date.getDate() === selectedDate.getDate() ? '#ffffff' : '#ffffff',
+//                                 backgroundColor: selectedDate && date.getDate() === selectedDate.getDate() ? primaryColor : 'transparent',
+//                                 '&:hover': {
+//                                   backgroundColor: selectedDate && date.getDate() === selectedDate.getDate() ? primaryColor : '#333',
+//                                 },
+//                                 fontSize: '0.85rem',
+//                                 fontWeight: selectedDate && date.getDate() === selectedDate.getDate() ? 600 : 400,
+//                               }}
+//                             >
+//                               {date.getDate()}
+//                             </Button>
+//                           ) : (
+//                             <Box sx={{ width: 36, height: 36 }} />
+//                           )}
+//                         </Grid>
+//                       ))}
+//                     </Grid>
+//                   </Box>
+
+//                   {/* Time Selection */}
+//                   <Box sx={{ mb: 4 }}>
+//                     <Typography
+//                       sx={{
+//                         mb: 2,
+//                         color: '#ffffff',
+//                         fontWeight: 600,
+//                         fontSize: '0.9rem',
+//                       }}
+//                     >
+//                       Available Time Slots
+//                     </Typography>
+                    
+//                     <Grid container spacing={1}>
+//                       {availableTimes.map((time) => (
+//                         <Grid item key={time}>
+//                           <Chip
+//                             label={time}
+//                             onClick={() => setSelectedTime(time)}
+//                             sx={{
+//                               backgroundColor: selectedTime === time ? primaryColor : '#222',
+//                               color: selectedTime === time ? '#ffffff' : '#ffffff',
+//                               '&:hover': {
+//                                 backgroundColor: selectedTime === time ? primaryColor : '#333',
+//                               },
+//                               fontWeight: selectedTime === time ? 600 : 400,
+//                             }}
+//                           />
+//                         </Grid>
+//                       ))}
+//                     </Grid>
+//                   </Box>
+
+//                   {/* Time Zone Selection */}
+//                   <Box sx={{ mb: 4 }}>
+//                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+//                       <LanguageIcon sx={{ color: primaryColor, fontSize: 20 }} />
+//                       <Typography sx={{ color: '#ffffff', fontWeight: 600, fontSize: '0.9rem' }}>
+//                         Select Your Time Zone
+//                       </Typography>
+//                     </Box>
+                    
+//                     <TextField
+//                       select
+//                       fullWidth
+//                       defaultValue="Eastern Time (ET)"
+//                       sx={{
+//                         '& .MuiOutlinedInput-root': {
+//                           color: '#ffffff',
+//                           '& fieldset': {
+//                             borderColor: '#333',
+//                           },
+//                           '&:hover fieldset': {
+//                             borderColor: primaryColor,
+//                           },
+//                           '&.Mui-focused fieldset': {
+//                             borderColor: primaryColor,
+//                           },
+//                         },
+//                         '& .MuiSelect-icon': {
+//                           color: primaryColor,
+//                         },
+//                       }}
+//                     >
+//                       {timeZones.map((zone) => (
+//                         <MenuItem 
+//                           key={zone} 
+//                           value={zone}
+//                           sx={{ color: '#ffffff', backgroundColor: '#111' }}
+//                         >
+//                           {zone}
+//                         </MenuItem>
+//                       ))}
+//                     </TextField>
+//                   </Box>
+
+//                   {/* Contact Form */}
+//                   <Box sx={{ mb: 4 }}>
+//                     <Typography
+//                       sx={{
+//                         mb: 3,
+//                         color: '#ffffff',
+//                         fontWeight: 600,
+//                         fontSize: '0.95rem',
+//                       }}
+//                     >
+//                       Your Contact Information
+//                     </Typography>
+                    
+//                     <Stack spacing={2}>
+//                       <TextField
+//                         placeholder="Full Name *"
+//                         value={name}
+//                         onChange={(e) => setName(e.target.value)}
+//                         fullWidth
+//                         sx={{
+//                           '& .MuiOutlinedInput-root': {
+//                             color: '#ffffff',
+//                             '& fieldset': {
+//                               borderColor: '#333',
+//                             },
+//                             '&:hover fieldset': {
+//                               borderColor: primaryColor,
+//                             },
+//                             '&.Mui-focused fieldset': {
+//                               borderColor: primaryColor,
+//                             },
+//                           },
+//                         }}
+//                       />
+                      
+//                       <TextField
+//                         placeholder="Email Address *"
+//                         value={email}
+//                         onChange={(e) => setEmail(e.target.value)}
+//                         fullWidth
+//                         sx={{
+//                           '& .MuiOutlinedInput-root': {
+//                             color: '#ffffff',
+//                             '& fieldset': {
+//                               borderColor: '#333',
+//                             },
+//                             '&:hover fieldset': {
+//                               borderColor: primaryColor,
+//                             },
+//                             '&.Mui-focused fieldset': {
+//                               borderColor: primaryColor,
+//                             },
+//                           },
+//                         }}
+//                       />
+                      
+//                       <TextField
+//                         placeholder="Company Name"
+//                         value={company}
+//                         onChange={(e) => setCompany(e.target.value)}
+//                         fullWidth
+//                         sx={{
+//                           '& .MuiOutlinedInput-root': {
+//                             color: '#ffffff',
+//                             '& fieldset': {
+//                               borderColor: '#333',
+//                             },
+//                             '&:hover fieldset': {
+//                               borderColor: primaryColor,
+//                             },
+//                             '&.Mui-focused fieldset': {
+//                               borderColor: primaryColor,
+//                             },
+//                           },
+//                         }}
+//                       />
+//                     </Stack>
+//                   </Box>
+
+//                   {/* Submit Button */}
+//                   <Button
+//                     variant="contained"
+//                     fullWidth
+//                     size="large"
+//                     onClick={handleSubmit}
+//                     sx={{
+//                       py: 1.5,
+//                       fontSize: '1rem',
+//                       fontWeight: 600,
+//                       backgroundColor: primaryColor,
+//                       color: '#ffffff',
+//                       '&:hover': {
+//                         backgroundColor: secondaryColor,
+//                         transform: 'translateY(-2px)',
+//                         boxShadow: `0 8px 25px ${primaryColor}33`,
+//                       },
+//                       transition: 'all 0.3s ease',
+//                     }}
+//                   >
+//                     Book AI Consultation
+//                   </Button>
+
+//                   <Typography
+//                     sx={{
+//                       mt: 2,
+//                       color: '#999',
+//                       fontSize: '0.75rem',
+//                       textAlign: 'center',
+//                       opacity: 0.7,
+//                     }}
+//                   >
+//                     By scheduling, you agree to our privacy policy and terms of service.
+//                   </Typography>
+//                 </Box>
+//               </Grid>
+//             </Grid>
+//           </Paper>
+//         </motion.div>
+//       </Container>
+//     </Box>
+//   );
+// };
+
+// export default ContactCTASection;
+
+
 import React, { useState } from 'react';
 import {
   Box,
   Container,
   Typography,
-  Button,
-  Grid,
-  Paper,
   IconButton,
-  TextField,
-  MenuItem,
-  Chip,
-  Divider,
-  Stack,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LanguageIcon from '@mui/icons-material/Language';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import SendIcon from '@mui/icons-material/Send';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import InsightsIcon from '@mui/icons-material/Insights';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import { useNavigate } from 'react-router-dom';
 
 const ContactCTASection = () => {
@@ -1774,534 +2331,523 @@ const ContactCTASection = () => {
   });
 
   const navigate = useNavigate();
-  const primaryColor = '#fa8072'; // Salmon color
-  const secondaryColor = '#cf3476'; // Pink for highlights
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const primary = '#cf3476';
+  const secondary = '#fa8072';
+  const white = '#ffffff';
+  const darkBg = '#0a0a0a';
 
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [company, setCompany] = useState('');
-
-  const handleGetInTouch = () => {
+  const handleContactClick = () => {
     navigate('/contact');
   };
 
-  // Generate calendar dates for current month
-  const generateCalendarDates = () => {
-    const year = currentMonth.getFullYear();
-    const month = currentMonth.getMonth();
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    
-    const dates = [];
-    // Add empty cells for days before first day of month
-    for (let i = 0; i < firstDay.getDay(); i++) {
-      dates.push(null);
-    }
-    
-    // Add actual days of month
-    for (let i = 1; i <= lastDay.getDate(); i++) {
-      dates.push(new Date(year, month, i));
-    }
-    
-    return dates;
+  // Particle explosion animation
+  const particleExplosion = {
+    hidden: { 
+      scale: 0,
+      opacity: 0 
+    },
+    visible: (i) => ({
+      scale: [0, 1.5, 0],
+      opacity: [0, 1, 0],
+      x: Math.sin(i * Math.PI * 2) * 100,
+      y: Math.cos(i * Math.PI * 2) * 100,
+      transition: {
+        duration: 1.5,
+        delay: i * 0.1,
+        repeat: Infinity,
+        repeatDelay: 2
+      }
+    })
   };
 
-  const handlePrevMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
-  };
-
-  const handleNextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
-  };
-
-  const handleDateSelect = (date) => {
-    if (date) {
-      setSelectedDate(date);
-      setSelectedTime(null);
+  // Pulse ring animation
+  const pulseRing = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: [1, 2, 1],
+      opacity: [0.5, 0, 0.5],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
     }
   };
 
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+  // Text wave animation
+  const textWave = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    })
+  };
+
+  // Button magnetic pull effect
+  const magneticPull = {
+    rest: { scale: 1 },
+    hover: {
+      scale: 1.1,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 15
+      }
+    }
+  };
+
+  // Orbiting AI elements
+  const aiOrbits = [
+    { icon: <RocketLaunchIcon />, radius: 150, speed: 20 },
+    { icon: <AutoAwesomeIcon />, radius: 200, speed: 30 },
+    { icon: <RocketLaunchIcon />, radius: 250, speed: 25 },
+    { icon: <AutoAwesomeIcon />, radius: 100, speed: 15 },
   ];
-
-  const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-
-  const availableTimes = [
-    "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", 
-    "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM"
-  ];
-
-  const timeZones = [
-    "Pacific Time (PT)",
-    "Mountain Time (MT)",
-    "Central Time (CT)",
-    "Eastern Time (ET)",
-    "GMT (London)",
-    "CET (Central Europe)",
-    "IST (India)",
-    "CST (China)",
-    "JST (Japan)",
-    "AEST (Australia)"
-  ];
-
-  const handleSubmit = () => {
-    if (selectedDate && selectedTime && name && email) {
-      // Handle form submission
-      console.log({
-        name,
-        email,
-        company,
-        date: selectedDate,
-        time: selectedTime
-      });
-      alert('Meeting scheduled successfully! We will contact you soon.');
-    } else {
-      alert('Please fill all required fields and select date/time.');
-    }
-  };
 
   return (
-    <Box ref={ref} sx={{ 
-      py: { xs: 8, md: 12 }, 
-      backgroundColor: 'transparent',
+    <Box ref={ref} sx={{
+      py: { xs: 15, md: 20 },
+      backgroundColor: darkBg,
+      position: 'relative',
+      overflow: 'hidden',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center'
     }}>
-      <Container maxWidth="lg">
+      
+      {/* Particle explosion effect */}
+      {[...Array(15)].map((_, i) => (
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          key={i}
+          custom={i}
+          variants={particleExplosion}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          style={{
+            position: 'absolute',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            background: i % 2 === 0 ? primary : secondary,
+            top: '50%',
+            left: '50%',
+            zIndex: 0,
+          }}
+        />
+      ))}
+
+      {/* Orbiting AI elements */}
+      {aiOrbits.map((orbit, i) => (
+        <motion.div
+          key={i}
+          animate={inView ? {
+            rotate: 360,
+          } : {}}
+          transition={{
+            rotate: {
+              duration: orbit.speed,
+              repeat: Infinity,
+              ease: "linear"
+            }
+          }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: `${orbit.radius * 2}px`,
+            height: `${orbit.radius * 2}px`,
+          }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              mb: 6,
-              color: primaryColor,
-              fontWeight: 700,
-              fontSize: { xs: '2rem', md: '2.5rem' },
-              textAlign: 'center',
+          <motion.div
+            animate={inView ? {
+              rotate: -360,
+              scale: [1, 1.2, 1],
+            } : {}}
+            transition={{
+              rotate: {
+                duration: orbit.speed,
+                repeat: Infinity,
+                ease: "linear"
+              },
+              scale: {
+                duration: 3,
+                repeat: Infinity,
+              }
+            }}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              fontSize: '2rem',
+              color: i % 2 === 0 ? primary : secondary,
             }}
           >
-            Ready to Transform Your Business with AI?
-          </Typography>
-          
-          <Paper
-            elevation={0}
-            sx={{
-              backgroundColor: '#111111',
-              border: `1px solid ${primaryColor}33`,
-              borderRadius: 2,
-              overflow: 'hidden',
-              background: 'linear-gradient(145deg, #0a0a0a, #111111)',
-            }}
-          >
-            <Grid container>
-              {/* Left side - Zenturatech AI Solutions Info */}
-              <Grid item xs={12} md={5}>
-                <Box sx={{ p: { xs: 3, md: 5 }, height: '100%' }}>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      mb: 3,
-                      color: primaryColor,
-                      fontWeight: 700,
-                      fontSize: { xs: '1.8rem', md: '2.2rem' },
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1,
-                    }}
-                  >
-                    <AutoAwesomeIcon /> Zenturatech AI Solutions
-                  </Typography>
-                  
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      mb: 2,
-                      color: '#ffffff',
-                      fontWeight: 600,
-                      fontSize: '1.3rem',
-                    }}
-                  >
-                    Schedule Your AI Consultation
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      mb: 4,
-                      color: '#ffffff',
-                      opacity: 0.9,
-                      fontSize: '0.95rem',
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    Book a personalized consultation to discover how our AI solutions can revolutionize your business operations and drive unprecedented growth.
-                  </Typography>
-
-                  <Stack spacing={2} sx={{ mb: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <AccessTimeIcon sx={{ color: primaryColor, fontSize: 20 }} />
-                      <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', fontWeight: 500 }}>
-                        45 min. Personalized Consultation
-                      </Typography>
-                    </Box>
-                    
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
-                      <CheckCircleIcon sx={{ color: primaryColor, fontSize: 20, mt: 0.5 }} />
-                      <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', opacity: 0.9 }}>
-                        Detailed AI implementation roadmap provided
-                      </Typography>
-                    </Box>
-
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
-                      <CheckCircleIcon sx={{ color: primaryColor, fontSize: 20, mt: 0.5 }} />
-                      <Typography sx={{ color: '#ffffff', fontSize: '0.9rem', opacity: 0.9 }}>
-                        Custom solution proposal based on your needs
-                      </Typography>
-                    </Box>
-                  </Stack>
-
-                  <Divider sx={{ my: 4, borderColor: '#333' }} />
-
-                  {/* AI Features */}
-                  <Box sx={{ mb: 4 }}>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        mb: 2,
-                        color: primaryColor,
-                        fontWeight: 600,
-                        fontSize: '1rem',
-                      }}
-                    >
-                      Our AI Solutions Include:
-                    </Typography>
-                    
-                    <Grid container spacing={2}>
-                      {[
-                        { icon: <AutoAwesomeIcon />, text: 'Custom AI Models', color: primaryColor },
-                        { icon: <RocketLaunchIcon />, text: 'Rapid Deployment', color: primaryColor },
-                        { icon: <TrendingUpIcon />, text: 'ROI Guarantee', color: primaryColor },
-                        { icon: <InsightsIcon />, text: 'Data Analytics', color: primaryColor },
-                      ].map((feature) => (
-                        <Grid item xs={6} key={feature.text}>
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <Box sx={{ color: feature.color }}>
-                              {feature.icon}
-                            </Box>
-                            <Typography sx={{ 
-                              color: '#ffffff', 
-                              fontSize: '0.85rem',
-                              fontWeight: 500 
-                            }}>
-                              {feature.text}
-                            </Typography>
-                          </Box>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-                </Box>
-              </Grid>
-
-              {/* Right side - Calendar and Booking Form */}
-              <Grid item xs={12} md={7}>
-                <Box sx={{ p: { xs: 3, md: 5 }, backgroundColor: '#0a0a0a' }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      mb: 4,
-                      color: '#ffffff',
-                      fontWeight: 600,
-                      fontSize: '1.4rem',
-                      textAlign: 'center',
-                    }}
-                  >
-                    Schedule Your Consultation
-                  </Typography>
-
-                  {/* Calendar Section */}
-                  <Box sx={{ mb: 4 }}>
-                    <Typography
-                      sx={{
-                        mb: 2,
-                        color: '#ffffff',
-                        fontWeight: 600,
-                        fontSize: '0.95rem',
-                      }}
-                    >
-                      Select a Date & Time
-                    </Typography>
-
-                    {/* Calendar Header */}
-                    <Box sx={{ 
-                      display: 'flex', 
-                      justifyContent: 'space-between', 
-                      alignItems: 'center',
-                      mb: 2 
-                    }}>
-                      <IconButton 
-                        onClick={handlePrevMonth}
-                        sx={{ color: primaryColor }}
-                      >
-                        <ChevronLeftIcon />
-                      </IconButton>
-                      
-                      <Typography sx={{ color: '#ffffff', fontWeight: 600 }}>
-                        {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
-                      </Typography>
-                      
-                      <IconButton 
-                        onClick={handleNextMonth}
-                        sx={{ color: primaryColor }}
-                      >
-                        <ChevronRightIcon />
-                      </IconButton>
-                    </Box>
-
-                    {/* Calendar Grid */}
-                    <Grid container spacing={0.5}>
-                      {/* Day headers */}
-                      {dayNames.map((day) => (
-                        <Grid item xs key={day} sx={{ textAlign: 'center', mb: 1 }}>
-                          <Typography sx={{ 
-                            color: '#666', 
-                            fontSize: '0.75rem',
-                            fontWeight: 600 
-                          }}>
-                            {day}
-                          </Typography>
-                        </Grid>
-                      ))}
-
-                      {/* Calendar dates */}
-                      {generateCalendarDates().map((date, index) => (
-                        <Grid item xs key={index} sx={{ textAlign: 'center' }}>
-                          {date ? (
-                            <Button
-                              onClick={() => handleDateSelect(date)}
-                              sx={{
-                                minWidth: 'auto',
-                                width: 36,
-                                height: 36,
-                                borderRadius: '50%',
-                                color: selectedDate && date.getDate() === selectedDate.getDate() ? '#ffffff' : '#ffffff',
-                                backgroundColor: selectedDate && date.getDate() === selectedDate.getDate() ? primaryColor : 'transparent',
-                                '&:hover': {
-                                  backgroundColor: selectedDate && date.getDate() === selectedDate.getDate() ? primaryColor : '#333',
-                                },
-                                fontSize: '0.85rem',
-                                fontWeight: selectedDate && date.getDate() === selectedDate.getDate() ? 600 : 400,
-                              }}
-                            >
-                              {date.getDate()}
-                            </Button>
-                          ) : (
-                            <Box sx={{ width: 36, height: 36 }} />
-                          )}
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-
-                  {/* Time Selection */}
-                  <Box sx={{ mb: 4 }}>
-                    <Typography
-                      sx={{
-                        mb: 2,
-                        color: '#ffffff',
-                        fontWeight: 600,
-                        fontSize: '0.9rem',
-                      }}
-                    >
-                      Available Time Slots
-                    </Typography>
-                    
-                    <Grid container spacing={1}>
-                      {availableTimes.map((time) => (
-                        <Grid item key={time}>
-                          <Chip
-                            label={time}
-                            onClick={() => setSelectedTime(time)}
-                            sx={{
-                              backgroundColor: selectedTime === time ? primaryColor : '#222',
-                              color: selectedTime === time ? '#ffffff' : '#ffffff',
-                              '&:hover': {
-                                backgroundColor: selectedTime === time ? primaryColor : '#333',
-                              },
-                              fontWeight: selectedTime === time ? 600 : 400,
-                            }}
-                          />
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-
-                  {/* Time Zone Selection */}
-                  <Box sx={{ mb: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                      <LanguageIcon sx={{ color: primaryColor, fontSize: 20 }} />
-                      <Typography sx={{ color: '#ffffff', fontWeight: 600, fontSize: '0.9rem' }}>
-                        Select Your Time Zone
-                      </Typography>
-                    </Box>
-                    
-                    <TextField
-                      select
-                      fullWidth
-                      defaultValue="Eastern Time (ET)"
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          color: '#ffffff',
-                          '& fieldset': {
-                            borderColor: '#333',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: primaryColor,
-                          },
-                          '&.Mui-focused fieldset': {
-                            borderColor: primaryColor,
-                          },
-                        },
-                        '& .MuiSelect-icon': {
-                          color: primaryColor,
-                        },
-                      }}
-                    >
-                      {timeZones.map((zone) => (
-                        <MenuItem 
-                          key={zone} 
-                          value={zone}
-                          sx={{ color: '#ffffff', backgroundColor: '#111' }}
-                        >
-                          {zone}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </Box>
-
-                  {/* Contact Form */}
-                  <Box sx={{ mb: 4 }}>
-                    <Typography
-                      sx={{
-                        mb: 3,
-                        color: '#ffffff',
-                        fontWeight: 600,
-                        fontSize: '0.95rem',
-                      }}
-                    >
-                      Your Contact Information
-                    </Typography>
-                    
-                    <Stack spacing={2}>
-                      <TextField
-                        placeholder="Full Name *"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        fullWidth
-                        sx={{
-                          '& .MuiOutlinedInput-root': {
-                            color: '#ffffff',
-                            '& fieldset': {
-                              borderColor: '#333',
-                            },
-                            '&:hover fieldset': {
-                              borderColor: primaryColor,
-                            },
-                            '&.Mui-focused fieldset': {
-                              borderColor: primaryColor,
-                            },
-                          },
-                        }}
-                      />
-                      
-                      <TextField
-                        placeholder="Email Address *"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        fullWidth
-                        sx={{
-                          '& .MuiOutlinedInput-root': {
-                            color: '#ffffff',
-                            '& fieldset': {
-                              borderColor: '#333',
-                            },
-                            '&:hover fieldset': {
-                              borderColor: primaryColor,
-                            },
-                            '&.Mui-focused fieldset': {
-                              borderColor: primaryColor,
-                            },
-                          },
-                        }}
-                      />
-                      
-                      <TextField
-                        placeholder="Company Name"
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
-                        fullWidth
-                        sx={{
-                          '& .MuiOutlinedInput-root': {
-                            color: '#ffffff',
-                            '& fieldset': {
-                              borderColor: '#333',
-                            },
-                            '&:hover fieldset': {
-                              borderColor: primaryColor,
-                            },
-                            '&.Mui-focused fieldset': {
-                              borderColor: primaryColor,
-                            },
-                          },
-                        }}
-                      />
-                    </Stack>
-                  </Box>
-
-                  {/* Submit Button */}
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    size="large"
-                    onClick={handleSubmit}
-                    sx={{
-                      py: 1.5,
-                      fontSize: '1rem',
-                      fontWeight: 600,
-                      backgroundColor: primaryColor,
-                      color: '#ffffff',
-                      '&:hover': {
-                        backgroundColor: secondaryColor,
-                        transform: 'translateY(-2px)',
-                        boxShadow: `0 8px 25px ${primaryColor}33`,
-                      },
-                      transition: 'all 0.3s ease',
-                    }}
-                  >
-                    Book AI Consultation
-                  </Button>
-
-                  <Typography
-                    sx={{
-                      mt: 2,
-                      color: '#999',
-                      fontSize: '0.75rem',
-                      textAlign: 'center',
-                      opacity: 0.7,
-                    }}
-                  >
-                    By scheduling, you agree to our privacy policy and terms of service.
-                  </Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </Paper>
+            {orbit.icon}
+          </motion.div>
         </motion.div>
+      ))}
+
+      {/* Pulsing rings */}
+      {[...Array(3)].map((_, i) => (
+        <motion.div
+          key={i}
+          variants={pulseRing}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={{ delay: i * 0.5 }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: `${200 + i * 100}px`,
+            height: `${200 + i * 100}px`,
+            borderRadius: '50%',
+            border: `1px solid ${i % 2 === 0 ? primary : secondary}`,
+            zIndex: 0,
+          }}
+        />
+      ))}
+
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Box sx={{ 
+          textAlign: 'center',
+          position: 'relative'
+        }}>
+          
+          {/* Main call to action text */}
+          <Box sx={{ mb: 8 }}>
+            {[
+              "READY TO TRANSFORM",
+              "YOUR BUSINESS WITH",
+              "INTELLIGENT AI?"
+            ].map((line, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={textWave}
+                initial="hidden"
+                animate={inView ? "visible" : "hidden"}
+              >
+                <Typography
+                  variant="h1"
+                  sx={{
+                    color: white,
+                    fontWeight: 900,
+                    fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' },
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.02em',
+                    mb: 1,
+                    '& span': {
+                      background: `linear-gradient(45deg, ${primary}, ${secondary})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                    }
+                  }}
+                >
+                  {line.replace('INTELLIGENT', <span>INTELLIGENT</span>)}
+                </Typography>
+              </motion.div>
+            ))}
+          </Box>
+
+          {/* Interactive central button */}
+          <Box sx={{ 
+            position: 'relative',
+            display: 'inline-block',
+            margin: '0 auto'
+          }}>
+            {/* Magnetic field effect */}
+            <motion.div
+              variants={pulseRing}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '400px',
+                height: '400px',
+                borderRadius: '50%',
+                background: `radial-gradient(circle, ${primary}05, transparent 70%)`,
+                zIndex: 0,
+              }}
+            />
+
+            {/* Main contact button */}
+            <motion.div
+              variants={magneticPull}
+              initial="rest"
+              whileHover="hover"
+              animate={isHovered ? "hover" : "rest"}
+              onHoverStart={() => setIsHovered(true)}
+              onHoverEnd={() => setIsHovered(false)}
+              onClick={handleContactClick}
+              style={{ 
+                cursor: 'pointer',
+                position: 'relative',
+                zIndex: 1 
+              }}
+            >
+              <IconButton
+                sx={{
+                  width: { xs: '120px', md: '150px' },
+                  height: { xs: '120px', md: '150px' },
+                  borderRadius: '50%',
+                  background: `linear-gradient(135deg, ${primary}, ${secondary})`,
+                  color: white,
+                  fontSize: '3rem',
+                  '&:hover': {
+                    background: `linear-gradient(135deg, ${secondary}, ${primary})`,
+                    boxShadow: `0 0 60px ${primary}80`,
+                  },
+                  transition: 'all 0.3s',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: '-100%',
+                    width: '100%',
+                    height: '100%',
+                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+                    transition: 'left 0.5s',
+                  },
+                  '&:hover::before': {
+                    left: '100%',
+                  }
+                }}
+              >
+                <SendIcon sx={{ fontSize: '3rem' }} />
+              </IconButton>
+            </motion.div>
+
+            {/* Floating text around button */}
+            {['CLICK', 'TO', 'LAUNCH', 'AI'].map((word, i) => (
+              <motion.div
+                key={word}
+                initial={{ 
+                  opacity: 0,
+                  scale: 0,
+                  rotate: i * 90 
+                }}
+                animate={inView ? { 
+                  opacity: 0.5,
+                  scale: 1,
+                  rotate: i * 90 + (isHovered ? 180 : 0)
+                } : {}}
+                transition={{
+                  delay: 0.5 + i * 0.1,
+                  rotate: {
+                    duration: 0.5,
+                    ease: "easeInOut"
+                  }
+                }}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: `translate(-50%, -50%) rotate(${i * 90}deg) translateY(-200px) rotate(-${i * 90}deg)`,
+                  color: i % 2 === 0 ? primary : secondary,
+                  fontSize: '0.9rem',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                  letterSpacing: '3px',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {word}
+              </motion.div>
+            ))}
+
+            {/* Progress ring animation */}
+            <motion.div
+              animate={inView ? {
+                rotate: 360,
+              } : {}}
+              transition={{
+                rotate: {
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }
+              }}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '180px',
+                height: '180px',
+                borderRadius: '50%',
+                border: `2px dashed ${primary}30`,
+                zIndex: -1,
+              }}
+            />
+          </Box>
+
+          {/* Bottom text and arrow */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 1 }}
+            style={{ marginTop: '4rem' }}
+          >
+            <Typography
+              sx={{
+                color: '#aaa',
+                fontSize: '1rem',
+                fontWeight: 300,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                mb: 2,
+              }}
+            >
+              START YOUR AI JOURNEY
+            </Typography>
+
+            {/* Animated arrow pointing to button */}
+            <motion.div
+              animate={{
+                y: [0, 10, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+              style={{
+                fontSize: '2rem',
+                color: primary,
+              }}
+            >
+              <ArrowForwardIcon sx={{ 
+                fontSize: 'inherit',
+                transform: 'rotate(90deg)' 
+              }} />
+            </motion.div>
+          </motion.div>
+
+          {/* Quick stats */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 1.2 }}
+            style={{ marginTop: '6rem' }}
+          >
+            <Box sx={{ 
+              display: 'flex',
+              justifyContent: 'center',
+              gap: { xs: 2, md: 6 },
+              flexWrap: 'wrap'
+            }}>
+              {[
+                { value: '< 24h', label: 'Response Time' },
+                { value: '100%', label: 'Confidential' },
+                { value: '∞', label: 'Possibilities' },
+              ].map((stat) => (
+                <Box
+                  key={stat.label}
+                  sx={{
+                    textAlign: 'center',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: '2rem',
+                      fontWeight: 900,
+                      background: `linear-gradient(45deg, ${primary}, ${secondary})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      mb: 0.5,
+                    }}
+                  >
+                    {stat.value}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: '#888',
+                      fontSize: '0.8rem',
+                      textTransform: 'uppercase',
+                      letterSpacing: '2px',
+                    }}
+                  >
+                    {stat.label}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </motion.div>
+        </Box>
       </Container>
+
+      {/* Data stream effect */}
+      <Box sx={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '100px',
+        overflow: 'hidden',
+        opacity: 0.3,
+      }}>
+        {[...Array(30)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ y: '-100%' }}
+            animate={{ y: '200%' }}
+            transition={{
+              duration: Math.random() * 2 + 1,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "linear"
+            }}
+            style={{
+              position: 'absolute',
+              left: `${(i * 100) / 30}%`,
+              width: '2px',
+              height: '30px',
+              background: `linear-gradient(transparent, ${
+                Math.random() > 0.5 ? primary : secondary
+              }, transparent)`,
+            }}
+          />
+        ))}
+      </Box>
+
+      {/* Scanning laser effect */}
+      <motion.div
+        animate={inView ? {
+          x: ['0%', '100%', '0%'],
+        } : {}}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          repeatDelay: 1
+        }}
+        style={{
+          position: 'absolute',
+          top: '20%',
+          left: 0,
+          width: '100%',
+          height: '1px',
+          background: `linear-gradient(90deg, transparent, ${primary}, ${secondary}, transparent)`,
+          boxShadow: `0 0 20px ${primary}`,
+          filter: 'blur(1px)',
+          zIndex: 0,
+        }}
+      />
     </Box>
   );
 };

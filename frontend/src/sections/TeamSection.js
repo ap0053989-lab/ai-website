@@ -3416,23 +3416,513 @@
 // export default TeamSection;
 
 
-import React from 'react';
+// import React from 'react';
+// import {
+//   Box,
+//   Container,
+//   Typography,
+//   Grid,
+//   Card,
+//   CardContent,
+//   Button,
+// } from '@mui/material';
+// import { motion } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import Diversity3Icon from '@mui/icons-material/Diversity3';
+// import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+// import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+// import GroupsIcon from '@mui/icons-material/Groups';
+// import { useNavigate } from 'react-router-dom';
+
+// const TeamSection = () => {
+//   const { ref, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const navigate = useNavigate();
+//   const primaryColor = '#fa8072'; // Salmon color
+//   const accentColor = '#ff6b8b'; // Pink accent
+
+//   const handleViewTeam = () => {
+//     navigate('/team');
+//   };
+
+//   // UNIQUE ANIMATIONS
+//   const titleWaveAnimation = {
+//     hidden: { 
+//       opacity: 0,
+//       y: 50 
+//     },
+//     visible: { 
+//       opacity: 1,
+//       y: 0,
+//       transition: {
+//         duration: 0.8,
+//         ease: [0.6, 0.05, 0.01, 0.9] // Custom easing for bounce effect
+//       }
+//     }
+//   };
+
+//   const textRevealAnimation = {
+//     hidden: { 
+//       opacity: 0,
+//       width: 0 
+//     },
+//     visible: { 
+//       opacity: 1,
+//       width: "100%",
+//       transition: {
+//         duration: 1.2,
+//         delay: 0.3,
+//         ease: "circOut"
+//       }
+//     }
+//   };
+
+//   const cardFlipAnimation = (index) => ({
+//     hidden: { 
+//       rotateY: 90,
+//       opacity: 0,
+//       scale: 0.8 
+//     },
+//     visible: { 
+//       rotateY: 0,
+//       opacity: 1,
+//       scale: 1,
+//       transition: {
+//         type: "spring",
+//         stiffness: 200,
+//         damping: 15,
+//         delay: 0.5 + index * 0.15,
+//         duration: 0.8
+//       }
+//     },
+//     hover: {
+//       rotateY: 10,
+//       scale: 1.05,
+//       transition: {
+//         type: "spring",
+//         stiffness: 400,
+//         damping: 10
+//       }
+//     }
+//   });
+
+//   const iconOrbitAnimation = {
+//     rest: { 
+//       rotate: 0 
+//     },
+//     hover: {
+//       rotate: 360,
+//       scale: 1.2,
+//       transition: {
+//         duration: 1,
+//         ease: "linear",
+//         repeat: Infinity
+//       }
+//     }
+//   };
+
+//   const numberGlitchAnimation = {
+//     hidden: { 
+//       opacity: 0,
+//       scale: 1.5,
+//       filter: "blur(10px)" 
+//     },
+//     visible: {
+//       opacity: 1,
+//       scale: 1,
+//       filter: "blur(0px)",
+//       transition: {
+//         duration: 0.5,
+//         ease: "backOut",
+//         delay: 1
+//       }
+//     },
+//     hover: {
+//       scale: 1.1,
+//       textShadow: [
+//         `0 0 0px ${accentColor}`,
+//         `0 0 15px ${accentColor}`,
+//         `0 0 30px ${accentColor}`,
+//         `0 0 15px ${accentColor}`,
+//         `0 0 0px ${accentColor}`
+//       ],
+//       transition: {
+//         duration: 2,
+//         repeat: Infinity,
+//         repeatType: "reverse"
+//       }
+//     }
+//   };
+
+//   const buttonParticleAnimation = {
+//     hidden: { 
+//       scale: 0,
+//       opacity: 0 
+//     },
+//     visible: { 
+//       scale: 1,
+//       opacity: 1,
+//       transition: {
+//         type: "spring",
+//         stiffness: 300,
+//         damping: 15,
+//         delay: 1.5
+//       }
+//     },
+//     hover: {
+//       scale: 1.1,
+//       boxShadow: `0 0 30px ${primaryColor}`,
+//       transition: {
+//         duration: 0.3
+//       }
+//     },
+//     tap: {
+//       scale: 0.95
+//     }
+//   };
+
+//   const floatingParticlesAnimation = {
+//     animate: {
+//       y: [0, -20, 0],
+//       rotate: [0, 180, 360],
+//       transition: {
+//         duration: 4,
+//         repeat: Infinity,
+//         ease: "easeInOut"
+//       }
+//     }
+//   };
+
+//   const stats = [
+//     { 
+//       icon: <GroupsIcon sx={{ fontSize: 38 }} />, 
+//       value: '50+', 
+//       label: 'AI Experts', 
+//       description: 'World-class talent driving innovation',
+//       particleDelay: 0
+//     },
+//     { 
+//       icon: <RocketLaunchIcon sx={{ fontSize: 38 }} />, 
+//       value: '200+', 
+//       label: 'Projects', 
+//       description: 'Successful AI implementations',
+//       particleDelay: 0.2
+//     },
+//     { 
+//       icon: <EmojiObjectsIcon sx={{ fontSize: 38 }} />, 
+//       value: '15+', 
+//       label: 'Patents', 
+//       description: 'Proprietary AI technologies',
+//       particleDelay: 0.4
+//     },
+//     { 
+//       icon: <Diversity3Icon sx={{ fontSize: 38 }} />, 
+//       value: '100%', 
+//       label: 'Client Satisfaction', 
+//       description: 'Exceptional delivery rate',
+//       particleDelay: 0.6
+//     },
+//   ];
+
+//   return (
+//     <Box ref={ref} sx={{ 
+//       py: { xs: 12, md: 16 }, 
+//       backgroundColor: 'transparent',
+//       position: 'relative',
+//       overflow: 'hidden'
+//     }}>
+      
+//       {/* Floating Particles Background */}
+//       {[1, 2, 3, 4, 5].map(i => (
+//         <motion.div
+//           key={i}
+//           variants={floatingParticlesAnimation}
+//           animate="animate"
+//           style={{
+//             position: 'absolute',
+//             top: `${20 + i * 15}%`,
+//             left: `${10 + i * 15}%`,
+//             width: '8px',
+//             height: '8px',
+//             borderRadius: '50%',
+//             background: `radial-gradient(circle, ${primaryColor}30, transparent)`,
+//             zIndex: 0,
+//           }}
+//         />
+//       ))}
+      
+//       {[1, 2, 3, 4].map(i => (
+//         <motion.div
+//           key={i + 5}
+//           variants={floatingParticlesAnimation}
+//           animate="animate"
+//           transition={{ delay: 0.5 }}
+//           style={{
+//             position: 'absolute',
+//             top: `${30 + i * 10}%`,
+//             right: `${10 + i * 10}%`,
+//             width: '6px',
+//             height: '6px',
+//             borderRadius: '50%',
+//             background: `radial-gradient(circle, ${accentColor}30, transparent)`,
+//             zIndex: 0,
+//           }}
+//         />
+//       ))}
+
+//       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+//         {/* Header with wave animation */}
+//         <Box sx={{ textAlign: 'center', mb: 10, position: 'relative' }}>
+//           <motion.div
+//             variants={titleWaveAnimation}
+//             initial="hidden"
+//             animate={inView ? "visible" : "hidden"}
+//           >
+//             <Typography
+//               variant="h1"
+//               sx={{
+//                 mb: 3,
+//                 background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
+//                 WebkitBackgroundClip: 'text',
+//                 WebkitTextFillColor: 'transparent',
+//                 fontWeight: 900,
+//                 fontSize: { xs: '2.8rem', md: '4rem' },
+//                 letterSpacing: '-1.5px',
+//                 lineHeight: 1.1,
+//               }}
+//             >
+//               World-Class AI Team
+//             </Typography>
+//           </motion.div>
+
+//           <Box sx={{ 
+//             maxWidth: 800, 
+//             mx: 'auto',
+//             position: 'relative',
+//             overflow: 'hidden'
+//           }}>
+//             <motion.div
+//               variants={textRevealAnimation}
+//               initial="hidden"
+//               animate={inView ? "visible" : "hidden"}
+//             >
+//               <Typography
+//                 variant="h5"
+//                 sx={{
+//                   color: '#ffffff',
+//                   opacity: 0.9,
+//                   fontSize: { xs: '1.1rem', md: '1.3rem' },
+//                   lineHeight: 1.8,
+//                   fontWeight: 300,
+//                   letterSpacing: '0.3px',
+//                 }}
+//               >
+//                 Meet the brilliant minds behind our AI revolution. Our team combines 
+//                 deep technical expertise with visionary thinking to deliver exceptional results.
+//               </Typography>
+//             </motion.div>
+//           </Box>
+//         </Box>
+
+//         {/* Stats Cards with flip animation */}
+//         <Grid container spacing={4} sx={{ mb: 10 }}>
+//           {stats.map((stat, index) => (
+//             <Grid item xs={12} sm={6} md={3} key={index}>
+//               <motion.div
+//                 variants={cardFlipAnimation(index)}
+//                 initial="hidden"
+//                 animate={inView ? "visible" : "hidden"}
+//                 whileHover="hover"
+//                 style={{ perspective: 1000 }}
+//               >
+//                 <Card
+//                   sx={{
+//                     backgroundColor: 'rgba(17, 17, 17, 0.8)',
+//                     border: `2px solid ${primaryColor}20`,
+//                     borderRadius: 4,
+//                     p: 3,
+//                     textAlign: 'center',
+//                     height: '100%',
+//                     backdropFilter: 'blur(10px)',
+//                     position: 'relative',
+//                     overflow: 'hidden',
+//                     '&::before': {
+//                       content: '""',
+//                       position: 'absolute',
+//                       top: 0,
+//                       left: 0,
+//                       right: 0,
+//                       bottom: 0,
+//                       background: `linear-gradient(45deg, transparent, ${primaryColor}10, transparent)`,
+//                       transform: 'translateX(-100%)',
+//                       transition: 'transform 0.6s ease',
+//                     },
+//                     '&:hover::before': {
+//                       transform: 'translateX(100%)',
+//                     }
+//                   }}
+//                 >
+//                   <CardContent sx={{ p: 0, position: 'relative', zIndex: 1 }}>
+//                     {/* Icon with orbit animation */}
+//                     <motion.div
+//                       variants={iconOrbitAnimation}
+//                       initial="rest"
+//                       whileHover="hover"
+//                       style={{ marginBottom: '24px' }}
+//                     >
+//                       <Box sx={{ 
+//                         color: primaryColor,
+//                         display: 'inline-block',
+//                       }}>
+//                         {stat.icon}
+//                       </Box>
+//                     </motion.div>
+
+//                     {/* Number with glitch effect */}
+//                     <motion.div
+//                       variants={numberGlitchAnimation}
+//                       initial="hidden"
+//                       animate={inView ? "visible" : "hidden"}
+//                       whileHover="hover"
+//                     >
+//                       <Typography
+//                         variant="h1"
+//                         sx={{
+//                           mb: 2,
+//                           fontWeight: 900,
+//                           background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
+//                           WebkitBackgroundClip: 'text',
+//                           WebkitTextFillColor: 'transparent',
+//                           fontSize: { xs: '3rem', md: '4rem' },
+//                           letterSpacing: '-2px',
+//                         }}
+//                       >
+//                         {stat.value}
+//                       </Typography>
+//                     </motion.div>
+
+//                     {/* Label */}
+//                     <Typography
+//                       variant="h4"
+//                       sx={{
+//                         mb: 2,
+//                         fontWeight: 700,
+//                         color: '#ffffff',
+//                         fontSize: '1.4rem',
+//                         letterSpacing: '0.5px',
+//                       }}
+//                     >
+//                       {stat.label}
+//                     </Typography>
+
+//                     {/* Description */}
+//                     <Typography
+//                       variant="body1"
+//                       sx={{
+//                         color: '#ffffff',
+//                         opacity: 0.8,
+//                         fontSize: '0.95rem',
+//                         lineHeight: 1.6,
+//                         fontWeight: 300,
+//                       }}
+//                     >
+//                       {stat.description}
+//                     </Typography>
+//                   </CardContent>
+//                 </Card>
+//               </motion.div>
+//             </Grid>
+//           ))}
+//         </Grid>
+
+//         {/* CTA Button with particle effect */}
+//         <Box sx={{ textAlign: 'center', position: 'relative' }}>
+//           <motion.div
+//             variants={buttonParticleAnimation}
+//             initial="hidden"
+//             animate={inView ? "visible" : "hidden"}
+//             whileHover="hover"
+//             whileTap="tap"
+//           >
+//             <Button
+//               variant="contained"
+//               size="large"
+//               endIcon={
+//                 <motion.div
+//                   animate={{ 
+//                     x: [0, 8, 0],
+//                     transition: {
+//                       duration: 1.5,
+//                       repeat: Infinity,
+//                       ease: "easeInOut"
+//                     }
+//                   }}
+//                 >
+//                   <ArrowForwardIcon />
+//                 </motion.div>
+//               }
+//               onClick={handleViewTeam}
+//               sx={{
+//                 px: 8,
+//                 py: 2,
+//                 fontSize: '1.2rem',
+//                 fontWeight: 700,
+//                 background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
+//                 color: '#ffffff',
+//                 borderRadius: 4,
+//                 textTransform: 'none',
+//                 letterSpacing: '1px',
+//                 position: 'relative',
+//                 overflow: 'hidden',
+//                 '&::before': {
+//                   content: '""',
+//                   position: 'absolute',
+//                   top: '-2px',
+//                   left: '-2px',
+//                   right: '-2px',
+//                   bottom: '-2px',
+//                   background: `linear-gradient(45deg, ${primaryColor}, ${accentColor}, ${primaryColor})`,
+//                   borderRadius: '6px',
+//                   zIndex: -1,
+//                   animation: 'borderRotate 3s linear infinite',
+//                   '@keyframes borderRotate': {
+//                     '0%': { transform: 'rotate(0deg)' },
+//                     '100%': { transform: 'rotate(360deg)' }
+//                   }
+//                 }
+//               }}
+//             >
+//               Meet Our Expert Team
+//             </Button>
+//           </motion.div>
+//         </Box>
+//       </Container>
+//     </Box>
+//   );
+// };
+
+// export default TeamSection;
+
+
+import React, { useState } from 'react';
 import {
   Box,
   Container,
   Typography,
   Grid,
-  Card,
-  CardContent,
-  Button,
+  IconButton,
 } from '@mui/material';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import Diversity3Icon from '@mui/icons-material/Diversity3';
-import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+import PersonIcon from '@mui/icons-material/Person';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import CodeIcon from '@mui/icons-material/Code';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
-import GroupsIcon from '@mui/icons-material/Groups';
 import { useNavigate } from 'react-router-dom';
 
 const TeamSection = () => {
@@ -3441,466 +3931,533 @@ const TeamSection = () => {
     threshold: 0.1,
   });
 
+  const [activeMember, setActiveMember] = useState(null);
   const navigate = useNavigate();
-  const primaryColor = '#fa8072'; // Salmon color
-  const accentColor = '#ff6b8b'; // Pink accent
+  
+  const primary = '#cf3476';
+  const secondary = '#fa8072';
+  const white = '#ffffff';
+  const darkBg = '#0a0a0a';
 
-  const handleViewTeam = () => {
-    navigate('/team');
-  };
+  // Interactive team members
+  const teamMembers = [
+    { id: 1, role: 'AI Strategist', color: primary, icon: <PsychologyIcon /> },
+    { id: 2, role: 'ML Engineer', color: secondary, icon: <CodeIcon /> },
+    { id: 3, role: 'Data Scientist', color: primary, icon: <PersonIcon /> },
+    { id: 4, role: 'AI Researcher', color: secondary, icon: <RocketLaunchIcon /> },
+  ];
 
-  // UNIQUE ANIMATIONS
-  const titleWaveAnimation = {
-    hidden: { 
-      opacity: 0,
-      y: 50 
-    },
-    visible: { 
-      opacity: 1,
-      y: 0,
+  // 3D Rotation animation for sphere
+  const sphereVariants = {
+    hidden: { rotateY: 0, rotateX: 0 },
+    visible: {
+      rotateY: 360,
+      rotateX: 360,
       transition: {
-        duration: 0.8,
-        ease: [0.6, 0.05, 0.01, 0.9] // Custom easing for bounce effect
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear"
       }
     }
   };
 
-  const textRevealAnimation = {
-    hidden: { 
-      opacity: 0,
-      width: 0 
-    },
-    visible: { 
-      opacity: 1,
-      width: "100%",
+  // Particle orbit animation
+  const particleOrbit = (radius) => ({
+    animate: {
+      rotate: 360,
       transition: {
-        duration: 1.2,
-        delay: 0.3,
-        ease: "circOut"
-      }
-    }
-  };
-
-  const cardFlipAnimation = (index) => ({
-    hidden: { 
-      rotateY: 90,
-      opacity: 0,
-      scale: 0.8 
-    },
-    visible: { 
-      rotateY: 0,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 15,
-        delay: 0.5 + index * 0.15,
-        duration: 0.8
-      }
-    },
-    hover: {
-      rotateY: 10,
-      scale: 1.05,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
+        duration: 8,
+        repeat: Infinity,
+        ease: "linear"
       }
     }
   });
 
-  const iconOrbitAnimation = {
-    rest: { 
-      rotate: 0 
-    },
+  // Member hover animation
+  const memberHover = {
     hover: {
-      rotate: 360,
       scale: 1.2,
-      transition: {
-        duration: 1,
-        ease: "linear",
-        repeat: Infinity
-      }
-    }
-  };
-
-  const numberGlitchAnimation = {
-    hidden: { 
-      opacity: 0,
-      scale: 1.5,
-      filter: "blur(10px)" 
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.5,
-        ease: "backOut",
-        delay: 1
-      }
-    },
-    hover: {
-      scale: 1.1,
-      textShadow: [
-        `0 0 0px ${accentColor}`,
-        `0 0 15px ${accentColor}`,
-        `0 0 30px ${accentColor}`,
-        `0 0 15px ${accentColor}`,
-        `0 0 0px ${accentColor}`
-      ],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "reverse"
-      }
-    }
-  };
-
-  const buttonParticleAnimation = {
-    hidden: { 
-      scale: 0,
-      opacity: 0 
-    },
-    visible: { 
-      scale: 1,
-      opacity: 1,
+      y: -20,
+      color: primary,
       transition: {
         type: "spring",
-        stiffness: 300,
-        damping: 15,
-        delay: 1.5
+        stiffness: 300
       }
-    },
-    hover: {
-      scale: 1.1,
-      boxShadow: `0 0 30px ${primaryColor}`,
-      transition: {
-        duration: 0.3
-      }
-    },
-    tap: {
-      scale: 0.95
     }
   };
 
-  const floatingParticlesAnimation = {
-    animate: {
-      y: [0, -20, 0],
-      rotate: [0, 180, 360],
+  // Connection line animation
+  const lineDraw = {
+    hidden: { pathLength: 0 },
+    visible: {
+      pathLength: 1,
       transition: {
-        duration: 4,
-        repeat: Infinity,
+        duration: 1,
         ease: "easeInOut"
       }
     }
   };
 
-  const stats = [
-    { 
-      icon: <GroupsIcon sx={{ fontSize: 38 }} />, 
-      value: '50+', 
-      label: 'AI Experts', 
-      description: 'World-class talent driving innovation',
-      particleDelay: 0
-    },
-    { 
-      icon: <RocketLaunchIcon sx={{ fontSize: 38 }} />, 
-      value: '200+', 
-      label: 'Projects', 
-      description: 'Successful AI implementations',
-      particleDelay: 0.2
-    },
-    { 
-      icon: <EmojiObjectsIcon sx={{ fontSize: 38 }} />, 
-      value: '15+', 
-      label: 'Patents', 
-      description: 'Proprietary AI technologies',
-      particleDelay: 0.4
-    },
-    { 
-      icon: <Diversity3Icon sx={{ fontSize: 38 }} />, 
-      value: '100%', 
-      label: 'Client Satisfaction', 
-      description: 'Exceptional delivery rate',
-      particleDelay: 0.6
-    },
-  ];
-
   return (
-    <Box ref={ref} sx={{ 
-      py: { xs: 12, md: 16 }, 
-      backgroundColor: 'transparent',
+    <Box ref={ref} sx={{
+      py: { xs: 12, md: 20 },
+      backgroundColor: darkBg,
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center'
     }}>
       
-      {/* Floating Particles Background */}
-      {[1, 2, 3, 4, 5].map(i => (
+      {/* Animated 3D Sphere in background */}
+      <motion.div
+        variants={sphereVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: `radial-gradient(circle at 30% 30%, ${primary}10, transparent)`,
+          border: `1px solid ${primary}20`,
+          zIndex: 0,
+        }}
+      >
+        {/* Sphere grid lines */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '100%',
+              height: '1px',
+              background: `linear-gradient(90deg, transparent, ${secondary}20, transparent)`,
+              transform: `rotate(${i * 30}deg)`,
+              transformOrigin: 'left center',
+            }}
+          />
+        ))}
+      </motion.div>
+
+      {/* Orbiting particles */}
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          variants={floatingParticlesAnimation}
+          variants={particleOrbit(150 + i * 50)}
           animate="animate"
           style={{
             position: 'absolute',
-            top: `${20 + i * 15}%`,
-            left: `${10 + i * 15}%`,
+            top: '50%',
+            left: '50%',
             width: '8px',
             height: '8px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${primaryColor}30, transparent)`,
-            zIndex: 0,
-          }}
-        />
-      ))}
-      
-      {[1, 2, 3, 4].map(i => (
-        <motion.div
-          key={i + 5}
-          variants={floatingParticlesAnimation}
-          animate="animate"
-          transition={{ delay: 0.5 }}
-          style={{
-            position: 'absolute',
-            top: `${30 + i * 10}%`,
-            right: `${10 + i * 10}%`,
-            width: '6px',
-            height: '6px',
-            borderRadius: '50%',
-            background: `radial-gradient(circle, ${accentColor}30, transparent)`,
-            zIndex: 0,
+            background: i % 2 === 0 ? primary : secondary,
+            transform: `translate(-50%, -50%) rotate(${i * 45}deg) translate(${150 + i * 50}px)`,
           }}
         />
       ))}
 
-      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-        {/* Header with wave animation */}
-        <Box sx={{ textAlign: 'center', mb: 10, position: 'relative' }}>
-          <motion.div
-            variants={titleWaveAnimation}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            <Typography
-              variant="h1"
-              sx={{
-                mb: 3,
-                background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                fontWeight: 900,
-                fontSize: { xs: '2.8rem', md: '4rem' },
-                letterSpacing: '-1.5px',
-                lineHeight: 1.1,
-              }}
-            >
-              World-Class AI Team
-            </Typography>
-          </motion.div>
-
-          <Box sx={{ 
-            maxWidth: 800, 
-            mx: 'auto',
-            position: 'relative',
-            overflow: 'hidden'
-          }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Grid container spacing={6} alignItems="center">
+          <Grid item xs={12} md={5}>
             <motion.div
-              variants={textRevealAnimation}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+              initial={{ opacity: 0, x: -50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8 }}
             >
               <Typography
-                variant="h5"
+                variant="h1"
                 sx={{
-                  color: '#ffffff',
-                  opacity: 0.9,
-                  fontSize: { xs: '1.1rem', md: '1.3rem' },
-                  lineHeight: 1.8,
-                  fontWeight: 300,
-                  letterSpacing: '0.3px',
+                  color: white,
+                  fontWeight: 900,
+                  fontSize: { xs: '3rem', md: '4rem' },
+                  lineHeight: 1.1,
+                  mb: 3,
+                  '& span': {
+                    background: `linear-gradient(45deg, ${primary}, ${secondary})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }
                 }}
               >
-                Meet the brilliant minds behind our AI revolution. Our team combines 
-                deep technical expertise with visionary thinking to deliver exceptional results.
+                The <span>Minds</span> Behind AI
               </Typography>
-            </motion.div>
-          </Box>
-        </Box>
-
-        {/* Stats Cards with flip animation */}
-        <Grid container spacing={4} sx={{ mb: 10 }}>
-          {stats.map((stat, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <motion.div
-                variants={cardFlipAnimation(index)}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                whileHover="hover"
-                style={{ perspective: 1000 }}
+              
+              <Typography
+                variant="h6"
+                sx={{
+                  color: '#aaa',
+                  fontWeight: 300,
+                  lineHeight: 1.6,
+                  mb: 4,
+                  fontSize: '1.1rem',
+                }}
               >
-                <Card
-                  sx={{
-                    backgroundColor: 'rgba(17, 17, 17, 0.8)',
-                    border: `2px solid ${primaryColor}20`,
-                    borderRadius: 4,
-                    p: 3,
-                    textAlign: 'center',
-                    height: '100%',
-                    backdropFilter: 'blur(10px)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: `linear-gradient(45deg, transparent, ${primaryColor}10, transparent)`,
-                      transform: 'translateX(-100%)',
-                      transition: 'transform 0.6s ease',
-                    },
-                    '&:hover::before': {
-                      transform: 'translateX(100%)',
-                    }
-                  }}
-                >
-                  <CardContent sx={{ p: 0, position: 'relative', zIndex: 1 }}>
-                    {/* Icon with orbit animation */}
-                    <motion.div
-                      variants={iconOrbitAnimation}
-                      initial="rest"
-                      whileHover="hover"
-                      style={{ marginBottom: '24px' }}
-                    >
+                World-class experts creating tomorrow's AI
+              </Typography>
+
+              {/* Interactive team selector */}
+              <Box sx={{ mb: 4 }}>
+                {teamMembers.map((member) => (
+                  <motion.div
+                    key={member.id}
+                    variants={memberHover}
+                    whileHover="hover"
+                    onHoverStart={() => setActiveMember(member.id)}
+                    onHoverEnd={() => setActiveMember(null)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Box sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      mb: 2,
+                      p: 2,
+                      borderRadius: '8px',
+                      border: `1px solid ${member.color}30`,
+                      transition: 'all 0.3s',
+                      backgroundColor: activeMember === member.id 
+                        ? `${member.color}10` 
+                        : 'transparent',
+                    }}>
                       <Box sx={{ 
-                        color: primaryColor,
-                        display: 'inline-block',
+                        color: member.color,
+                        mr: 2,
+                        fontSize: '1.5rem'
                       }}>
-                        {stat.icon}
+                        {member.icon}
                       </Box>
-                    </motion.div>
-
-                    {/* Number with glitch effect */}
-                    <motion.div
-                      variants={numberGlitchAnimation}
-                      initial="hidden"
-                      animate={inView ? "visible" : "hidden"}
-                      whileHover="hover"
-                    >
-                      <Typography
-                        variant="h1"
-                        sx={{
-                          mb: 2,
-                          fontWeight: 900,
-                          background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                          fontSize: { xs: '3rem', md: '4rem' },
-                          letterSpacing: '-2px',
-                        }}
-                      >
-                        {stat.value}
+                      <Typography sx={{ 
+                        color: white,
+                        fontWeight: 600,
+                        fontSize: '1.1rem'
+                      }}>
+                        {member.role}
                       </Typography>
-                    </motion.div>
+                    </Box>
+                  </motion.div>
+                ))}
+              </Box>
 
-                    {/* Label */}
-                    <Typography
-                      variant="h4"
-                      sx={{
-                        mb: 2,
-                        fontWeight: 700,
-                        color: '#ffffff',
-                        fontSize: '1.4rem',
-                        letterSpacing: '0.5px',
-                      }}
-                    >
-                      {stat.label}
-                    </Typography>
-
-                    {/* Description */}
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: '#ffffff',
-                        opacity: 0.8,
-                        fontSize: '0.95rem',
-                        lineHeight: 1.6,
-                        fontWeight: 300,
-                      }}
-                    >
-                      {stat.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* CTA Button with particle effect */}
-        <Box sx={{ textAlign: 'center', position: 'relative' }}>
-          <motion.div
-            variants={buttonParticleAnimation}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            whileHover="hover"
-            whileTap="tap"
-          >
-            <Button
-              variant="contained"
-              size="large"
-              endIcon={
-                <motion.div
-                  animate={{ 
-                    x: [0, 8, 0],
-                    transition: {
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
+              {/* Explore button */}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <IconButton
+                  onClick={() => navigate('/team')}
+                  sx={{
+                    p: 3,
+                    border: `2px solid ${primary}`,
+                    color: white,
+                    borderRadius: '50%',
+                    '&:hover': {
+                      background: `linear-gradient(45deg, ${primary}, ${secondary})`,
+                      transform: 'rotate(45deg)',
+                    },
+                    transition: 'all 0.3s'
                   }}
                 >
-                  <ArrowForwardIcon />
-                </motion.div>
-              }
-              onClick={handleViewTeam}
-              sx={{
-                px: 8,
-                py: 2,
-                fontSize: '1.2rem',
-                fontWeight: 700,
-                background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
-                color: '#ffffff',
-                borderRadius: 4,
-                textTransform: 'none',
-                letterSpacing: '1px',
-                position: 'relative',
-                overflow: 'hidden',
-                '&::before': {
-                  content: '""',
+                  <ArrowForwardIcon sx={{ fontSize: '2rem' }} />
+                </IconButton>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    display: 'block',
+                    color: '#666',
+                    mt: 2,
+                    fontSize: '0.9rem',
+                    letterSpacing: '1px',
+                  }}
+                >
+                  Meet the Team
+                </Typography>
+              </motion.div>
+            </motion.div>
+          </Grid>
+
+          <Grid item xs={12} md={7}>
+            <Box sx={{ 
+              position: 'relative', 
+              height: '500px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              
+              {/* Neural network visualization */}
+              <svg
+                style={{
                   position: 'absolute',
-                  top: '-2px',
-                  left: '-2px',
-                  right: '-2px',
-                  bottom: '-2px',
-                  background: `linear-gradient(45deg, ${primaryColor}, ${accentColor}, ${primaryColor})`,
-                  borderRadius: '6px',
-                  zIndex: -1,
-                  animation: 'borderRotate 3s linear infinite',
-                  '@keyframes borderRotate': {
-                    '0%': { transform: 'rotate(0deg)' },
-                    '100%': { transform: 'rotate(360deg)' }
-                  }
-                }
-              }}
-            >
-              Meet Our Expert Team
-            </Button>
-          </motion.div>
-        </Box>
+                  width: '100%',
+                  height: '100%',
+                }}
+              >
+                {/* Dynamic connection lines */}
+                {teamMembers.map((member, i) => {
+                  const angle = (i * 90) * Math.PI / 180;
+                  const x1 = 250 + Math.cos(angle) * 150;
+                  const y1 = 250 + Math.sin(angle) * 150;
+                  
+                  return (
+                    <motion.path
+                      key={i}
+                      d={`M 250 250 Q ${(250 + x1)/2} ${(250 + y1)/2} ${x1} ${y1}`}
+                      stroke={`url(#gradient-${i})`}
+                      strokeWidth="2"
+                      fill="none"
+                      variants={lineDraw}
+                      initial="hidden"
+                      animate={inView ? "visible" : {}}
+                      transition={{ delay: i * 0.2 }}
+                    />
+                  );
+                })}
+
+                <defs>
+                  <linearGradient id="gradient-0" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor={primary} />
+                    <stop offset="100%" stopColor={secondary} />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {/* Floating team nodes */}
+              {teamMembers.map((member, i) => {
+                const angle = (i * 90) * Math.PI / 180;
+                const x = Math.cos(angle) * 150;
+                const y = Math.sin(angle) * 150;
+                
+                return (
+                  <motion.div
+                    key={member.id}
+                    initial={{ scale: 0, x: 0, y: 0 }}
+                    animate={inView ? { 
+                      scale: 1,
+                      x,
+                      y
+                    } : {}}
+                    transition={{
+                      delay: i * 0.3,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    whileHover={{ 
+                      scale: 1.3,
+                      zIndex: 100
+                    }}
+                    onHoverStart={() => setActiveMember(member.id)}
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: '80px',
+                        height: '80px',
+                        borderRadius: '50%',
+                        background: `linear-gradient(135deg, ${member.color}, ${
+                          member.color === primary ? secondary : primary
+                        })`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: activeMember === member.id 
+                          ? `0 0 40px ${member.color}`
+                          : `0 0 20px ${member.color}30`,
+                        transition: 'all 0.3s',
+                        position: 'relative',
+                      }}
+                    >
+                      {/* Pulsing ring effect */}
+                      {activeMember === member.id && (
+                        <motion.div
+                          initial={{ scale: 0, opacity: 1 }}
+                          animate={{ scale: 2, opacity: 0 }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity
+                          }}
+                          style={{
+                            position: 'absolute',
+                            width: '100%',
+                            height: '100%',
+                            borderRadius: '50%',
+                            border: `2px solid ${member.color}`,
+                          }}
+                        />
+                      )}
+                      
+                      <Box sx={{ 
+                        color: white,
+                        fontSize: '2rem',
+                      }}>
+                        {member.icon}
+                      </Box>
+                    </Box>
+                    
+                    {/* Role label */}
+                    <AnimatePresence>
+                      {activeMember === member.id && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            marginTop: '1rem',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              color: white,
+                              fontWeight: 600,
+                              fontSize: '0.9rem',
+                              background: 'rgba(0,0,0,0.8)',
+                              padding: '0.5rem 1rem',
+                              borderRadius: '4px',
+                            }}
+                          >
+                            {member.role}
+                          </Typography>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+
+              {/* Center node - Team Core */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={inView ? { scale: 1 } : {}}
+                transition={{ delay: 1 }}
+                whileHover={{ scale: 1.1 }}
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  cursor: 'pointer',
+                }}
+              >
+                <Box
+                  sx={{
+                    width: '120px',
+                    height: '120px',
+                    borderRadius: '50%',
+                    background: `linear-gradient(135deg, ${primary}, ${secondary})`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: `0 0 60px ${primary}40`,
+                    position: 'relative',
+                  }}
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      position: 'absolute',
+                      border: `2px dashed ${white}30`,
+                      borderRadius: '50%',
+                    }}
+                  />
+                  
+                  <Typography
+                    sx={{
+                      color: white,
+                      fontWeight: 900,
+                      fontSize: '1.5rem',
+                      textAlign: 'center',
+                    }}
+                  >
+                    TEAM
+                  </Typography>
+                </Box>
+              </motion.div>
+
+              {/* Floating expertise badges */}
+              {['Vision', 'Tech', 'Research', 'Impact'].map((badge, i) => (
+                <motion.div
+                  key={badge}
+                  initial={{ 
+                    opacity: 0,
+                    y: 20,
+                    rotate: i * 90 
+                  }}
+                  animate={inView ? { 
+                    opacity: 0.3,
+                    y: 0,
+                    rotate: i * 90 + 360
+                  } : {}}
+                  transition={{
+                    delay: 1.5 + i * 0.2,
+                    rotate: {
+                      duration: 30,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: '0.8rem',
+                    color: i % 2 === 0 ? primary : secondary,
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                    letterSpacing: '2px',
+                    whiteSpace: 'nowrap',
+                    transformOrigin: '0 0',
+                  }}
+                >
+                  {badge}
+                </motion.div>
+              ))}
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
+
+      {/* Scanning effect */}
+      <motion.div
+        animate={inView ? {
+          y: ['-100%', '200%'],
+        } : {}}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          repeatDelay: 2
+        }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: '20%',
+          width: '2px',
+          height: '100px',
+          background: `linear-gradient(transparent, ${primary}, ${secondary}, transparent)`,
+          filter: 'blur(1px)',
+          zIndex: 0,
+        }}
+      />
     </Box>
   );
 };
