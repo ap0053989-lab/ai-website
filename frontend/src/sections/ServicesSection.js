@@ -1,2440 +1,8 @@
-// import React, { useState } from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import { Link } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const [content] = useState({
-//     services_title: 'Our AI Services',
-//     services_subtitle: 'Comprehensive AI solutions designed for practical business applications',
-//     services_list: [
-//       {
-//         title: 'AI Strategy & Consulting',
-//         description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//         icon: '🎯',
-//       },
-//       {
-//         title: 'Machine Learning Development',
-//         description: 'Custom ML models built and deployed for specific use cases.',
-//         icon: '🤖',
-//       },
-//       {
-//         title: 'Natural Language Processing',
-//         description: 'Advanced NLP solutions for text analysis and language understanding.',
-//         icon: '💬',
-//       },
-//       {
-//         title: 'Computer Vision',
-//         description: 'Image and video analysis for automation and insights.',
-//         icon: '👁️',
-//       },
-//       {
-//         title: 'AI Integration',
-//         description: 'Seamlessly integrate AI capabilities into existing systems.',
-//         icon: '🔗',
-//       },
-//       {
-//         title: 'AI Training & Support',
-//         description: 'Comprehensive training and ongoing support for teams.',
-//         icon: '🎓',
-//       },
-//     ],
-//   });
-
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   return (
-//     <Box ref={ref} sx={{ py: { xs: 8, md: 12 }, bgcolor: '#121218' }}>
-//       <Container maxWidth="xl">
-//         <Box sx={{ textAlign: 'center', mb: 8 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 2,
-//                 background: 'linear-gradient(135deg, #00FF88 30%, #8A2BE2 100%)',
-//                 backgroundClip: 'text',
-//                 WebkitBackgroundClip: 'text',
-//                 WebkitTextFillColor: 'transparent',
-//                 fontWeight: 700,
-//               }}
-//             >
-//               {content.services_title}
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 6,
-//                 color: 'text.secondary',
-//                 maxWidth: 600,
-//                 mx: 'auto',
-//               }}
-//             >
-//               {content.services_subtitle}
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={4}>
-//           {content.services_list.map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={service.title}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1 }}
-//                 whileHover={{ y: -5 }}
-//               >
-//                 <Card
-//                   sx={{
-//                     bgcolor: 'background.default',
-//                     border: '1px solid',
-//                     borderColor: 'divider',
-//                     height: '100%',
-//                     transition: 'all 0.3s ease',
-//                     '&:hover': {
-//                       borderColor: '#00FF88',
-//                       boxShadow: '0 20px 40px rgba(0, 255, 136, 0.1)',
-//                     },
-//                   }}
-//                 >
-//                   <CardContent sx={{ p: 4 }}>
-//                     <Typography
-//                       variant="h2"
-//                       sx={{
-//                         mb: 2,
-//                         fontSize: '3rem',
-//                         lineHeight: 1,
-//                       }}
-//                     >
-//                       {service.icon}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 600,
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       color="text.secondary"
-//                       sx={{
-//                         mb: 3,
-//                         lineHeight: 1.7,
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-
-//                     <Button
-//                       component={Link}
-//                       to="/services"
-//                       variant="text"
-//                       endIcon={<ArrowForwardIcon />}
-//                       sx={{
-//                         color: '#00FF88',
-//                         fontWeight: 600,
-//                         '&:hover': {
-//                           bgcolor: 'rgba(0, 255, 136, 0.1)',
-//                         },
-//                       }}
-//                     >
-//                       Learn More
-//                     </Button>
-//                   </CardContent>
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-
-// // src/sections/ServicesSection.js
-// import React, { useState } from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const [content] = useState({
-//     services_title: 'Our AI Services',
-//     services_subtitle: 'Comprehensive AI solutions designed for practical business applications',
-//     services_list: [
-//       {
-//         title: 'AI Strategy & Consulting',
-//         description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//         icon: '🎯',
-//       },
-//       {
-//         title: 'Machine Learning Development',
-//         description: 'Custom ML models built and deployed for specific use cases.',
-//         icon: '🤖',
-//       },
-//       {
-//         title: 'Natural Language Processing',
-//         description: 'Advanced NLP solutions for text analysis and language understanding.',
-//         icon: '💬',
-//       },
-//       {
-//         title: 'Computer Vision',
-//         description: 'Image and video analysis for automation and insights.',
-//         icon: '👁️',
-//       },
-//       {
-//         title: 'AI Integration',
-//         description: 'Seamlessly integrate AI capabilities into existing systems.',
-//         icon: '🔗',
-//       },
-//       {
-//         title: 'AI Training & Support',
-//         description: 'Comprehensive training and ongoing support for teams.',
-//         icon: '🎓',
-//       },
-//     ],
-//   });
-
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   return (
-//     <Box ref={ref} sx={{ py: { xs: 8, md: 12 }, bgcolor: '#0A0A0F' }}>
-//       <Container maxWidth="xl">
-//         <Box sx={{ textAlign: 'center', mb: 8 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 2,
-//                 color: '#00FF88',
-//                 fontWeight: 700,
-//               }}
-//             >
-//               {content.services_title}
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 6,
-//                 color: '#A0A0A0',
-//                 maxWidth: 600,
-//                 mx: 'auto',
-//               }}
-//             >
-//               {content.services_subtitle}
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={4}>
-//           {content.services_list.map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={service.title}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1 }}
-//                 whileHover={{ y: -5 }}
-//               >
-//                 <Card
-//                   sx={{
-//                     bgcolor: '#121218',
-//                     border: '1px solid',
-//                     borderColor: '#333',
-//                     height: '100%',
-//                     transition: 'all 0.3s ease',
-//                     '&:hover': {
-//                       borderColor: '#00FF88',
-//                       boxShadow: '0 20px 40px rgba(0, 255, 136, 0.1)',
-//                       transform: 'translateY(-8px)',
-//                     },
-//                   }}
-//                 >
-//                   <CardContent sx={{ p: 4 }}>
-//                     <Typography
-//                       variant="h2"
-//                       sx={{
-//                         mb: 2,
-//                         fontSize: '3rem',
-//                         lineHeight: 1,
-//                       }}
-//                     >
-//                       {service.icon}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 600,
-//                         color: '#FFFFFF',
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       sx={{
-//                         mb: 3,
-//                         lineHeight: 1.7,
-//                         color: '#A0A0A0',
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-
-//                     <Button
-//                       variant="text"
-//                       endIcon={<ArrowForwardIcon />}
-//                       onClick={handleLearnMore}
-//                       sx={{
-//                         color: '#00FF88',
-//                         fontWeight: 600,
-//                         '&:hover': {
-//                           bgcolor: 'rgba(0, 255, 136, 0.1)',
-//                         },
-//                       }}
-//                     >
-//                       Learn More
-//                     </Button>
-//                   </CardContent>
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-
-//         <Box sx={{ textAlign: 'center', mt: 8 }}>
-//           <Button
-//             variant="contained"
-//             size="large"
-//             endIcon={<ArrowForwardIcon />}
-//             onClick={handleLearnMore}
-//             sx={{
-//               px: 6,
-//               py: 1.5,
-//               fontSize: '1.1rem',
-//               fontWeight: 600,
-//               bgcolor: '#00FF88',
-//               color: '#121218',
-//               '&:hover': {
-//                 bgcolor: '#00CC6D',
-//                 transform: 'translateY(-2px)',
-//                 boxShadow: '0 10px 20px rgba(0, 255, 136, 0.3)',
-//               },
-//             }}
-//           >
-//             View All Services
-//           </Button>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-
-// // src/sections/ServicesSection.js
-// import React, { useState } from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-//   Chip,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import StrategyIcon from '@mui/icons-material/BarChart';
-// import MLIcon from '@mui/icons-material/DeviceHub';
-// import NLPIcon from '@mui/icons-material/Chat';
-// import VisionIcon from '@mui/icons-material/Visibility';
-// import IntegrationIcon from '@mui/icons-material/Sync';
-// import SupportIcon from '@mui/icons-material/School';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const [hoveredCard, setHoveredCard] = useState(null);
-
-//   const [content] = useState({
-//     services_title: 'Our AI-Powered Services',
-//     services_subtitle: 'Transform your business with cutting-edge artificial intelligence solutions tailored to your needs',
-//     services_list: [
-//       {
-//         title: 'AI Strategy & Consulting',
-//         description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//         icon: <StrategyIcon />,
-//         color: '#00FF88',
-//         features: ['AI Roadmapping', 'Business Analysis', 'ROI Assessment'],
-//         image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
-//       },
-//       {
-//         title: 'Machine Learning Development',
-//         description: 'Custom ML models built and deployed for specific use cases.',
-//         icon: <MLIcon />,
-//         color: '#8A2BE2',
-//         features: ['Predictive Models', 'Deep Learning', 'Model Deployment'],
-//         image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80'
-//       },
-//       {
-//         title: 'Natural Language Processing',
-//         description: 'Advanced NLP solutions for text analysis and language understanding.',
-//         icon: <NLPIcon />,
-//         color: '#00BFFF',
-//         features: ['Chatbots', 'Sentiment Analysis', 'Text Classification'],
-//         image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80'
-//       },
-//       {
-//         title: 'Computer Vision',
-//         description: 'Image and video analysis for automation and insights.',
-//         icon: <VisionIcon />,
-//         color: '#FF6B6B',
-//         features: ['Object Detection', 'Image Recognition', 'Video Analytics'],
-//         image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80'
-//       },
-//       {
-//         title: 'AI Integration',
-//         description: 'Seamlessly integrate AI capabilities into existing systems.',
-//         icon: <IntegrationIcon />,
-//         color: '#FFD166',
-//         features: ['API Development', 'System Integration', 'Cloud Deployment'],
-//         image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80'
-//       },
-//       {
-//         title: 'AI Training & Support',
-//         description: 'Comprehensive training and ongoing support for teams.',
-//         icon: <SupportIcon />,
-//         color: '#06D6A0',
-//         features: ['Team Training', 'Technical Support', 'Knowledge Transfer'],
-//         image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80'
-//       },
-//     ],
-//   });
-
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   return (
-//     <Box ref={ref} sx={{
-//       py: { xs: 8, md: 12 },
-//       bgcolor: '#0A0A0F',
-//       position: 'relative',
-//       overflow: 'hidden'
-//     }}>
-
-//       {/* Animated Background Elements */}
-//       <Box
-//         sx={{
-//           position: 'absolute',
-//           top: '10%',
-//           right: '5%',
-//           width: 300,
-//           height: 300,
-//           background: 'radial-gradient(circle, rgba(0, 255, 136, 0.05) 0%, transparent 70%)',
-//           animation: 'float 20s infinite ease-in-out',
-//           '@keyframes float': {
-//             '0%, 100%': { transform: 'translate(0, 0)' },
-//             '50%': { transform: 'translate(20px, 20px)' }
-//           }
-//         }}
-//       />
-
-//       <Box
-//         sx={{
-//           position: 'absolute',
-//           bottom: '20%',
-//           left: '5%',
-//           width: 200,
-//           height: 200,
-//           background: 'radial-gradient(circle, rgba(138, 43, 226, 0.05) 0%, transparent 70%)',
-//           animation: 'float 15s infinite ease-in-out reverse',
-//         }}
-//       />
-
-//       {/* Neural Network Pattern */}
-//       <Box
-//         sx={{
-//           position: 'absolute',
-//           top: 0,
-//           left: 0,
-//           right: 0,
-//           bottom: 0,
-//           backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ff88' fill-opacity='0.03'%3E%3Cpath d='M100 0l-50 50H0v100h50l50 50 50-50h50V50h-50L100 0zM50 100l-25-25v50h25l25 25v-50L50 100zm100 0l25-25v50h-25l-25 25v-50l25-25z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-//           opacity: 0.3,
-//           pointerEvents: 'none',
-//         }}
-//       />
-
-//       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-//         <Box sx={{ textAlign: 'center', mb: 10 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Chip
-//               label="AI Solutions"
-//               sx={{
-//                 mb: 3,
-//                 bgcolor: 'rgba(0, 255, 136, 0.1)',
-//                 color: '#00FF88',
-//                 fontWeight: 600,
-//                 fontSize: '0.9rem',
-//                 px: 2,
-//                 py: 1
-//               }}
-//             />
-
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 3,
-//                 color: '#FFFFFF',
-//                 fontWeight: 800,
-//                 fontSize: { xs: '2.5rem', md: '3.5rem' },
-//                 lineHeight: 1.2,
-//                 background: 'linear-gradient(135deg, #00FF88 0%, #8A2BE2 100%)',
-//                 backgroundClip: 'text',
-//                 WebkitBackgroundClip: 'text',
-//                 WebkitTextFillColor: 'transparent',
-//               }}
-//             >
-//               {content.services_title}
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 6,
-//                 color: '#A0A0A0',
-//                 maxWidth: 700,
-//                 mx: 'auto',
-//                 fontSize: { xs: '1rem', md: '1.25rem' },
-//                 lineHeight: 1.7,
-//               }}
-//             >
-//               {content.services_subtitle}
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={4}>
-//           {content.services_list.map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={service.title}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1, duration: 0.5 }}
-//                 onHoverStart={() => setHoveredCard(index)}
-//                 onHoverEnd={() => setHoveredCard(null)}
-//               >
-//                 <Card
-//                   sx={{
-//                     bgcolor: '#121218',
-//                     border: '2px solid',
-//                     borderColor: '#1E1E2D',
-//                     height: '100%',
-//                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-//                     position: 'relative',
-//                     overflow: 'hidden',
-//                     minHeight: 450,
-//                     '&:hover': {
-//                       borderColor: service.color,
-//                       boxShadow: `0 30px 60px ${service.color}40`,
-//                       transform: 'translateY(-10px) scale(1.02)',
-//                     },
-//                   }}
-//                 >
-//                   {/* Image Background */}
-//                   <Box
-//                     sx={{
-//                       position: 'absolute',
-//                       top: 0,
-//                       left: 0,
-//                       right: 0,
-//                       height: 180,
-//                       backgroundImage: `url(${service.image})`,
-//                       backgroundSize: 'cover',
-//                       backgroundPosition: 'center',
-//                       filter: 'brightness(0.5)',
-//                       transition: 'filter 0.3s ease',
-//                       '&:hover': {
-//                         filter: 'brightness(0.7)',
-//                       }
-//                     }}
-//                   />
-
-//                   {/* Gradient Overlay */}
-//                   <Box
-//                     sx={{
-//                       position: 'absolute',
-//                       top: 0,
-//                       left: 0,
-//                       right: 0,
-//                       height: 180,
-//                       background: `linear-gradient(to bottom, transparent, ${service.color}20, #121218)`,
-//                     }}
-//                   />
-
-//                   <CardContent sx={{
-//                     p: 4,
-//                     position: 'relative',
-//                     zIndex: 1,
-//                     display: 'flex',
-//                     flexDirection: 'column',
-//                     height: '100%'
-//                   }}>
-//                     {/* Icon with Animation */}
-//                     <motion.div
-//                       animate={hoveredCard === index ? { rotate: 360 } : { rotate: 0 }}
-//                       transition={{ duration: 0.5 }}
-//                     >
-//                       <Box
-//                         sx={{
-//                           display: 'inline-flex',
-//                           alignItems: 'center',
-//                           justifyContent: 'center',
-//                           width: 70,
-//                           height: 70,
-//                           borderRadius: '20%',
-//                           bgcolor: service.color,
-//                           mb: 3,
-//                           position: 'relative',
-//                           '&:after': {
-//                             content: '""',
-//                             position: 'absolute',
-//                             top: -5,
-//                             left: -5,
-//                             right: -5,
-//                             bottom: -5,
-//                             borderRadius: '25%',
-//                             border: `2px solid ${service.color}`,
-//                             opacity: 0.3,
-//                             animation: 'pulse 2s infinite',
-//                             '@keyframes pulse': {
-//                               '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
-//                               '50%': { opacity: 0.6, transform: 'scale(1.1)' }
-//                             }
-//                           }
-//                         }}
-//                       >
-//                         {React.cloneElement(service.icon, {
-//                           sx: {
-//                             fontSize: 32,
-//                             color: '#121218',
-//                             filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
-//                           }
-//                         })}
-//                       </Box>
-//                     </motion.div>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 700,
-//                         color: '#FFFFFF',
-//                         fontSize: '1.5rem',
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       sx={{
-//                         mb: 3,
-//                         lineHeight: 1.7,
-//                         color: '#A0A0A0',
-//                         flexGrow: 1,
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-
-//                     {/* Features List */}
-//                     <Box sx={{ mb: 3 }}>
-//                       {service.features.map((feature, idx) => (
-//                         <Chip
-//                           key={feature}
-//                           label={feature}
-//                           size="small"
-//                           sx={{
-//                             mr: 1,
-//                             mb: 1,
-//                             bgcolor: 'rgba(255, 255, 255, 0.05)',
-//                             color: '#FFFFFF',
-//                             border: '1px solid',
-//                             borderColor: 'rgba(255, 255, 255, 0.1)',
-//                             fontSize: '0.75rem',
-//                             '&:hover': {
-//                               bgcolor: service.color,
-//                               color: '#121218',
-//                             }
-//                           }}
-//                         />
-//                       ))}
-//                     </Box>
-
-//                     <Button
-//                       variant="outlined"
-//                       endIcon={<ArrowForwardIcon />}
-//                       onClick={handleLearnMore}
-//                       sx={{
-//                         mt: 'auto',
-//                         borderWidth: 2,
-//                         borderColor: service.color,
-//                         color: service.color,
-//                         fontWeight: 600,
-//                         '&:hover': {
-//                           bgcolor: service.color,
-//                           color: '#121218',
-//                           borderColor: service.color,
-//                           transform: 'translateX(5px)',
-//                           boxShadow: `0 10px 20px ${service.color}40`,
-//                         },
-//                       }}
-//                     >
-//                       Explore Service
-//                     </Button>
-//                   </CardContent>
-
-//                   {/* Hover Effect Glow */}
-//                   <Box
-//                     sx={{
-//                       position: 'absolute',
-//                       top: 0,
-//                       left: 0,
-//                       right: 0,
-//                       bottom: 0,
-//                       background: `radial-gradient(circle at 50% 0%, ${service.color}20, transparent 70%)`,
-//                       opacity: hoveredCard === index ? 1 : 0,
-//                       transition: 'opacity 0.3s ease',
-//                       pointerEvents: 'none',
-//                     }}
-//                   />
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-
-//         <Box sx={{ textAlign: 'center', mt: 10 }}>
-//           <motion.div
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//           >
-//             <Button
-//               variant="contained"
-//               size="large"
-//               endIcon={<ArrowForwardIcon />}
-//               onClick={handleLearnMore}
-//               sx={{
-//                 px: 8,
-//                 py: 2,
-//                 fontSize: '1.1rem',
-//                 fontWeight: 700,
-//                 bgcolor: '#00FF88',
-//                 color: '#121218',
-//                 borderRadius: 50,
-//                 position: 'relative',
-//                 overflow: 'hidden',
-//                 '&:before': {
-//                   content: '""',
-//                   position: 'absolute',
-//                   top: 0,
-//                   left: '-100%',
-//                   width: '100%',
-//                   height: '100%',
-//                   background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
-//                   transition: 'left 0.7s',
-//                 },
-//                 '&:hover': {
-//                   bgcolor: '#00CC6D',
-//                   transform: 'translateY(-3px)',
-//                   boxShadow: '0 20px 40px rgba(0, 255, 136, 0.4)',
-//                   '&:before': {
-//                     left: '100%'
-//                   }
-//                 },
-//               }}
-//             >
-//               Discover All AI Solutions
-//             </Button>
-//           </motion.div>
-
-//           <Typography
-//             variant="body2"
-//             sx={{
-//               mt: 3,
-//               color: '#666',
-//               maxWidth: 500,
-//               mx: 'auto',
-//             }}
-//           >
-//             Each solution backed by cutting-edge AI technology and expert implementation
-//           </Typography>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-
-// import React from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import StrategyIcon from '@mui/icons-material/BarChart';
-// import MLIcon from '@mui/icons-material/DeviceHub';
-// import NLPIcon from '@mui/icons-material/Chat';
-// import VisionIcon from '@mui/icons-material/Visibility';
-// import IntegrationIcon from '@mui/icons-material/Sync';
-// import SupportIcon from '@mui/icons-material/School';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   return (
-//     <Box ref={ref} sx={{
-//       py: { xs: 8, md: 12 },
-//       bgcolor: '#121218',
-//     }}>
-//       <Container maxWidth="xl">
-//         <Box sx={{ textAlign: 'center', mb: 6 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 2,
-//                 color: '#FFFFFF',
-//                 fontWeight: 700,
-//                 fontSize: { xs: '2rem', md: '2.5rem' },
-//                 lineHeight: 1.2,
-//               }}
-//             >
-//               Our AI-Powered Services
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 4,
-//                 color: '#A0A0A0',
-//                 maxWidth: 700,
-//                 mx: 'auto',
-//                 fontSize: { xs: '0.9rem', md: '1.1rem' },
-//                 lineHeight: 1.7,
-//               }}
-//             >
-//               Transform your business with cutting-edge artificial intelligence solutions tailored to your needs
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={3}>
-//           {[
-//             {
-//               title: 'AI Strategy & Consulting',
-//               description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//               icon: <StrategyIcon />,
-//               color: '#8A2BE2',
-//             },
-//             {
-//               title: 'Machine Learning Development',
-//               description: 'Custom ML models built and deployed for specific use cases.',
-//               icon: <MLIcon />,
-//               color: '#FF2D55',
-//             },
-//             {
-//               title: 'Natural Language Processing',
-//               description: 'Advanced NLP solutions for text analysis and language understanding.',
-//               icon: <NLPIcon />,
-//               color: '#9370DB',
-//             },
-//             {
-//               title: 'Computer Vision',
-//               description: 'Image and video analysis for automation and insights.',
-//               icon: <VisionIcon />,
-//               color: '#8A2BE2',
-//             },
-//             {
-//               title: 'AI Integration',
-//               description: 'Seamlessly integrate AI capabilities into existing systems.',
-//               icon: <IntegrationIcon />,
-//               color: '#FF2D55',
-//             },
-//             {
-//               title: 'AI Training & Support',
-//               description: 'Comprehensive training and ongoing support for teams.',
-//               icon: <SupportIcon />,
-//               color: '#9370DB',
-//             },
-//           ].map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={index}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1, duration: 0.5 }}
-//               >
-//                 <Card
-//                   sx={{
-//                     bgcolor: 'rgba(255, 255, 255, 0.05)',
-//                     border: '1px solid rgba(255, 255, 255, 0.1)',
-//                     height: '100%',
-//                     transition: 'all 0.3s ease',
-//                     '&:hover': {
-//                       borderColor: service.color,
-//                     },
-//                   }}
-//                 >
-//                   <CardContent sx={{ p: 3 }}>
-//                     <Box
-//                       sx={{
-//                         display: 'inline-flex',
-//                         alignItems: 'center',
-//                         justifyContent: 'center',
-//                         width: 60,
-//                         height: 60,
-//                         borderRadius: '15%',
-//                         bgcolor: service.color,
-//                         mb: 3,
-//                       }}
-//                     >
-//                       {React.cloneElement(service.icon, {
-//                         sx: {
-//                           fontSize: 28,
-//                           color: '#FFFFFF',
-//                         }
-//                       })}
-//                     </Box>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 600,
-//                         color: '#FFFFFF',
-//                         fontSize: '1.2rem',
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       sx={{
-//                         lineHeight: 1.6,
-//                         color: '#A0A0A0',
-//                         fontSize: '0.9rem',
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-
-//         <Box sx={{ textAlign: 'center', mt: 6 }}>
-//           <Button
-//             variant="contained"
-//             size="large"
-//             endIcon={<ArrowForwardIcon />}
-//             onClick={handleLearnMore}
-//             sx={{
-//               px: 6,
-//               py: 1.5,
-//               fontSize: '1rem',
-//               fontWeight: 600,
-//               bgcolor: '#8A2BE2',
-//               color: '#FFFFFF',
-//               '&:hover': {
-//                 bgcolor: '#7A1BD2',
-//               },
-//             }}
-//           >
-//             Discover All AI Solutions
-//           </Button>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-// import React from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import StrategyIcon from '@mui/icons-material/BarChart';
-// import MLIcon from '@mui/icons-material/DeviceHub';
-// import NLPIcon from '@mui/icons-material/Chat';
-// import VisionIcon from '@mui/icons-material/Visibility';
-// import IntegrationIcon from '@mui/icons-material/Sync';
-// import SupportIcon from '@mui/icons-material/School';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   return (
-//     <Box ref={ref} sx={{
-//       py: { xs: 8, md: 12 },
-//       background: 'transparent',
-//     }}>
-//       <Container maxWidth="xl">
-//         <Box sx={{ textAlign: 'center', mb: 6 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 2,
-//                 color: '#FFFFFF',
-//                 fontWeight: 700,
-//                 fontSize: { xs: '2rem', md: '2.5rem' },
-//                 lineHeight: 1.2,
-//                 textShadow: '0 2px 10px rgba(0,0,0,0.5)',
-//               }}
-//             >
-//               Our AI-Powered Services
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 4,
-//                 color: '#FFFFFF',
-//                 opacity: 0.9,
-//                 maxWidth: 700,
-//                 mx: 'auto',
-//                 fontSize: { xs: '0.9rem', md: '1.1rem' },
-//                 lineHeight: 1.7,
-//               }}
-//             >
-//               Transform your business with cutting-edge artificial intelligence solutions tailored to your needs
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={3}>
-//           {[
-//             {
-//               title: 'AI Strategy & Consulting',
-//               description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//               icon: <StrategyIcon />,
-//             },
-//             {
-//               title: 'Machine Learning Development',
-//               description: 'Custom ML models built and deployed for specific use cases.',
-//               icon: <MLIcon />,
-//             },
-//             {
-//               title: 'Natural Language Processing',
-//               description: 'Advanced NLP solutions for text analysis and language understanding.',
-//               icon: <NLPIcon />,
-//             },
-//             {
-//               title: 'Computer Vision',
-//               description: 'Image and video analysis for automation and insights.',
-//               icon: <VisionIcon />,
-//             },
-//             {
-//               title: 'AI Integration',
-//               description: 'Seamlessly integrate AI capabilities into existing systems.',
-//               icon: <IntegrationIcon />,
-//             },
-//             {
-//               title: 'AI Training & Support',
-//               description: 'Comprehensive training and ongoing support for teams.',
-//               icon: <SupportIcon />,
-//             },
-//           ].map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={index}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1, duration: 0.5 }}
-//               >
-//                 <Card
-//                   sx={{
-//                     bgcolor: 'rgba(0, 0, 0, 0.7)',
-//                     border: '1px solid rgba(255, 255, 255, 0.1)',
-//                     height: '100%',
-//                     transition: 'all 0.3s ease',
-//                     backdropFilter: 'blur(10px)',
-//                     '&:hover': {
-//                       borderColor: '#fa8072',
-//                       transform: 'translateY(-5px)',
-//                     },
-//                   }}
-//                 >
-//                   <CardContent sx={{ p: 3 }}>
-//                     <Box
-//                       sx={{
-//                         display: 'inline-flex',
-//                         alignItems: 'center',
-//                         justifyContent: 'center',
-//                         width: 60,
-//                         height: 60,
-//                         borderRadius: '15%',
-//                         bgcolor: '#fa8072',
-//                         mb: 3,
-//                         transition: 'all 0.3s ease',
-//                         '&:hover': {
-//                           bgcolor: '#ff1dce',
-//                           transform: 'scale(1.1)',
-//                         },
-//                       }}
-//                     >
-//                       {React.cloneElement(service.icon, {
-//                         sx: {
-//                           fontSize: 28,
-//                           color: '#FFFFFF',
-//                         }
-//                       })}
-//                     </Box>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 600,
-//                         color: '#FFFFFF',
-//                         fontSize: '1.2rem',
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       sx={{
-//                         lineHeight: 1.6,
-//                         color: '#FFFFFF',
-//                         opacity: 0.8,
-//                         fontSize: '0.9rem',
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-
-//         <Box sx={{ textAlign: 'center', mt: 6 }}>
-//           <Button
-//             variant="contained"
-//             size="large"
-//             endIcon={<ArrowForwardIcon />}
-//             onClick={handleLearnMore}
-//             sx={{
-//               px: 6,
-//               py: 1.5,
-//               fontSize: '1rem',
-//               fontWeight: 600,
-//               bgcolor: '#fa8072',
-//               color: '#FFFFFF',
-//               '&:hover': {
-//                 bgcolor: '#ff1dce',
-//                 boxShadow: '0 0 20px rgba(255, 0, 144, 0.4)',
-//               },
-//             }}
-//           >
-//             Discover All AI Solutions
-//           </Button>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-// import React from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import StrategyIcon from '@mui/icons-material/BarChart';
-// import MLIcon from '@mui/icons-material/DeviceHub';
-// import NLPIcon from '@mui/icons-material/Chat';
-// import VisionIcon from '@mui/icons-material/Visibility';
-// import IntegrationIcon from '@mui/icons-material/Sync';
-// import SupportIcon from '@mui/icons-material/School';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   return (
-//     <Box ref={ref} sx={{
-//       py: { xs: 8, md: 12 },
-//       backgroundColor: '#000000',
-//     }}>
-//       <Container maxWidth="xl">
-//         <Box sx={{ textAlign: 'center', mb: 6 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 2,
-//                 color: '#ffffff',
-//                 fontWeight: 700,
-//                 fontSize: { xs: '2rem', md: '2.5rem' },
-//                 lineHeight: 1.2,
-//               }}
-//             >
-//               Our AI-Powered Services
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 4,
-//                 color: '#ffffff',
-//                 opacity: 0.9,
-//                 maxWidth: 700,
-//                 mx: 'auto',
-//                 fontSize: { xs: '0.9rem', md: '1.1rem' },
-//                 lineHeight: 1.7,
-//               }}
-//             >
-//               Transform your business with cutting-edge artificial intelligence solutions tailored to your needs
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={3}>
-//           {[
-//             {
-//               title: 'AI Strategy & Consulting',
-//               description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//               icon: <StrategyIcon />,
-//             },
-//             {
-//               title: 'Machine Learning Development',
-//               description: 'Custom ML models built and deployed for specific use cases.',
-//               icon: <MLIcon />,
-//             },
-//             {
-//               title: 'Natural Language Processing',
-//               description: 'Advanced NLP solutions for text analysis and language understanding.',
-//               icon: <NLPIcon />,
-//             },
-//             {
-//               title: 'Computer Vision',
-//               description: 'Image and video analysis for automation and insights.',
-//               icon: <VisionIcon />,
-//             },
-//             {
-//               title: 'AI Integration',
-//               description: 'Seamlessly integrate AI capabilities into existing systems.',
-//               icon: <IntegrationIcon />,
-//             },
-//             {
-//               title: 'AI Training & Support',
-//               description: 'Comprehensive training and ongoing support for teams.',
-//               icon: <SupportIcon />,
-//             },
-//           ].map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={index}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1, duration: 0.5 }}
-//               >
-//                 <Card
-//                   sx={{
-//                     backgroundColor: '#111111',
-//                     border: '1px solid #333333',
-//                     height: '100%',
-//                     transition: 'all 0.3s ease',
-//                     '&:hover': {
-//                       borderColor: '#fa8072',
-//                       transform: 'translateY(-5px)',
-//                     },
-//                   }}
-//                 >
-//                   <CardContent sx={{ p: 3 }}>
-//                     <Box
-//                       sx={{
-//                         display: 'inline-flex',
-//                         alignItems: 'center',
-//                         justifyContent: 'center',
-//                         width: 60,
-//                         height: 60,
-//                         borderRadius: '15%',
-//                         backgroundColor: '#fa8072',
-//                         mb: 3,
-//                         transition: 'all 0.3s ease',
-//                         '&:hover': {
-//                           backgroundColor: '#ff1dce',
-//                           transform: 'scale(1.1)',
-//                         },
-//                       }}
-//                     >
-//                       {React.cloneElement(service.icon, {
-//                         sx: {
-//                           fontSize: 28,
-//                           color: '#ffffff',
-//                         }
-//                       })}
-//                     </Box>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 600,
-//                         color: '#ffffff',
-//                         fontSize: '1.2rem',
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       sx={{
-//                         lineHeight: 1.6,
-//                         color: '#ffffff',
-//                         opacity: 0.9,
-//                         fontSize: '0.9rem',
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-
-//         <Box sx={{ textAlign: 'center', mt: 6 }}>
-//           <Button
-//             variant="contained"
-//             size="large"
-//             endIcon={<ArrowForwardIcon />}
-//             onClick={handleLearnMore}
-//             sx={{
-//               px: 6,
-//               py: 1.5,
-//               fontSize: '1rem',
-//               fontWeight: 600,
-//               backgroundColor: '#fa8072',
-//               color: '#ffffff',
-//               '&:hover': {
-//                 backgroundColor: '#ff1dce',
-//               },
-//             }}
-//           >
-//             Discover All AI Solutions
-//           </Button>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-// import React from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import StrategyIcon from '@mui/icons-material/BarChart';
-// import MLIcon from '@mui/icons-material/DeviceHub';
-// import NLPIcon from '@mui/icons-material/Chat';
-// import VisionIcon from '@mui/icons-material/Visibility';
-// import IntegrationIcon from '@mui/icons-material/Sync';
-// import SupportIcon from '@mui/icons-material/School';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   return (
-//     <Box ref={ref} sx={{
-//       py: { xs: 8, md: 12 },
-//       backgroundColor: 'transparent',
-//     }}>
-//       <Container maxWidth="xl">
-//         <Box sx={{ textAlign: 'center', mb: 6 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 2,
-//                 color: '#ffffff',
-//                 fontWeight: 700,
-//                 fontSize: { xs: '2rem', md: '2.5rem' },
-//                 lineHeight: 1.2,
-//               }}
-//             >
-//               Our AI-Powered Services
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 4,
-//                 color: '#ffffff',
-//                 opacity: 0.9,
-//                 maxWidth: 700,
-//                 mx: 'auto',
-//                 fontSize: { xs: '0.9rem', md: '1.1rem' },
-//                 lineHeight: 1.7,
-//               }}
-//             >
-//               Transform your business with cutting-edge artificial intelligence solutions tailored to your needs
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={3}>
-//           {[
-//             {
-//               title: 'AI Strategy & Consulting',
-//               description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//               icon: <StrategyIcon />,
-//             },
-//             {
-//               title: 'Machine Learning Development',
-//               description: 'Custom ML models built and deployed for specific use cases.',
-//               icon: <MLIcon />,
-//             },
-//             {
-//               title: 'Natural Language Processing',
-//               description: 'Advanced NLP solutions for text analysis and language understanding.',
-//               icon: <NLPIcon />,
-//             },
-//             {
-//               title: 'Computer Vision',
-//               description: 'Image and video analysis for automation and insights.',
-//               icon: <VisionIcon />,
-//             },
-//             {
-//               title: 'AI Integration',
-//               description: 'Seamlessly integrate AI capabilities into existing systems.',
-//               icon: <IntegrationIcon />,
-//             },
-//             {
-//               title: 'AI Training & Support',
-//               description: 'Comprehensive training and ongoing support for teams.',
-//               icon: <SupportIcon />,
-//             },
-//           ].map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={index}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1, duration: 0.5 }}
-//               >
-//                 <Card
-//                   sx={{
-//                     backgroundColor: '#111111',
-//                     border: '1px solid #333333',
-//                     height: '100%',
-//                     transition: 'all 0.3s ease',
-//                     '&:hover': {
-//                       borderColor: '#fa8072',
-//                       transform: 'translateY(-5px)',
-//                     },
-//                   }}
-//                 >
-//                   <CardContent sx={{ p: 3 }}>
-//                     <Box
-//                       sx={{
-//                         display: 'inline-flex',
-//                         alignItems: 'center',
-//                         justifyContent: 'center',
-//                         width: 60,
-//                         height: 60,
-//                         borderRadius: '15%',
-//                         backgroundColor: '#fa8072',
-//                         mb: 3,
-//                         transition: 'all 0.3s ease',
-//                         '&:hover': {
-//                           backgroundColor: '#ff1dce',
-//                           transform: 'scale(1.1)',
-//                         },
-//                       }}
-//                     >
-//                       {React.cloneElement(service.icon, {
-//                         sx: {
-//                           fontSize: 28,
-//                           color: '#ffffff',
-//                         }
-//                       })}
-//                     </Box>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 600,
-//                         color: '#ffffff',
-//                         fontSize: '1.2rem',
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       sx={{
-//                         lineHeight: 1.6,
-//                         color: '#ffffff',
-//                         opacity: 0.9,
-//                         fontSize: '0.9rem',
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-
-//         <Box sx={{ textAlign: 'center', mt: 6 }}>
-//           <Button
-//             variant="contained"
-//             size="large"
-//             endIcon={<ArrowForwardIcon />}
-//             onClick={handleLearnMore}
-//             sx={{
-//               px: 6,
-//               py: 1.5,
-//               fontSize: '1rem',
-//               fontWeight: 600,
-//               backgroundColor: '#fa8072',
-//               color: '#ffffff',
-//               '&:hover': {
-//                 backgroundColor: '#ff1dce',
-//               },
-//             }}
-//           >
-//             Discover All AI Solutions
-//           </Button>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-// import React from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import StrategyIcon from '@mui/icons-material/BarChart';
-// import MLIcon from '@mui/icons-material/DeviceHub';
-// import NLPIcon from '@mui/icons-material/Chat';
-// import VisionIcon from '@mui/icons-material/Visibility';
-// import IntegrationIcon from '@mui/icons-material/Sync';
-// import SupportIcon from '@mui/icons-material/School';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-//   const primaryColor = '#fa8072'; // Telemagenta
-//   const secondaryColor = '#fa8072'; // Salmon
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   return (
-//     <Box ref={ref} sx={{
-//       py: { xs: 8, md: 12 },
-//       backgroundColor: 'transparent',
-//     }}>
-//       <Container maxWidth="xl">
-//         <Box sx={{ textAlign: 'center', mb: 6 }}>
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <Typography
-//               variant="h2"
-//               sx={{
-//                 mb: 2,
-//                 color: '#ffffff',
-//                 fontWeight: 700,
-//                 fontSize: { xs: '2rem', md: '2.5rem' },
-//                 lineHeight: 1.2,
-//               }}
-//             >
-//               Our AI-Powered Services
-//             </Typography>
-
-//             <Typography
-//               variant="h6"
-//               sx={{
-//                 mb: 4,
-//                 color: '#ffffff',
-//                 opacity: 0.9,
-//                 maxWidth: 700,
-//                 mx: 'auto',
-//                 fontSize: { xs: '0.9rem', md: '1.1rem' },
-//                 lineHeight: 1.7,
-//               }}
-//             >
-//               Transform your business with cutting-edge artificial intelligence solutions tailored to your needs
-//             </Typography>
-//           </motion.div>
-//         </Box>
-
-//         <Grid container spacing={3}>
-//           {[
-//             {
-//               title: 'AI Strategy & Consulting',
-//               description: 'Develop comprehensive AI roadmaps aligned with your business objectives.',
-//               icon: <StrategyIcon />,
-//               color: primaryColor,
-//             },
-//             {
-//               title: 'Machine Learning Development',
-//               description: 'Custom ML models built and deployed for specific use cases.',
-//               icon: <MLIcon />,
-//               color: secondaryColor,
-//             },
-//             {
-//               title: 'Natural Language Processing',
-//               description: 'Advanced NLP solutions for text analysis and language understanding.',
-//               icon: <NLPIcon />,
-//               color: primaryColor,
-//             },
-//             {
-//               title: 'Computer Vision',
-//               description: 'Image and video analysis for automation and insights.',
-//               icon: <VisionIcon />,
-//               color: secondaryColor,
-//             },
-//             {
-//               title: 'AI Integration',
-//               description: 'Seamlessly integrate AI capabilities into existing systems.',
-//               icon: <IntegrationIcon />,
-//               color: primaryColor,
-//             },
-//             {
-//               title: 'AI Training & Support',
-//               description: 'Comprehensive training and ongoing support for teams.',
-//               icon: <SupportIcon />,
-//               color: secondaryColor,
-//             },
-//           ].map((service, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={index}>
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={inView ? { opacity: 1, y: 0 } : {}}
-//                 transition={{ delay: index * 0.1, duration: 0.5 }}
-//               >
-//                 <Card
-//                   sx={{
-//                     backgroundColor: '#111111',
-//                     border: '1px solid #333333',
-//                     height: '100%',
-//                     transition: 'all 0.3s ease',
-//                     '&:hover': {
-//                       borderColor: service.color,
-//                       transform: 'translateY(-5px)',
-//                       boxShadow: `0 8px 25px ${service.color}33`,
-//                     },
-//                   }}
-//                 >
-//                   <CardContent sx={{ p: 3 }}>
-//                     <Box
-//                       sx={{
-//                         display: 'inline-flex',
-//                         alignItems: 'center',
-//                         justifyContent: 'center',
-//                         width: 60,
-//                         height: 60,
-//                         borderRadius: '15%',
-//                         backgroundColor: service.color,
-//                         mb: 3,
-//                         transition: 'all 0.3s ease',
-//                         '&:hover': {
-//                           backgroundColor: service.color === primaryColor ? '#d94b8a' : '#fb9488',
-//                           transform: 'scale(1.1)',
-//                         },
-//                       }}
-//                     >
-//                       {React.cloneElement(service.icon, {
-//                         sx: {
-//                           fontSize: 28,
-//                           color: '#ffffff',
-//                         }
-//                       })}
-//                     </Box>
-
-//                     <Typography
-//                       variant="h5"
-//                       sx={{
-//                         mb: 2,
-//                         fontWeight: 600,
-//                         color: service.color,
-//                         fontSize: '1.2rem',
-//                       }}
-//                     >
-//                       {service.title}
-//                     </Typography>
-
-//                     <Typography
-//                       variant="body1"
-//                       sx={{
-//                         lineHeight: 1.6,
-//                         color: '#ffffff',
-//                         opacity: 0.9,
-//                         fontSize: '0.9rem',
-//                       }}
-//                     >
-//                       {service.description}
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </motion.div>
-//             </Grid>
-//           ))}
-//         </Grid>
-
-//         <Box sx={{ textAlign: 'center', mt: 6 }}>
-//           <Button
-//             variant="contained"
-//             size="large"
-//             endIcon={<ArrowForwardIcon />}
-//             onClick={handleLearnMore}
-//             sx={{
-//               px: 6,
-//               py: 1.5,
-//               fontSize: '1rem',
-//               fontWeight: 600,
-//               backgroundColor: primaryColor,
-//               color: '#ffffff',
-//               '&:hover': {
-//                 backgroundColor: '#d94b8a',
-//                 transform: 'translateY(-2px)',
-//                 boxShadow: `0 8px 25px ${primaryColor}33`,
-//               },
-//               transition: 'all 0.3s ease',
-//             }}
-//           >
-//             Discover All AI Solutions
-//           </Button>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-// import React from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Button,
-// } from '@mui/material';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import { useNavigate } from 'react-router-dom';
-
-// const ServicesSection = () => {
-//   const { ref, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.1,
-//   });
-
-//   const navigate = useNavigate();
-  
-//   // Color scheme
-//   const telemagenta = '#cf3476';
-//   const salmon = '#fa8072';
-//   const telemagentaHover = '#d94b8a';
-//   const salmonHover = '#fb9488';
-
-//   const handleLearnMore = () => {
-//     navigate('/services');
-//   };
-
-//   // Animation variants
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: {
-//         staggerChildren: 0.1,
-//         delayChildren: 0.2
-//       }
-//     }
-//   };
-
-//   const itemVariants = {
-//     hidden: { 
-//       opacity: 0, 
-//       y: 50,
-//       scale: 0.9,
-//       rotateY: 45 
-//     },
-//     visible: { 
-//       opacity: 1, 
-//       y: 0,
-//       scale: 1,
-//       rotateY: 0,
-//       transition: {
-//         type: "spring",
-//         stiffness: 100,
-//         damping: 12,
-//         mass: 0.8
-//       }
-//     }
-//   };
-
-//   const titleVariants = {
-//     hidden: { opacity: 0, y: -30 },
-//     visible: { 
-//       opacity: 1, 
-//       y: 0,
-//       transition: {
-//         type: "spring",
-//         stiffness: 120,
-//         damping: 10
-//       }
-//     }
-//   };
-
-//   const services = [
-//     {
-//       title: 'AI Strategy & Consulting',
-//       description: 'Develop comprehensive AI roadmaps aligned with your business objectives to drive innovation and competitive advantage.',
-//       color: telemagenta,
-//       gradient: `linear-gradient(135deg, ${telemagenta}, #8a2387)`,
-//       iconNumber: '01'
-//     },
-//     {
-//       title: 'Machine Learning Development',
-//       description: 'Build and deploy custom ML models specifically engineered for your unique use cases and business requirements.',
-//       color: salmon,
-//       gradient: `linear-gradient(135deg, ${salmon}, #ff7e5f)`,
-//       iconNumber: '02'
-//     },
-//     {
-//       title: 'Natural Language Processing',
-//       description: 'Implement advanced NLP solutions for intelligent text analysis, sentiment detection, and automated language understanding.',
-//       color: telemagenta,
-//       gradient: `linear-gradient(135deg, ${telemagenta}, #8a2387)`,
-//       iconNumber: '03'
-//     },
-//     {
-//       title: 'Computer Vision',
-//       description: 'Leverage image and video analysis for automation, quality control, and actionable business insights.',
-//       color: salmon,
-//       gradient: `linear-gradient(135deg, ${salmon}, #ff7e5f)`,
-//       iconNumber: '04'
-//     },
-//     {
-//       title: 'AI Integration',
-//       description: 'Seamlessly integrate AI capabilities into your existing systems with minimal disruption and maximum efficiency.',
-//       color: telemagenta,
-//       gradient: `linear-gradient(135deg, ${telemagenta}, #8a2387)`,
-//       iconNumber: '05'
-//     },
-//     {
-//       title: 'AI Training & Support',
-//       description: 'Provide comprehensive training and ongoing support to empower your teams with AI capabilities.',
-//       color: salmon,
-//       gradient: `linear-gradient(135deg, ${salmon}, #ff7e5f)`,
-//       iconNumber: '06'
-//     },
-//   ];
-
-//   return (
-//     <Box ref={ref} sx={{
-//       py: { xs: 8, md: 12 },
-//       backgroundColor: 'transparent',
-//       position: 'relative',
-//       overflow: 'hidden'
-//     }}>
-//       {/* Background decorative elements */}
-//       <Box
-//         sx={{
-//           position: 'absolute',
-//           top: '50%',
-//           left: '10%',
-//           width: '300px',
-//           height: '300px',
-//           borderRadius: '50%',
-//           background: `radial-gradient(circle, ${telemagenta}15 0%, transparent 70%)`,
-//           filter: 'blur(60px)',
-//           zIndex: 0,
-//           animation: 'pulse 8s ease-in-out infinite',
-//           '@keyframes pulse': {
-//             '0%, 100%': {
-//               opacity: 0.3,
-//               transform: 'translateY(0) scale(1)',
-//             },
-//             '50%': {
-//               opacity: 0.6,
-//               transform: 'translateY(-20px) scale(1.1)',
-//             },
-//           },
-//         }}
-//       />
-      
-//       <Box
-//         sx={{
-//           position: 'absolute',
-//           bottom: '20%',
-//           right: '10%',
-//           width: '250px',
-//           height: '250px',
-//           borderRadius: '50%',
-//           background: `radial-gradient(circle, ${salmon}15 0%, transparent 70%)`,
-//           filter: 'blur(50px)',
-//           zIndex: 0,
-//           animation: 'pulse 10s ease-in-out infinite reverse',
-//         }}
-//       />
-
-//       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-//         <motion.div
-//           variants={containerVariants}
-//           initial="hidden"
-//           animate={inView ? "visible" : "hidden"}
-//         >
-//           <Box sx={{ textAlign: 'center', mb: 8 }}>
-//             <motion.div variants={titleVariants}>
-//               <Typography
-//                 variant="h2"
-//                 sx={{
-//                   mb: 3,
-//                   color: telemagenta,
-//                   fontWeight: 800,
-//                   fontSize: { 
-//                     xs: '2.2rem', 
-//                     sm: '2.8rem', 
-//                     md: '3.5rem' 
-//                   },
-//                   lineHeight: 1.1,
-//                   textTransform: 'uppercase',
-//                   letterSpacing: '0.5px',
-//                   position: 'relative',
-//                   display: 'inline-block',
-//                   '&::after': {
-//                     content: '""',
-//                     position: 'absolute',
-//                     bottom: '-15px',
-//                     left: '50%',
-//                     transform: 'translateX(-50%)',
-//                     width: '100px',
-//                     height: '4px',
-//                     background: `linear-gradient(90deg, ${telemagenta}, ${salmon})`,
-//                     borderRadius: '2px',
-//                   }
-//                 }}
-//               >
-//                 AI-Powered Services
-//               </Typography>
-//             </motion.div>
-
-//             <motion.div
-//               variants={titleVariants}
-//               transition={{ delay: 0.1 }}
-//             >
-//               <Typography
-//                 variant="h6"
-//                 sx={{
-//                   mb: 4,
-//                   color: '#ffffff',
-//                   opacity: 0.9,
-//                   maxWidth: 700,
-//                   mx: 'auto',
-//                   fontSize: { 
-//                     xs: '1rem', 
-//                     sm: '1.1rem', 
-//                     md: '1.2rem' 
-//                   },
-//                   lineHeight: 1.7,
-//                   fontWeight: 400,
-//                 }}
-//               >
-//                 Transform your business with cutting-edge artificial intelligence solutions 
-//                 specifically designed to meet your unique challenges and objectives
-//               </Typography>
-//             </motion.div>
-
-//             {/* Animated decorative line */}
-//             <motion.div
-//               initial={{ width: 0 }}
-//               animate={inView ? { width: '150px' } : {}}
-//               transition={{ delay: 0.5, duration: 1 }}
-//               style={{
-//                 height: '2px',
-//                 background: `linear-gradient(90deg, ${telemagenta}, ${salmon}, ${telemagenta})`,
-//                 margin: '0 auto',
-//                 borderRadius: '1px',
-//               }}
-//             />
-//           </Box>
-
-//           <Grid container spacing={4}>
-//             {services.map((service, index) => (
-//               <Grid item xs={12} sm={6} md={4} key={index}>
-//                 <motion.div
-//                   variants={itemVariants}
-//                   whileHover={{ 
-//                     y: -15,
-//                     transition: { type: "spring", stiffness: 300 }
-//                   }}
-//                   style={{ height: '100%' }}
-//                 >
-//                   <Card
-//                     sx={{
-//                       backgroundColor: '#111111',
-//                       background: 'linear-gradient(145deg, #0a0a0a, #111111)',
-//                       border: `1px solid ${service.color}20`,
-//                       height: '100%',
-//                       position: 'relative',
-//                       overflow: 'hidden',
-//                       cursor: 'pointer',
-//                       '&::before': {
-//                         content: '""',
-//                         position: 'absolute',
-//                         top: 0,
-//                         left: 0,
-//                         right: 0,
-//                         height: '100%',
-//                         background: service.gradient,
-//                         opacity: 0,
-//                         transition: 'opacity 0.4s ease',
-//                         zIndex: 0,
-//                       },
-//                       '&::after': {
-//                         content: '""',
-//                         position: 'absolute',
-//                         top: 0,
-//                         left: '-100%',
-//                         width: '100%',
-//                         height: '100%',
-//                         background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-//                         transition: 'left 0.7s ease',
-//                       },
-//                       '&:hover': {
-//                         borderColor: service.color,
-//                         boxShadow: `0 20px 40px ${service.color}25, 0 0 30px ${service.color}15`,
-//                         transform: 'translateY(-10px)',
-//                         '&::before': {
-//                           opacity: 0.05,
-//                         },
-//                         '&::after': {
-//                           left: '100%',
-//                         },
-//                         '& .service-number': {
-//                           opacity: 1,
-//                           transform: 'scale(1.2)',
-//                         },
-//                         '& .service-title': {
-//                           color: service.color,
-//                         }
-//                       },
-//                       transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-//                     }}
-//                   >
-//                     <CardContent sx={{ 
-//                       p: { xs: 3, md: 4 },
-//                       position: 'relative',
-//                       zIndex: 1,
-//                       height: '100%',
-//                       display: 'flex',
-//                       flexDirection: 'column'
-//                     }}>
-//                       {/* Service Number */}
-//                       <motion.div 
-//                         className="service-number"
-//                         initial={{ opacity: 0.3, scale: 0.8 }}
-//                         animate={inView ? { opacity: 0.3, scale: 1 } : {}}
-//                         transition={{ delay: index * 0.1 }}
-//                         style={{
-//                           position: 'absolute',
-//                           top: 20,
-//                           right: 20,
-//                           fontSize: '4rem',
-//                           fontWeight: 900,
-//                           color: service.color,
-//                           opacity: 0.3,
-//                           lineHeight: 1,
-//                           transition: 'all 0.3s ease',
-//                         }}
-//                       >
-//                         {service.iconNumber}
-//                       </motion.div>
-
-//                       {/* Service Title */}
-//                       <motion.div
-//                         className="service-title"
-//                         initial={{ opacity: 0, x: -20 }}
-//                         animate={inView ? { opacity: 1, x: 0 } : {}}
-//                         transition={{ delay: index * 0.1 + 0.2 }}
-//                       >
-//                         <Typography
-//                           variant="h5"
-//                           sx={{
-//                             mb: 3,
-//                             fontWeight: 700,
-//                             color: '#ffffff',
-//                             fontSize: { xs: '1.3rem', md: '1.5rem' },
-//                             minHeight: '72px',
-//                             display: 'flex',
-//                             alignItems: 'flex-start',
-//                             position: 'relative',
-//                             '&::before': {
-//                               content: '""',
-//                               position: 'absolute',
-//                               bottom: '-10px',
-//                               left: 0,
-//                               width: '40px',
-//                               height: '3px',
-//                               background: service.color,
-//                               borderRadius: '1.5px',
-//                             }
-//                           }}
-//                         >
-//                           {service.title}
-//                         </Typography>
-//                       </motion.div>
-
-//                       {/* Service Description */}
-//                       <motion.div
-//                         initial={{ opacity: 0 }}
-//                         animate={inView ? { opacity: 1 } : {}}
-//                         transition={{ delay: index * 0.1 + 0.3 }}
-//                         style={{ flexGrow: 1 }}
-//                       >
-//                         <Typography
-//                           variant="body1"
-//                           sx={{
-//                             lineHeight: 1.7,
-//                             color: '#cccccc',
-//                             fontSize: { xs: '0.9rem', md: '1rem' },
-//                             mb: 3,
-//                             flexGrow: 1,
-//                           }}
-//                         >
-//                           {service.description}
-//                         </Typography>
-//                       </motion.div>
-
-//                       {/* Learn More Button */}
-//                       <motion.div
-//                         initial={{ opacity: 0, y: 20 }}
-//                         animate={inView ? { opacity: 1, y: 0 } : {}}
-//                         transition={{ delay: index * 0.1 + 0.4 }}
-//                         style={{ marginTop: 'auto' }}
-//                       >
-//                         <Button
-//                           variant="text"
-//                           endIcon={
-//                             <motion.div
-//                               animate={{ x: [0, 5, 0] }}
-//                               transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-//                             >
-//                               <ArrowForwardIcon />
-//                             </motion.div>
-//                           }
-//                           sx={{
-//                             color: service.color,
-//                             fontWeight: 600,
-//                             fontSize: '0.9rem',
-//                             p: 0,
-//                             '&:hover': {
-//                               color: service.color === telemagenta ? telemagentaHover : salmonHover,
-//                               backgroundColor: 'transparent',
-//                             }
-//                           }}
-//                         >
-//                           Learn More
-//                         </Button>
-//                       </motion.div>
-//                     </CardContent>
-//                   </Card>
-//                 </motion.div>
-//               </Grid>
-//             ))}
-//           </Grid>
-
-//           {/* CTA Button */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 30 }}
-//             animate={inView ? { opacity: 1, y: 0 } : {}}
-//             transition={{ delay: 0.8 }}
-//             style={{ textAlign: 'center', marginTop: '4rem' }}
-//           >
-//             <Button
-//               variant="contained"
-//               size="large"
-//               onClick={handleLearnMore}
-//               sx={{
-//                 px: 6,
-//                 py: 1.5,
-//                 fontSize: '1.1rem',
-//                 fontWeight: 700,
-//                 background: `linear-gradient(135deg, ${telemagenta}, ${salmon})`,
-//                 color: '#ffffff',
-//                 minWidth: '280px',
-//                 borderRadius: '50px',
-//                 position: 'relative',
-//                 overflow: 'hidden',
-//                 '&::before': {
-//                   content: '""',
-//                   position: 'absolute',
-//                   top: 0,
-//                   left: '-100%',
-//                   width: '100%',
-//                   height: '100%',
-//                   background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
-//                   transition: 'left 0.7s ease',
-//                 },
-//                 '&:hover': {
-//                   transform: 'translateY(-3px)',
-//                   boxShadow: `0 15px 30px ${telemagenta}40`,
-//                   '&::before': {
-//                     left: '100%',
-//                   }
-//                 },
-//                 transition: 'all 0.3s ease',
-//               }}
-//             >
-//               Explore All AI Solutions
-//               <ArrowForwardIcon sx={{ ml: 1, fontSize: '1.2rem' }} />
-//             </Button>
-//           </motion.div>
-//         </motion.div>
-//       </Container>
-
-//       {/* Animated connecting dots */}
-//       <svg
-//         style={{
-//           position: 'absolute',
-//           top: 0,
-//           left: 0,
-//           width: '100%',
-//           height: '100%',
-//           pointerEvents: 'none',
-//           zIndex: 0
-//         }}
-//       >
-//         {[...Array(20)].map((_, i) => (
-//           <motion.circle
-//             key={i}
-//             cx={`${(i * 5 + 10) % 100}%`}
-//             cy={`${(i * 7 + 20) % 100}%`}
-//             r="2"
-//             fill={i % 2 === 0 ? telemagenta : salmon}
-//             initial={{ opacity: 0, scale: 0 }}
-//             animate={inView ? { opacity: 0.3, scale: 1 } : {}}
-//             transition={{ delay: i * 0.05, duration: 0.5 }}
-//           />
-//         ))}
-//       </svg>
-//     </Box>
-//   );
-// };
-
-// export default ServicesSection;
-
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
   Typography,
-  Grid,
-  Card,
-  CardContent,
   Button,
 } from '@mui/material';
 import { motion } from 'framer-motion';
@@ -2449,473 +17,186 @@ const ServicesSection = () => {
   });
 
   const navigate = useNavigate();
+  const [hoveredService, setHoveredService] = useState(null);
   
-  // Color scheme - Using only salmon and its variations
+  // Color scheme
+  const telemagenta = '#cf3476';
   const salmon = '#fa8072';
-  const salmonLight = '#ffa07a';
-  const salmonDark = '#e9967a';
-  const salmonHover = '#ff9580';
-  const accentColor = '#ff6b6b'; // Another shade of salmon/coral
+  const white = '#ffffff';
 
-  const handleLearnMore = () => {
+  const handleExploreServices = () => {
     navigate('/services');
   };
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50,
-      scale: 0.9,
-      rotateY: 45 
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      rotateY: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
-        mass: 0.8
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: -30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 10
-      }
-    }
-  };
-
+  // Service data with minimal content
   const services = [
-    {
-      title: 'AI Strategy & Consulting',
-      description: 'Develop comprehensive AI roadmaps aligned with your business objectives to drive innovation and competitive advantage.',
-      color: salmon,
-      gradient: `linear-gradient(135deg, ${salmon}, ${salmonDark})`,
-      iconNumber: '01'
-    },
-    {
-      title: 'Machine Learning Development',
-      description: 'Build and deploy custom ML models specifically engineered for your unique use cases and business requirements.',
-      color: salmonLight,
-      gradient: `linear-gradient(135deg, ${salmonLight}, #ff8c69)`,
-      iconNumber: '02'
-    },
-    {
-      title: 'Natural Language Processing',
-      description: 'Implement advanced NLP solutions for intelligent text analysis, sentiment detection, and automated language understanding.',
-      color: salmon,
-      gradient: `linear-gradient(135deg, ${salmon}, ${salmonDark})`,
-      iconNumber: '03'
-    },
-    {
-      title: 'Computer Vision',
-      description: 'Leverage image and video analysis for automation, quality control, and actionable business insights.',
-      color: salmonLight,
-      gradient: `linear-gradient(135deg, ${salmonLight}, #ff8c69)`,
-      iconNumber: '04'
-    },
-    {
-      title: 'AI Integration',
-      description: 'Seamlessly integrate AI capabilities into your existing systems with minimal disruption and maximum efficiency.',
-      color: salmon,
-      gradient: `linear-gradient(135deg, ${salmon}, ${salmonDark})`,
-      iconNumber: '05'
-    },
-    {
-      title: 'AI Training & Support',
-      description: 'Provide comprehensive training and ongoing support to empower your teams with AI capabilities.',
-      color: salmonLight,
-      gradient: `linear-gradient(135deg, ${salmonLight}, #ff8c69)`,
-      iconNumber: '06'
-    },
+    { id: 1, name: 'STRATEGY', char: 'S' },
+    { id: 2, name: 'DEVELOPMENT', char: 'D' },
+    { id: 3, name: 'VISION', char: 'V' },
+    { id: 4, name: 'INTEGRATION', char: 'I' },
+    { id: 5, name: 'TRAINING', char: 'T' },
+    { id: 6, name: 'INNOVATION', char: 'I' },
   ];
 
-  return (
-    <Box ref={ref} sx={{
-      py: { xs: 8, md: 12 },
-      backgroundColor: 'transparent',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      {/* Background decorative elements - Only salmon colors */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '10%',
-          width: '300px',
-          height: '300px',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${salmon}15 0%, transparent 70%)`,
-          filter: 'blur(60px)',
-          zIndex: 0,
-          animation: 'pulse 8s ease-in-out infinite',
-          '@keyframes pulse': {
-            '0%, 100%': {
-              opacity: 0.3,
-              transform: 'translateY(0) scale(1)',
-            },
-            '50%': {
-              opacity: 0.6,
-              transform: 'translateY(-20px) scale(1.1)',
-            },
-          },
-        }}
-      />
-      
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '10%',
-          width: '250px',
-          height: '250px',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${salmonLight}15 0%, transparent 70%)`,
-          filter: 'blur(50px)',
-          zIndex: 0,
-          animation: 'pulse 10s ease-in-out infinite reverse',
-        }}
-      />
-
-      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
-          <Box sx={{ textAlign: 'center', mb: 8 }}>
-            <motion.div variants={titleVariants}>
-              <Typography
-                variant="h2"
-                sx={{
-                  mb: 3,
-                  color: salmon,
-                  fontWeight: 800,
-                  fontSize: { 
-                    xs: '2.2rem', 
-                    sm: '2.8rem', 
-                    md: '3.5rem' 
-                  },
-                  lineHeight: 1.1,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  position: 'relative',
-                  display: 'inline-block',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: '-15px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: '100px',
-                    height: '4px',
-                    background: `linear-gradient(90deg, ${salmon}, ${salmonLight})`,
-                    borderRadius: '2px',
-                  }
-                }}
-              >
-                AI-Powered Services
-              </Typography>
-            </motion.div>
-
-            <motion.div
-              variants={titleVariants}
-              transition={{ delay: 0.1 }}
-            >
-              <Typography
-                variant="h6"
-                sx={{
-                  mb: 4,
-                  color: '#ffffff',
-                  opacity: 0.9,
-                  maxWidth: 700,
-                  mx: 'auto',
-                  fontSize: { 
-                    xs: '1rem', 
-                    sm: '1.1rem', 
-                    md: '1.2rem' 
-                  },
-                  lineHeight: 1.7,
-                  fontWeight: 400,
-                }}
-              >
-                Transform your business with cutting-edge artificial intelligence solutions 
-                specifically designed to meet your unique challenges and objectives
-              </Typography>
-            </motion.div>
-
-            {/* Animated decorative line */}
-            <motion.div
-              initial={{ width: 0 }}
-              animate={inView ? { width: '150px' } : {}}
-              transition={{ delay: 0.5, duration: 1 }}
-              style={{
-                height: '2px',
-                background: `linear-gradient(90deg, ${salmon}, ${salmonLight}, ${salmon})`,
-                margin: '0 auto',
-                borderRadius: '1px',
-              }}
-            />
-          </Box>
-
-          <Grid container spacing={4}>
-            {services.map((service, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <motion.div
-                  variants={itemVariants}
-                  whileHover={{ 
-                    y: -15,
-                    transition: { type: "spring", stiffness: 300 }
-                  }}
-                  style={{ height: '100%' }}
-                >
-                  <Card
-                    sx={{
-                      backgroundColor: '#111111',
-                      background: 'linear-gradient(145deg, #0a0a0a, #111111)',
-                      border: `1px solid ${service.color}20`,
-                      height: '100%',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      cursor: 'pointer',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: '100%',
-                        background: service.gradient,
-                        opacity: 0,
-                        transition: 'opacity 0.4s ease',
-                        zIndex: 0,
-                      },
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: '-100%',
-                        width: '100%',
-                        height: '100%',
-                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-                        transition: 'left 0.7s ease',
-                      },
-                      '&:hover': {
-                        borderColor: service.color,
-                        boxShadow: `0 20px 40px ${service.color}25, 0 0 30px ${service.color}15`,
-                        transform: 'translateY(-10px)',
-                        '&::before': {
-                          opacity: 0.05,
-                        },
-                        '&::after': {
-                          left: '100%',
-                        },
-                        '& .service-number': {
-                          opacity: 1,
-                          transform: 'scale(1.2)',
-                        },
-                        '& .service-title': {
-                          color: service.color,
-                        }
-                      },
-                      transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                    }}
-                  >
-                    <CardContent sx={{ 
-                      p: { xs: 3, md: 4 },
-                      position: 'relative',
-                      zIndex: 1,
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column'
-                    }}>
-                      {/* Service Number */}
-                      <motion.div 
-                        className="service-number"
-                        initial={{ opacity: 0.3, scale: 0.8 }}
-                        animate={inView ? { opacity: 0.3, scale: 1 } : {}}
-                        transition={{ delay: index * 0.1 }}
-                        style={{
-                          position: 'absolute',
-                          top: 20,
-                          right: 20,
-                          fontSize: '4rem',
-                          fontWeight: 900,
-                          color: service.color,
-                          opacity: 0.3,
-                          lineHeight: 1,
-                          transition: 'all 0.3s ease',
-                        }}
-                      >
-                        {service.iconNumber}
-                      </motion.div>
-
-                      {/* Service Title */}
-                      <motion.div
-                        className="service-title"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: index * 0.1 + 0.2 }}
-                      >
-                        <Typography
-                          variant="h5"
-                          sx={{
-                            mb: 3,
-                            fontWeight: 700,
-                            color: '#ffffff',
-                            fontSize: { xs: '1.3rem', md: '1.5rem' },
-                            minHeight: '72px',
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            position: 'relative',
-                            '&::before': {
-                              content: '""',
-                              position: 'absolute',
-                              bottom: '-10px',
-                              left: 0,
-                              width: '40px',
-                              height: '3px',
-                              background: service.color,
-                              borderRadius: '1.5px',
-                            }
-                          }}
-                        >
-                          {service.title}
-                        </Typography>
-                      </motion.div>
-
-                      {/* Service Description */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={inView ? { opacity: 1 } : {}}
-                        transition={{ delay: index * 0.1 + 0.3 }}
-                        style={{ flexGrow: 1 }}
-                      >
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            lineHeight: 1.7,
-                            color: '#cccccc',
-                            fontSize: { xs: '0.9rem', md: '1rem' },
-                            mb: 3,
-                            flexGrow: 1,
-                          }}
-                        >
-                          {service.description}
-                        </Typography>
-                      </motion.div>
-
-                      {/* Learn More Button */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={inView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ delay: index * 0.1 + 0.4 }}
-                        style={{ marginTop: 'auto' }}
-                      >
-                        <Button
-                          variant="text"
-                          endIcon={
-                            <motion.div
-                              animate={{ x: [0, 5, 0] }}
-                              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-                            >
-                              <ArrowForwardIcon />
-                            </motion.div>
-                          }
-                          sx={{
-                            color: service.color,
-                            fontWeight: 600,
-                            fontSize: '0.9rem',
-                            p: 0,
-                            '&:hover': {
-                              color: salmonHover,
-                              backgroundColor: 'transparent',
-                            }
-                          }}
-                        >
-                          Learn More
-                        </Button>
-                      </motion.div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-
-          {/* CTA Button */}
+  // Matrix rain animation
+  const MatrixRain = () => {
+    const columns = 20;
+    return (
+      <Box sx={{ 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0,
+        overflow: 'hidden',
+        opacity: 0.1
+      }}>
+        {[...Array(columns)].map((_, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.8 }}
-            style={{ textAlign: 'center', marginTop: '4rem' }}
+            key={i}
+            initial={{ y: '-100%' }}
+            animate={{ y: '200%' }}
+            transition={{
+              duration: Math.random() * 5 + 3,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "linear"
+            }}
+            style={{
+              position: 'absolute',
+              left: `${(i * 100) / columns}%`,
+              fontSize: '20px',
+              color: i % 2 === 0 ? telemagenta : salmon,
+              fontFamily: 'monospace',
+              writingMode: 'vertical-rl',
+              textOrientation: 'mixed',
+              whiteSpace: 'nowrap'
+            }}
           >
-            <Button
-              variant="contained"
-              size="large"
-              onClick={handleLearnMore}
-              sx={{
-                px: 6,
-                py: 1.5,
-                fontSize: '1.1rem',
-                fontWeight: 700,
-                background: `linear-gradient(135deg, ${salmon}, ${salmonLight})`,
-                color: '#ffffff',
-                minWidth: '280px',
-                borderRadius: '50px',
-                position: 'relative',
-                overflow: 'hidden',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: '-100%',
-                  width: '100%',
-                  height: '100%',
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
-                  transition: 'left 0.7s ease',
-                },
-                '&:hover': {
-                  transform: 'translateY(-3px)',
-                  boxShadow: `0 15px 30px ${salmon}40`,
-                  '&::before': {
-                    left: '100%',
-                  }
-                },
-                transition: 'all 0.3s ease',
-              }}
-            >
-              Explore All AI Solutions
-              <ArrowForwardIcon sx={{ ml: 1, fontSize: '1.2rem' }} />
-            </Button>
+            {[...Array(30)].map((_, j) => (
+              <span key={j} style={{ 
+                opacity: Math.random(),
+                color: Math.random() > 0.7 ? telemagenta : salmon 
+              }}>
+                {String.fromCharCode(0x30A0 + Math.random() * 96)}
+              </span>
+            ))}
           </motion.div>
-        </motion.div>
-      </Container>
+        ))}
+      </Box>
+    );
+  };
 
-      {/* Animated connecting dots */}
+  // Holographic effect for letters
+  const HolographicLetter = ({ char, isHovered }) => (
+    <motion.div
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ 
+        scale: isHovered ? 2 : 1,
+        opacity: 1,
+        textShadow: isHovered 
+          ? [
+              `0 0 5px ${telemagenta}`,
+              `0 0 20px ${telemagenta}`,
+              `0 0 40px ${salmon}`
+            ]
+          : `0 0 10px ${telemagenta}`
+      }}
+      transition={{
+        scale: { type: "spring", stiffness: 200 },
+        textShadow: { duration: 0.5 }
+      }}
+      style={{
+        fontSize: '8rem',
+        fontWeight: 900,
+        background: `linear-gradient(45deg, ${telemagenta}, ${salmon})`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        position: 'relative',
+      }}
+    >
+      {char}
+      {/* Holographic glow */}
+      {isHovered && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100%',
+            height: '100%',
+            background: `radial-gradient(circle, ${telemagenta}30, transparent 70%)`,
+            filter: 'blur(20px)',
+            zIndex: -1
+          }}
+        />
+      )}
+    </motion.div>
+  );
+
+  // Quantum particle simulation
+  const QuantumParticles = () => {
+    const particles = 50;
+    
+    return (
+      <Box sx={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+        {[...Array(particles)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{
+              x: Math.random() * 100,
+              y: Math.random() * 100,
+              scale: 0
+            }}
+            animate={{
+              x: [
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+              ],
+              y: [
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+              ],
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0]
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: i * 0.1,
+              times: [0, 0.5, 1]
+            }}
+            style={{
+              position: 'absolute',
+              width: '3px',
+              height: '3px',
+              borderRadius: '50%',
+              background: `radial-gradient(circle, ${
+                Math.random() > 0.5 ? telemagenta : salmon
+              }, transparent)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
+      </Box>
+    );
+  };
+
+  // Neural network lines animation
+  const NeuralNetwork = () => {
+    const nodes = 8;
+    const centerX = 50;
+    const centerY = 50;
+    
+    return (
       <svg
         style={{
           position: 'absolute',
@@ -2923,23 +204,599 @@ const ServicesSection = () => {
           left: 0,
           width: '100%',
           height: '100%',
-          pointerEvents: 'none',
-          zIndex: 0
+          overflow: 'visible',
         }}
       >
+        {[...Array(nodes)].map((_, i) => {
+          const angle = (i * 2 * Math.PI) / nodes;
+          const radius = 40;
+          const x = centerX + radius * Math.cos(angle);
+          const y = centerY + radius * Math.sin(angle);
+          
+          return (
+            <g key={i}>
+              {/* Connection lines */}
+              <motion.line
+                x1={`${centerX}%`}
+                y1={`${centerY}%`}
+                x2={`${x}%`}
+                y2={`${y}%`}
+                stroke={`url(#neuralGradient-${i})`}
+                strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{
+                  duration: 2,
+                  delay: i * 0.2,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              />
+              
+              {/* Pulsing nodes */}
+              <motion.circle
+                cx={`${x}%`}
+                cy={`${y}%`}
+                r="8"
+                fill={i % 2 === 0 ? telemagenta : salmon}
+                initial={{ scale: 0 }}
+                animate={{ 
+                  scale: [1, 1.5, 1],
+                  opacity: [0.5, 1, 0.5]
+                }}
+                transition={{
+                  duration: 2,
+                  delay: i * 0.3,
+                  repeat: Infinity,
+                }}
+              />
+              
+              {/* Data flow particles */}
+              <motion.circle
+                cx={`${x}%`}
+                cy={`${y}%`}
+                r="2"
+                fill={i % 2 === 0 ? salmon : telemagenta}
+                initial={{ scale: 0 }}
+                animate={{ 
+                  scale: [0, 1, 0],
+                  cx: [`${x}%`, `${centerX}%`, `${x}%`],
+                  cy: [`${y}%`, `${centerY}%`, `${y}%`]
+                }}
+                transition={{
+                  duration: 3,
+                  delay: i * 0.5,
+                  repeat: Infinity,
+                  repeatDelay: 1
+                }}
+              />
+            </g>
+          );
+        })}
+        
+        {/* Center node */}
+        <motion.circle
+          cx={`${centerX}%`}
+          cy={`${centerY}%`}
+          r="15"
+          fill={`url(#centerGlow)`}
+          animate={{ 
+            scale: [1, 1.2, 1],
+            filter: ['blur(0px)', 'blur(5px)', 'blur(0px)']
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity
+          }}
+        />
+        
+        <defs>
+          <linearGradient id="centerGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={telemagenta} />
+            <stop offset="100%" stopColor={salmon} />
+          </linearGradient>
+          {[...Array(8)].map((_, i) => (
+            <linearGradient key={i} id={`neuralGradient-${i}`}>
+              <stop offset="0%" stopColor={telemagenta} stopOpacity="0.5" />
+              <stop offset="100%" stopColor={salmon} stopOpacity="0.5" />
+            </linearGradient>
+          ))}
+        </defs>
+      </svg>
+    );
+  };
+
+  return (
+    <Box ref={ref} sx={{
+      py: { xs: 10, md: 15 },
+      backgroundColor: '#000',
+      position: 'relative',
+      overflow: 'hidden',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+    }}>
+      
+      {/* Background Effects */}
+      <MatrixRain />
+      <QuantumParticles />
+      
+      {/* Animated Grid */}
+      <motion.div
+        animate={inView ? {
+          backgroundPosition: ['0% 0%', '100% 100%'],
+        } : {}}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            linear-gradient(${telemagenta}10 1px, transparent 1px),
+            linear-gradient(90deg, ${telemagenta}10 1px, transparent 1px),
+            linear-gradient(${salmon}05 2px, transparent 2px),
+            linear-gradient(90deg, ${salmon}05 2px, transparent 2px)
+          `,
+          backgroundSize: '100px 100px, 100px 100px, 200px 200px, 200px 200px',
+          opacity: 0.2,
+        }}
+      />
+      
+      {/* Warp field effect */}
+      <motion.div
+        animate={inView ? {
+          scale: [1, 1.2, 1],
+          rotate: 360,
+        } : {}}
+        transition={{
+          scale: {
+            duration: 4,
+            repeat: Infinity,
+          },
+          rotate: {
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }
+        }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '600px',
+          height: '600px',
+          borderRadius: '50%',
+          border: `2px solid ${telemagenta}30`,
+          borderTopColor: `${salmon}50`,
+          borderRightColor: `${telemagenta}50`,
+          filter: 'blur(1px)',
+        }}
+      />
+
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+        <Box sx={{ 
+          textAlign: 'center',
+          position: 'relative',
+          minHeight: '80vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center'
+        }}>
+          
+          {/* Neural Network Visualization */}
+          <Box sx={{ 
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '60%',
+            height: '60%',
+            opacity: 0.3
+          }}>
+            <NeuralNetwork />
+          </Box>
+          
+          {/* Main Title with Holographic Effect */}
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1 }}
+            style={{ marginBottom: '4rem' }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: '2.5rem', md: '4rem', lg: '6rem' },
+                fontWeight: 900,
+                color: white,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                position: 'relative',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-20px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '300px',
+                  height: '3px',
+                  background: `linear-gradient(90deg, transparent, ${telemagenta}, ${salmon}, transparent)`,
+                  animation: 'pulseWidth 3s infinite alternate',
+                },
+                '@keyframes pulseWidth': {
+                  '0%': { width: '200px' },
+                  '100%': { width: '400px' },
+                }
+              }}
+            >
+              AI SERVICES
+            </Typography>
+            
+            {/* Subtitle with glitch effect */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.5 }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  color: salmon,
+                  fontWeight: 300,
+                  letterSpacing: '0.5em',
+                  textTransform: 'uppercase',
+                  marginTop: '4rem',
+                  position: 'relative',
+                  '&::before': {
+                    content: 'attr(data-text)',
+                    position: 'absolute',
+                    left: 0,
+                    textShadow: `2px 0 ${telemagenta}`,
+                    animation: 'glitch 3s infinite linear alternate-reverse',
+                  },
+                  '@keyframes glitch': {
+                    '0%': { clipPath: 'inset(0 0 0 0)' },
+                    '20%': { clipPath: 'inset(10% 0 20% 0)' },
+                    '40%': { clipPath: 'inset(40% 0 5% 0)' },
+                    '60%': { clipPath: 'inset(80% 0 10% 0)' },
+                    '80%': { clipPath: 'inset(20% 0 50% 0)' },
+                    '100%': { clipPath: 'inset(0 0 0 0)' },
+                  }
+                }}
+                data-text="DIGITAL TRANSFORMATION"
+              >
+                DIGITAL TRANSFORMATION
+              </Typography>
+            </motion.div>
+          </motion.div>
+          
+          {/* Circular Service Menu */}
+          <Box sx={{ 
+            position: 'relative',
+            width: '500px',
+            height: '500px',
+            margin: '4rem auto',
+          }}>
+            {/* Center Holographic Display */}
+            <motion.div
+              animate={{
+                rotate: 360,
+                scale: [1, 1.05, 1],
+              }}
+              transition={{
+                rotate: {
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear"
+                },
+                scale: {
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }
+              }}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '200px',
+                height: '200px',
+                borderRadius: '50%',
+                background: `conic-gradient(from 0deg, ${telemagenta}, ${salmon}, ${telemagenta})`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                filter: 'blur(1px)',
+              }}
+            >
+              <Box sx={{
+                width: '180px',
+                height: '180px',
+                borderRadius: '50%',
+                background: '#000',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+              }}>
+                <motion.div
+                  animate={{ 
+                    rotate: -360,
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    rotate: {
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear"
+                    },
+                    scale: {
+                      duration: 2,
+                      repeat: Infinity,
+                    }
+                  }}
+                  style={{
+                    fontSize: '4rem',
+                    fontWeight: 900,
+                    background: `linear-gradient(45deg, ${telemagenta}, ${salmon})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  AI
+                </motion.div>
+              </Box>
+            </motion.div>
+            
+            {/* Service Nodes in Orbit */}
+            {services.map((service, index) => {
+              const angle = (index * 60) * Math.PI / 180;
+              const radius = 200;
+              const x = Math.cos(angle) * radius;
+              const y = Math.sin(angle) * radius;
+              
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ x: 0, y: 0, scale: 0 }}
+                  animate={inView ? { 
+                    x, 
+                    y,
+                    scale: 1,
+                    rotate: [0, 360],
+                  } : {}}
+                  transition={{
+                    x: { delay: index * 0.2, type: "spring", stiffness: 100 },
+                    y: { delay: index * 0.2, type: "spring", stiffness: 100 },
+                    scale: { delay: index * 0.2 },
+                    rotate: {
+                      duration: 20 + index * 5,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: index * 0.5
+                    }
+                  }}
+                  whileHover={{ 
+                    scale: 1.5,
+                    zIndex: 100,
+                    transition: { type: "spring", stiffness: 400 }
+                  }}
+                  onHoverStart={() => setHoveredService(service.id)}
+                  onHoverEnd={() => setHoveredService(null)}
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    top: '50%',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <Box sx={{
+                    transform: 'translate(-50%, -50%)',
+                    textAlign: 'center',
+                  }}>
+                    <HolographicLetter 
+                      char={service.char} 
+                      isHovered={hoveredService === service.id}
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ 
+                        opacity: hoveredService === service.id ? 1 : 0,
+                        y: hoveredService === service.id ? 0 : 10
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: white,
+                          fontWeight: 600,
+                          fontSize: '0.8rem',
+                          textTransform: 'uppercase',
+                          letterSpacing: '2px',
+                          marginTop: '1rem',
+                          background: `linear-gradient(90deg, ${telemagenta}, ${salmon})`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                        }}
+                      >
+                        {service.name}
+                      </Typography>
+                    </motion.div>
+                    
+                    {/* Connection line to center */}
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: hoveredService === service.id ? 1 : 0 }}
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        width: `${radius}px`,
+                        height: '2px',
+                        background: `linear-gradient(90deg, ${service.id % 2 === 0 ? telemagenta : salmon}, transparent)`,
+                        transformOrigin: 'left center',
+                        zIndex: -1,
+                      }}
+                    />
+                  </Box>
+                </motion.div>
+              );
+            })}
+            
+            {/* Orbital rings */}
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  rotate: 360,
+                  scale: [1, 1 + i * 0.1, 1],
+                }}
+                transition={{
+                  rotate: {
+                    duration: 30 - i * 10,
+                    repeat: Infinity,
+                    ease: "linear"
+                  },
+                  scale: {
+                    duration: 3,
+                    repeat: Infinity,
+                  }
+                }}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: `${300 + i * 100}px`,
+                  height: `${300 + i * 100}px`,
+                  borderRadius: '50%',
+                  border: `1px solid ${i % 2 === 0 ? telemagenta : salmon}${30 - i * 10}`,
+                  pointerEvents: 'none',
+                }}
+              />
+            ))}
+          </Box>
+          
+          {/* CTA Button with Quantum Effect */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 2 }}
+            style={{ marginTop: '4rem' }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                onClick={handleExploreServices}
+                sx={{
+                  px: 8,
+                  py: 2.5,
+                  background: `linear-gradient(135deg, ${telemagenta}, ${salmon})`,
+                  color: white,
+                  fontWeight: 900,
+                  fontSize: '1.2rem',
+                  borderRadius: '50px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '3px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  border: 'none',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: '-2px',
+                    left: '-2px',
+                    right: '-2px',
+                    bottom: '-2px',
+                    background: `linear-gradient(45deg, ${telemagenta}, ${salmon}, ${telemagenta}, ${salmon})`,
+                    borderRadius: '52px',
+                    zIndex: -1,
+                    animation: 'rotate 2s linear infinite',
+                    backgroundSize: '400% 400%',
+                  },
+                  '@keyframes rotate': {
+                    '0%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                    '100%': { backgroundPosition: '0% 50%' },
+                  }
+                }}
+              >
+                <motion.span
+                  animate={{ 
+                    textShadow: [
+                      `0 0 5px ${telemagenta}`,
+                      `0 0 20px ${salmon}`,
+                      `0 0 5px ${telemagenta}`
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  INITIATE AI
+                </motion.span>
+                <motion.div
+                  animate={{ 
+                    x: [0, 10, 0],
+                    rotate: [0, 180, 360]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity 
+                  }}
+                  style={{ marginLeft: '1rem' }}
+                >
+                  <ArrowForwardIcon />
+                </motion.div>
+              </Button>
+            </motion.div>
+          </motion.div>
+        </Box>
+      </Container>
+      
+      {/* Data stream effect at bottom */}
+      <Box sx={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '100px',
+        overflow: 'hidden',
+      }}>
         {[...Array(20)].map((_, i) => (
-          <motion.circle
+          <motion.div
             key={i}
-            cx={`${(i * 5 + 10) % 100}%`}
-            cy={`${(i * 7 + 20) % 100}%`}
-            r="2"
-            fill={i % 2 === 0 ? salmon : salmonLight}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={inView ? { opacity: 0.3, scale: 1 } : {}}
-            transition={{ delay: i * 0.05, duration: 0.5 }}
+            initial={{ x: '-100%' }}
+            animate={{ x: '200%' }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              delay: i * 0.1,
+              ease: "linear"
+            }}
+            style={{
+              position: 'absolute',
+              top: `${i * 5}px`,
+              width: '2px',
+              height: '50px',
+              background: `linear-gradient(transparent, ${
+                Math.random() > 0.5 ? telemagenta : salmon
+              }, transparent)`,
+            }}
           />
         ))}
-      </svg>
+      </Box>
     </Box>
   );
 };
